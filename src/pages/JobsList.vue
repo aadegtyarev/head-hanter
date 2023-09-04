@@ -4,21 +4,18 @@
         <my-input
             v-model="searchQuery"
             placeholder="Название для поиска"
+            @input="fetchingJobs"
             v-focus 
         />
 
         <div class="app_btns">
             <my-button @click="showDialog">Создать вакансию</my-button>
-            <my-select
-                v-model="selectedSort"
-                :options="sortOptions"
-            />
         </div>
         <my-dialog v-model:show="dialogVisible">
             <job-form @create="createJob" />
         </my-dialog>
         <job-list
-            :jobs="sortedAndSearchedJobs"
+            :jobs="jobs"
             @remove="removeJob"
             v-if="!isJobsLoading"
         />        
@@ -34,8 +31,6 @@
 import JobForm from "@/components/JobForm.vue";
 import JobList from "@/components/JobList.vue";
 import useJobs from "@/hooks/useJobs"
-import useSortedJobs from "@/hooks/useSortedJobs"
-import useSortedAndSearchedJobs from "@/hooks/useSortedAndSearchedJobs"
 import useRemoveJob from "@/hooks/useRemoveJob"
 import useCreateJob from "@/hooks/useCreateJob"
 
@@ -48,16 +43,10 @@ export default {
     },
     data() {
         return {
-            sortOptions: [
-                { value: "job_title", name: "По названию" },
-                { value: "detail", name: "По содержимому" },
-            ]
         };
     },
     setup(props) {
-        const {jobs, isJobsLoading, loadMoreJobs} = useJobs(1);
-        const {sortedJobs, selectedSort} = useSortedJobs(jobs);
-        const {searchQuery, sortedAndSearchedJobs} = useSortedAndSearchedJobs(sortedJobs)
+        const {searchQuery, jobs, isJobsLoading, loadMoreJobs, fetchingJobs} = useJobs(50);
         const {removeJob} = useRemoveJob(jobs)
         const {createJob, showDialog, dialogVisible} = useCreateJob(jobs)
 
@@ -65,14 +54,12 @@ export default {
         return {
             jobs,
             isJobsLoading,
-            sortedJobs,
-            selectedSort,
             searchQuery,
-            sortedAndSearchedJobs,
+            fetchingJobs,
             loadMoreJobs,
             removeJob,
             createJob,
-            showDialog,
+            showDialog,            
             dialogVisible
         }
     }

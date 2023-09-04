@@ -27,13 +27,17 @@ class JobController {
 
     async getJobs(req, res) {
         try {
-            const { limit, offset } = req.query
+            const { limit, offset, search } = req.query
 
-            const jobs = await db.query(`SELECT * FROM jobs LIMIT $1 OFFSET $2`,[limit, offset])
+            const searchText = "%"+search+"%"
+            const jobs = await db.query(
+                `SELECT * FROM jobs WHERE LOWER(job_title) LIKE LOWER($1) ORDER BY id DESC LIMIT $2 OFFSET $3`,
+                [searchText, limit, offset]
+                )
             res.header("Access-Control-Allow-Origin", "*");
             res.json(jobs.rows)
         } catch (error) {
-            res.json(error)
+            res.json(error+db.query.text)
         }
     }
 
