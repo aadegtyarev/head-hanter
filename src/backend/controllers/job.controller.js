@@ -27,7 +27,7 @@ class JobController {
 
     async getJobs(req, res) {
         try {
-            const { limit, offset } = req.body
+            const { limit, offset } = req.query
 
             const jobs = await db.query(`SELECT * FROM jobs LIMIT $1 OFFSET $2`,[limit, offset])
             res.header("Access-Control-Allow-Origin", "*");

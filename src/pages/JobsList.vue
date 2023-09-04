@@ -23,10 +23,10 @@
             v-if="!isJobsLoading"
         />        
         <div v-else>Идёт загрузка...</div>
-        <!-- <div
+        <div
             v-intersection="loadMoreJobs"
             class="observer"
-        ></div> -->
+        ></div>
     </div>
 </template>
 
@@ -55,7 +55,7 @@ export default {
         };
     },
     setup(props) {
-        const {jobs, isJobsLoading, loadMoreJobs} = useJobs(10);
+        const {jobs, isJobsLoading, loadMoreJobs} = useJobs(1);
         const {sortedJobs, selectedSort} = useSortedJobs(jobs);
         const {searchQuery, sortedAndSearchedJobs} = useSortedAndSearchedJobs(sortedJobs)
         const {removeJob} = useRemoveJob(jobs)
@@ -100,8 +100,8 @@ export default {
     border: 2px solid teal;
 }
 
-.observer {
+/* .observer {
     height: 30px;
     background: green;
-}
+} */
 </style>

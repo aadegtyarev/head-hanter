@@ -13,8 +13,8 @@ export default function useJobs(limit) {
             const response = await axios.get(
                 "/job", {
                 params: {
-                    _offset: (page.value-1)*limit,
-                    _limit: limit
+                    offset: (page.value-1)*limit,
+                    limit: limit
                 }
             }
             );
@@ -33,8 +33,8 @@ export default function useJobs(limit) {
             const response = await axios.get(
                 "/job", {
                 params: {
-                    _offset: (page.value-1)*limit,
-                    _limit: limit
+                    offset: (page.value-1)*limit,
+                    limit: limit
                 }
             }
             );
