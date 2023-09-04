@@ -23,10 +23,10 @@
             v-if="!isJobsLoading"
         />        
         <div v-else>Идёт загрузка...</div>
-        <div
+        <!-- <div
             v-intersection="loadMoreJobs"
             class="observer"
-        ></div>
+        ></div> -->
     </div>
 </template>
 
@@ -49,13 +49,13 @@ export default {
     data() {
         return {
             sortOptions: [
-                { value: "title", name: "По названию" },
-                { value: "body", name: "По содержимому" },
+                { value: "job_title", name: "По названию" },
+                { value: "detail", name: "По содержимому" },
             ]
         };
     },
     setup(props) {
-        const {jobs, totalPages, isJobsLoading, loadMoreJobs} = useJobs(10);
+        const {jobs, isJobsLoading, loadMoreJobs} = useJobs(10);
         const {sortedJobs, selectedSort} = useSortedJobs(jobs);
         const {searchQuery, sortedAndSearchedJobs} = useSortedAndSearchedJobs(sortedJobs)
         const {removeJob} = useRemoveJob(jobs)
@@ -64,7 +64,6 @@ export default {
 
         return {
             jobs,
-            totalPages,
             isJobsLoading,
             sortedJobs,
             selectedSort,

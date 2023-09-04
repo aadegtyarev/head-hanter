@@ -35,7 +35,7 @@ export default {
     margin-right: 10px;
 }
 
-.job-list-enter-active,
+/* .job-list-enter-active,
 .job-list-leave-active {
     transition: all 0.4s ease;
 }
@@ -47,6 +47,6 @@ export default {
 }
 .job-list-move {
   transition: transform 0.4s ease;
-}
+} */
 
 </style>

@@ -1,4 +1,3 @@
-import axios from "axios";
 import {ref, computed} from "vue";
 
 export default function useSortedJobs(jobs) {

@@ -4,12 +4,12 @@
             <h4>Создание вакансии</h4>
             <my-input
                 v-focus
-                v-model="job.title"
+                v-model="job.job_title"
                 type="text"
                 placeholder="Название"
             />
             <my-input
-                v-model="job.body"
+                v-model="job.detail"
                 type="text"
                 placeholder="Описание"
             />
@@ -28,8 +28,8 @@ export default {
     data() {
         return {
             job: {
-                title: '',
-                body: '',
+                job_title: '',
+                detail: '',
             },
         }
     },
@@ -38,8 +38,8 @@ export default {
             this.job.id = Date.now()
             this.$emit('create', this.job) // генерация события добавления записи, которое ловится в родителе App.vue
             this.job = {
-                title: '',
-                body: '',
+                job_title: '',
+                detail: '',
             }
         },
     },

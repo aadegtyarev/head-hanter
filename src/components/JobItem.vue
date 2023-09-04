@@ -2,8 +2,8 @@
     <div class="job">
         <div>
             <div>{{ job.id }}</div>
-            <div><strong>Название: </strong>{{ job.title }}</div>
-            <div><strong>Описание: </strong>{{ job.body }}</div>
+            <div><strong>Название: </strong>{{ job.job_title }}</div>
+            <div><strong>Описание: </strong>{{ job.detail }}</div>
         </div>
         <div class="job_btns">
             <my-button @click="$router.push(`/jobs/${job.id}`)">Открыть</my-button>
