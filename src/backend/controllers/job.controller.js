@@ -21,7 +21,7 @@ class JobController {
             res.header("Access-Control-Allow-Origin", "*");
             res.json(newJob.rows[0])
         } catch (error) {
-            res.json(error)
+            res.json(error+db.query.text)
         }
     }
 
@@ -46,6 +46,7 @@ class JobController {
 
         try {
             const job = await db.query(`SELECT * FROM jobs WHERE id=$1`, [id])
+            res.header("Access-Control-Allow-Origin", "*");
             res.json(job.rows[0])
         } catch (error) {
             res.json(error)
@@ -70,6 +71,7 @@ class JobController {
                 job_title, salary_from, salary_to, skills, 
             education, experience, test_doc, detail, id
             ])
+            res.header("Access-Control-Allow-Origin", "*");
             res.json(job.rows[0])
         } catch (error) {
             res.json(error)
@@ -81,6 +83,7 @@ class JobController {
 
         try {
             const job = await db.query(`DELETE FROM jobs WHERE id = $1`, [id])
+            res.header("Access-Control-Allow-Origin", "*");
             res.json(job.rows[0])
         } catch (error) {
             res.json(error)

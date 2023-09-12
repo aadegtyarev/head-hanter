@@ -5,13 +5,43 @@
             <my-input
                 v-focus
                 v-model="job.job_title"
-                type="text"
+                type="text"                
                 placeholder="Название"
             />
             <my-input
-                v-model="job.detail"
-                type="text"
+                v-model="job.salary_from"
+                type="number"                
+                placeholder="Зарплата от, руб"
+            />
+            <my-input
+                v-model="job.salary_to"
+                type="number"                
+                placeholder="Зарплата до, руб"
+            />
+            <my-input
+                v-model="job.skills"
+                type="text"                
+                placeholder="Навыки"
+            />
+            <my-input
+                v-model="job.education"
+                type="text"                
+                placeholder="Образование"
+            />
+            <my-input
+                v-model="job.experience"
+                type="text"                
+                placeholder="Требуемый опыт"
+            />
+            <my-input
+                v-model="job.test_doc"
+                type="text"                
+                placeholder="Ссылка на тестовое задание"
+            />            
+            <my-textarea
+                v-model="job.detail"                
                 placeholder="Описание"
+                type="text"
             />
             <my-button
                 class="btn_create"

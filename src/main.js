@@ -6,8 +6,7 @@ import VIntersection from '@/directives/VIntersection'
 import directives from '@/directives'
 import store from '@/store'
 import axios from "axios";
-
-axios.defaults.baseURL = 'http://localhost:8081/api';
+import cors from "axios";
 
 // axios.defaults.headers= {
 //         'Access-Control-Allow-Origin': '*',
@@ -24,6 +23,10 @@ components.forEach(component => {
 directives.forEach(directive => {
     app.directive(directive.name, directive)
 })
+
+
+
+  axios.defaults.baseURL = 'http://localhost:8081/api';  
 
 app
     .use(router) // таким образом подключаются плагины, бутстрап и т.п.

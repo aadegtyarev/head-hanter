@@ -40,7 +40,7 @@ export default {
     background: white;
     border-radius: 12px;
     min-height: 50px;
-    min-width: 300px;
+    min-width: 600px;
     padding: 20px;
 }
 </style>
