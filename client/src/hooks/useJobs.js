@@ -12,7 +12,7 @@ export default function useJobs(limit) {
             isJobsLoading.value = true;
             page.value = 1
             const response = await axios.get(
-                "/job", {
+                "/jobs", {
                 params: {
                     offset: (page.value-1)*limit,
                     limit: limit,

@@ -42,10 +42,10 @@ class JobController {
     }
 
     async getOneJob(req, res) {
-        const id = req.params.id
+        const id = req.query.id
 
         try {
-            const job = await db.query(`SELECT * FROM jobs WHERE id=$1`, [id])
+            const job = await db.query(`SELECT * FROM jobs WHERE id = $1`, [id])
             res.header("Access-Control-Allow-Origin", "*");
             res.json(job.rows[0])
         } catch (error) {
