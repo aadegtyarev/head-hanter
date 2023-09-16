@@ -1,14 +1,26 @@
-import {ref} from "vue";
+import axios from "axios";
 
 export default function useRemoveJob(jobs) {
      
-    const removeJob = (job) => {
+    const removeJob = async (job) => {
         try {
-            console.log(job.id)
-            jobs.value = jobs.value.filter((p) => p.id !== job.id);       
-        } catch (e) {
-            console.log(e)
-        }
+            const response = await axios.delete(
+                "/job", {
+                    params: {
+                        id: job.id
+                    }
+            }
+            );
+            dialogVisible.value = false;
+        } catch (error) {            
+            console.log(error)
+        }        
+        // try {
+        //     console.log(job.id)
+        //     jobs.value = jobs.value.filter((p) => p.id !== job.id);       
+        // } catch (e) {
+        //     console.log(e)
+        // }
     }    
 
     return {

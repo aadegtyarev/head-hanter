@@ -6,6 +6,6 @@ router.post('/job', jobController.createJob)
 router.get('/job', jobController.getJobs)
 router.get('/job/:id', jobController.getOneJob)
 router.put('/job', jobController.updateJob)
-router.delete('/job/:id', jobController.deleteJob)
+router.delete('/job', jobController.deleteJob)
 
 module.exports = router

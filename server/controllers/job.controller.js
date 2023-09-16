@@ -79,7 +79,7 @@ class JobController {
     }
 
     async deleteJob(req, res) {
-        const id = req.params.id
+        const id = req.query.id
 
         try {
             const job = await db.query(`DELETE FROM jobs WHERE id = $1`, [id])
