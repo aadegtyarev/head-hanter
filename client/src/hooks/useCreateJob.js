@@ -8,7 +8,6 @@ export default function useCreateJob(jobs) {
         try {
             const response = await axios.post(
                 "/job", {
-                params: {
                     job_title: job.job_title,
                     salary_from: job.salary_from,
                     salary_to: job.salary_to,
@@ -17,9 +16,7 @@ export default function useCreateJob(jobs) {
                     experience: job.experience,
                     test_doc: job.test_doc,
                     detail: job.detail,
-                    closed: 0,
                     user_id: 7
-                }
             }
             );
             dialogVisible.value = false;
@@ -41,6 +38,7 @@ export default function useCreateJob(jobs) {
     //     "created_timestamp": "2023-09-04T07:55:36.481Z",
     //     "user_id": 7
     //   },    
+    
     const showDialog = () => {
         try {            
             dialogVisible.value = true;            

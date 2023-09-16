@@ -1,7 +1,7 @@
 <template>
     <textarea
         :value="modelValue"
-        @textarea="updateTextarea"
+        @input="updateTextarea"
         class="textarea"
     />
 </template>
