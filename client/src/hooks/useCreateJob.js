@@ -6,7 +6,7 @@ export default function useCreateJob(jobs) {
     
     const createJob = async (job) => {
         try {
-            const response = await axios.delete(
+            const response = await axios.post(
                 "/job", {
                     job_title: job.job_title,
                     salary_from: job.salary_from,
@@ -24,20 +24,6 @@ export default function useCreateJob(jobs) {
             console.log(error)
         }
     } 
-    //  {
-    //     "id": 2,
-    //     "job_title": "Инженер-электронщик",
-    //     "salary_from": "120000",
-    //     "salary_to": "150000",
-    //     "skills": "отличное знание электроники, умение рисовать платы",
-    //     "education": "Техническое высшее",
-    //     "experience": "от 1 года",
-    //     "test_doc": "http://yadisk.ru/doc002.odt",
-    //     "detail": "Ищем разработчика плат Modbus-устройств",
-    //     "closed": null,
-    //     "created_timestamp": "2023-09-04T07:55:36.481Z",
-    //     "user_id": 7
-    //   },    
     
     const showDialog = () => {
         try {            
