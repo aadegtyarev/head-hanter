@@ -32,9 +32,18 @@ export default function useEditJob() {
     }
   };
 
+  const hideEditDialog = () => {
+    try {
+      dialogEditVisible.value = false;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return {
     editJob,
     showEditDialog,
+    hideEditDialog,
     dialogEditVisible,
   };
 }

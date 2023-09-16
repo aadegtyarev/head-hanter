@@ -17,5 +17,6 @@ export default {
     color: teal;
     border: 1px solid teal;
     cursor: pointer;
+    margin-left: 10px;
 }
 </style>

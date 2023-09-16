@@ -43,33 +43,32 @@
                 placeholder="Описание"
                 type="text"
             />
-            <my-button
-                class="btn_save"
-                @click="saveJob"
-            >
-                Сохранить
-            </my-button>
+            <div class="job_btns">
+                <my-button
+                    class="btn_save"
+                    @click="saveJob"
+                >
+                    Сохранить
+                </my-button>
+                <my-button
+                    class="btn_close"
+                    @click="close"
+                >
+                    Закрыть
+                </my-button>
+            </div>
         </form>
     </div>
 </template>
 
 <script>
 export default {
-    // data() {
-    //     return {
-    //         job: {
-    //             job_title: '',
-    //             detail: '',
-    //         },
-    //     }
-    // },
     methods: {
         saveJob() {
-            this.$emit('save', this.job) // генерация события сохранения записи, которое ловится в родителе App.vue
-            // this.job = {
-            //     job_title: '',
-            //     detail: '',
-            // }
+            this.$emit('save', this.job)
+        },
+        close() {
+            this.$emit('hideDialog')
         },
     },
     props: {
@@ -87,8 +86,13 @@ form {
     flex-direction: column;
 }
 
-.btn_save {
+.btn_save,
+.btn_close {
     align-self: flex-end;
     margin-top: 15px;
+}
+
+.job_btns {
+    display: flex;
 }
 </style>

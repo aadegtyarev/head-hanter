@@ -4,13 +4,11 @@
             <job-edit-form
                 :job="job"
                 @save="editJob"
+                @hideDialog="hideEditDialog"
             />
         </my-dialog>
         <div class="job">
             <div>
-                <p>
-                <h3>{{ job.job_title }}</h3>
-                </p>
                 <p><strong>Зарплата от, руб: </strong>{{ job.salary_from }}</p>
                 <p><strong>Зарплата до, руб: </strong>{{ job.salary_to }}</p>
                 <p><strong>Навыки: </strong>{{ job.skills }}</p>
@@ -19,9 +17,10 @@
                 <p><strong>Ссылка на тестовое задание: </strong>{{ job.test_doc }}</p>
                 <p><strong>Описание: </strong>{{ job.detail }}</p>
             </div>
-            <div class="job_btns">
-                <my-button @click="showEditDialog">Редактировать</my-button>
-            </div>
+        </div>
+        <div class="job_btns">
+            <my-button @click="showEditDialog">Редактировать</my-button>
+            <my-button @click="$router.go(-1)">Назад</my-button>
         </div>
     </div>
 </template>
@@ -41,9 +40,10 @@ export default {
         },
     },
     setup(props) {
-        const { editJob, showEditDialog, dialogEditVisible } = useEditJob()
+        const { editJob, hideEditDialog, showEditDialog, dialogEditVisible } = useEditJob()
         return {
             editJob,
+            hideEditDialog,
             showEditDialog,
             dialogEditVisible
         }
@@ -54,7 +54,7 @@ export default {
 <style scoped>
 .job {
     padding: 15px;
-    border: 2px solid teal;
+    /* border: 2px solid teal; */
     margin-top: 15px;
     display: flex;
     align-items: center;

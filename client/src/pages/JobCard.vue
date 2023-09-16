@@ -1,9 +1,7 @@
 <template>
     <div>
-        <h1>Это страница вакансии с ID = {{ $route.params.id }}</h1>        
-        <job-card
-            :job="job"
-        />
+        <h1>{{ job.job_title }}</h1>
+        <job-card :job="job" />
     </div>
 </template>
 
@@ -22,8 +20,8 @@ export default {
     },
     setup(props) {
         const route = useRoute()
-        const jobId= route.params.id
-        const {job} = useGetJob(jobId);
+        const jobId = route.params.id
+        const { job } = useGetJob(jobId);
 
         return {
             job
@@ -32,6 +30,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
