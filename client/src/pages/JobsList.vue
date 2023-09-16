@@ -1,11 +1,11 @@
 <template>
     <div>
-         <h1>Страница с вакансиями</h1>
+        <h1>Страница с вакансиями</h1>
         <my-input
             v-model="searchQuery"
             placeholder="Название для поиска"
             @input="fetchingJobs"
-            v-focus 
+            v-focus
         />
 
         <div class="app_btns">
@@ -17,8 +17,9 @@
         <job-list
             :jobs="jobs"
             @remove="removeJob"
+            @edit="showEditDialog"
             v-if="!isJobsLoading"
-        />        
+        />
         <div v-else>Идёт загрузка...</div>
         <div
             v-intersection="loadMoreJobs"
@@ -34,11 +35,12 @@ import useJobs from "@/hooks/useJobs"
 import useRemoveJob from "@/hooks/useRemoveJob"
 import useCreateJob from "@/hooks/useCreateJob"
 
-import {ref} from 'vue'
+import { ref } from 'vue'
 
 export default {
     components: {
         JobForm,
+        JobEditForm,
         JobList,
     },
     data() {
@@ -46,9 +48,9 @@ export default {
         };
     },
     setup(props) {
-        const {searchQuery, jobs, isJobsLoading, loadMoreJobs, fetchingJobs} = useJobs(50);
-        const {removeJob} = useRemoveJob(jobs)
-        const {createJob, showDialog, dialogVisible} = useCreateJob(jobs)
+        const { searchQuery, jobs, isJobsLoading, loadMoreJobs, fetchingJobs } = useJobs(50);
+        const { removeJob } = useRemoveJob(jobs)
+        const { createJob, showDialog, dialogVisible } = useCreateJob(jobs)
 
 
         return {
@@ -59,7 +61,7 @@ export default {
             loadMoreJobs,
             removeJob,
             createJob,
-            showDialog,            
+            showDialog,
             dialogVisible
         }
     }
