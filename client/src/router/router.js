@@ -20,7 +20,8 @@ const routes = [
 
 const router = createRouter({
     routes,
-    history: createWebHistory(process.env.BASE_URL)
+    history: createWebHistory(process.env.BASE_URL),
+    props: true
 })
 
 export default router;
