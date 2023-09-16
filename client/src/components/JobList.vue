@@ -6,6 +6,7 @@
             :job="job"
             :key="job.id"
             @remove="$emit('remove', job)"
+            @edit="$emit('edit', job)"
         />
     </div>
     <h4

@@ -1,7 +1,7 @@
 <template>
     <div>
         <form @submit.prevent>
-            <h4>Создание вакансии</h4>
+            <h4>Редактирование вакансии</h4>
             <my-input
                 v-focus
                 v-model="job.job_title"
@@ -44,10 +44,10 @@
                 type="text"
             />
             <my-button
-                class="btn_create"
-                @click="createJob"
+                class="btn_save"
+                @click="saveJob"
             >
-                Создать
+                Сохранить
             </my-button>
         </form>
     </div>
@@ -55,22 +55,27 @@
 
 <script>
 export default {
-    data() {
-        return {
-            job: {
-                job_title: '',
-                detail: '',
-            },
-        }
-    },
+    // data() {
+    //     return {
+    //         job: {
+    //             job_title: '',
+    //             detail: '',
+    //         },
+    //     }
+    // },
     methods: {
-        createJob() {
-            this.job.id = Date.now()
-            this.$emit('create', this.job) // генерация события добавления записи, которое ловится в родителе App.vue
-            this.job = {
-                job_title: '',
-                detail: '',
-            }
+        saveJob() {
+            this.$emit('save', this.job) // генерация события сохранения записи, которое ловится в родителе App.vue
+            // this.job = {
+            //     job_title: '',
+            //     detail: '',
+            // }
+        },
+    },
+    props: {
+        job: {
+            type: Object,
+            required: true,
         },
     },
 }
@@ -82,7 +87,7 @@ form {
     flex-direction: column;
 }
 
-.btn_create {
+.btn_save {
     align-self: flex-end;
     margin-top: 15px;
 }

@@ -32,7 +32,8 @@ export default {
     align-items: center;
     justify-content: space-between;
 }
-.job_btns{ 
+
+.job_btns {
     display: flex;
 }
 </style>

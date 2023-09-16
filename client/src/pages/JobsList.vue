@@ -17,7 +17,6 @@
         <job-list
             :jobs="jobs"
             @remove="removeJob"
-            @edit="showEditDialog"
             v-if="!isJobsLoading"
         />
         <div v-else>Идёт загрузка...</div>
@@ -40,7 +39,6 @@ import { ref } from 'vue'
 export default {
     components: {
         JobForm,
-        JobEditForm,
         JobList,
     },
     data() {
