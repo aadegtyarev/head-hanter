@@ -6,7 +6,7 @@ export default function useCreateJob(jobs) {
     
     const createJob = async (job) => {
         try {
-            const response = await axios.post(
+            const response = await axios.delete(
                 "/job", {
                     job_title: job.job_title,
                     salary_from: job.salary_from,
