@@ -46,8 +46,8 @@ class JobController {
   async getJobs(req, res) {
     try {
       const { limit, offset, search } = req.query;
-
       const searchText = "%" + search + "%";
+
       const jobs = await db.query(
         `SELECT * FROM jobs WHERE LOWER(job_title) LIKE LOWER($1) ORDER BY id DESC LIMIT $2 OFFSET $3`,
         [searchText, limit, offset]

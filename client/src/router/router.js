@@ -4,6 +4,7 @@ import JobsList from "@/pages/JobsList";
 import JobCard from "@/pages/JobCard";
 import UsersList from "@/pages/UsersList";
 import UserCard from "@/pages/UserCard";
+import ResponsesList from "@/pages/ResponsesList";
 
 const routes = [
   {
@@ -25,6 +26,10 @@ const routes = [
   {
     path: "/user/:id",
     component: UserCard,
+  },
+  {
+    path: "/responses",
+    component: ResponsesList,
   },
 ];
 

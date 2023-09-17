@@ -105,3 +105,20 @@ p {
 .list-empty {
   color: red;
 }
+
+.list-table,
+.list-table td,
+.list-table th {
+  border: 1px solid teal;
+  border-collapse: collapse;
+}
+
+.list-table {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.list-table td,
+.list-table th {
+  padding: 5px;
+}
