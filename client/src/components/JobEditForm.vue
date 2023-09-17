@@ -1,7 +1,6 @@
 <template>
     <div>
         <form @submit.prevent>
-            <h4>Редактирование вакансии</h4>
             <my-input
                 v-focus
                 v-model="job.job_title"
@@ -50,12 +49,6 @@
                 >
                     Сохранить
                 </my-button>
-                <my-button
-                    class="btn_close"
-                    @click="close"
-                >
-                    Закрыть
-                </my-button>
             </div>
         </form>
     </div>
@@ -66,10 +59,7 @@ export default {
     methods: {
         saveJob() {
             this.$emit('save', this.job)
-        },
-        close() {
-            this.$emit('hideDialog')
-        },
+        }
     },
     props: {
         job: {

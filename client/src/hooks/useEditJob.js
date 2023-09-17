@@ -2,7 +2,7 @@ import { ref } from "vue";
 import axios from "axios";
 
 export default function useEditJob() {
-  const dialogEditVisible = ref(false);
+  const formEditVisible = ref(false);
 
   const editJob = async (job) => {
     try {
@@ -18,23 +18,15 @@ export default function useEditJob() {
         detail: job.detail,
         user_id: 7,
       });
-      dialogEditVisible.value = false;
+      formEditVisible.value = false;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const showEditDialog = () => {
+  const showEditForm = () => {
     try {
-      dialogEditVisible.value = true;
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const hideEditDialog = () => {
-    try {
-      dialogEditVisible.value = false;
+      formEditVisible.value = true;
     } catch (e) {
       console.log(e);
     }
@@ -42,8 +34,7 @@ export default function useEditJob() {
 
   return {
     editJob,
-    showEditDialog,
-    hideEditDialog,
-    dialogEditVisible,
+    showEditForm,
+    formEditVisible,
   };
 }
