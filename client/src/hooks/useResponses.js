@@ -6,6 +6,7 @@ export default function useResponses(limit) {
   const isResponsesLoading = ref(false);
   const page = ref(1);
   const searchQuery = ref("");
+  const jobId = ref(0);
 
   const fetchingResponses = async () => {
     try {
@@ -16,6 +17,7 @@ export default function useResponses(limit) {
           offset: (page.value - 1) * limit,
           limit: limit,
           search: searchQuery.value,
+          job_id: jobId.value,
         },
       });
       responses.value = response.data;
@@ -29,7 +31,7 @@ export default function useResponses(limit) {
   const loadMoreResponses = async () => {
     try {
       page.value += 1;
-      const response = await axios.get("/job", {
+      const response = await axios.get("/responses", {
         params: {
           offset: (page.value - 1) * limit,
           limit: limit,
@@ -49,6 +51,7 @@ export default function useResponses(limit) {
     isResponsesLoading,
     loadMoreResponses,
     searchQuery,
+    jobId,
     fetchingResponses,
   };
 }
