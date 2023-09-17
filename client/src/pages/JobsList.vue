@@ -14,7 +14,7 @@
         <my-dialog v-model:show="dialogVisible">
             <job-form @create="createJob" />
         </my-dialog>
-        <job-list
+        <jobs-list
             :jobs="jobs"
             @remove="removeJob"
             v-if="!isJobsLoading"
@@ -29,7 +29,7 @@
 
 <script>
 import JobForm from "@/components/JobForm.vue";
-import JobList from "@/components/JobList.vue";
+import JobsList from "@/components/JobsList.vue";
 import useJobs from "@/hooks/useJobs"
 import useRemoveJob from "@/hooks/useRemoveJob"
 import useCreateJob from "@/hooks/useCreateJob"
@@ -39,7 +39,7 @@ import { ref } from 'vue'
 export default {
     components: {
         JobForm,
-        JobList,
+        JobsList,
     },
     data() {
         return {
