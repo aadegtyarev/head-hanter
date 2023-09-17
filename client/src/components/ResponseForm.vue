@@ -2,10 +2,10 @@
     <div>
         <form @submit.prevent>
             <h4>Добавление отклика</h4>
-            <my-input
+            <my-select
                 v-focus
                 v-model="response.job_id"
-                type="text"
+                :options="jobs_list"
                 placeholder="Вакансия"
             />
             <my-input
@@ -63,7 +63,7 @@ export default {
         return {
             response: {
                 id: ''
-            },
+            }
         }
     },
     methods: {
@@ -72,6 +72,12 @@ export default {
             // this.response = {
             //     id: ''
             // }
+        },
+    },
+    props: {
+        jobs_list: {
+            type: Array,
+            required: true,
         },
     },
 }

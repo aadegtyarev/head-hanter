@@ -1,12 +1,14 @@
 <template>
     <select
+        class="select"
         v-model="modelValue"
         @change="changeOption"
     >
         <option
             disabled
             value=""
-        >Сортировка</option>
+            selected
+        >Выберите вакансию</option>
         <option
             v-for="option in options"
             :key="option.value"

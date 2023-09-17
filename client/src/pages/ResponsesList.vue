@@ -1,4 +1,5 @@
 <template>
+    <!-- TODO: Доделать наполнение списка вакансиями -->
     <div>
         <h1>Отклики</h1>
         <my-input
@@ -12,7 +13,10 @@
             <my-button @click="showDialog">Добавить отклик</my-button>
         </div>
         <my-dialog v-model:show="dialogVisible">
-            <response-form @create="createResponse" />
+            <response-form
+                :jobs_list="jobs_list"
+                @create="createResponse"
+            />
         </my-dialog>
         <responses-list
             :responses="responses"
@@ -30,6 +34,7 @@
 import ResponseForm from "@/components/ResponseForm.vue";
 import ResponsesList from "@/components/ResponsesList.vue";
 import useResponses from "@/hooks/useResponses"
+import useJobs from "@/hooks/useJobs"
 // import useRemoveJob from "@/hooks/useRemoveJob"
 import useCreateResponse from "@/hooks/useCreateResponse"
 
@@ -42,16 +47,25 @@ export default {
     },
     data() {
         return {
+            jobs_list: [
+                { value: "1", name: "Технический писатель" },
+                { value: "14", name: "Инженер-стажёр" }
+            ]
         };
+    },
+    methods: {
+
     },
     setup(props) {
         const { searchQuery, responses, isResponsesLoading, loadMoreResponses, fetchingResponses } = useResponses(50);
+        const { jobs, fetchingJobs } = useJobs(50);
         // const { removeJob } = useRemoveJob(responses)
         const { createResponse, showDialog, dialogVisible } = useCreateResponse(responses)
 
 
         return {
             responses,
+            // jobs_list,
             isResponsesLoading,
             searchQuery,
             fetchingResponses,
@@ -59,7 +73,9 @@ export default {
             // removeJob,
             createResponse,
             showDialog,
-            dialogVisible
+            dialogVisible,
+            fetchingJobs,
+            jobs
         }
     }
 };
