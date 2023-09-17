@@ -8,7 +8,7 @@
             v-focus
         />
 
-        <div class="app_btns">
+        <div class="app-btns">
             <my-button @click="showDialog">Создать вакансию</my-button>
         </div>
         <my-dialog v-model:show="dialogVisible">
@@ -66,29 +66,4 @@ export default {
 };
 </script>
 
-<style>
-.app_btns {
-    margin: 15px 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.page__wrapper {
-    display: flex;
-    margin-top: 15px;
-}
-
-.page {
-    border: 1px solid black;
-    padding: 10px;
-}
-
-.current-page {
-    border: 2px solid teal;
-}
-
-/* .observer {
-    height: 30px;
-    background: green;
-} */
-</style>
+<style></style>

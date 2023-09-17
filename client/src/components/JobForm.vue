@@ -43,7 +43,7 @@
                 placeholder="Описание"
                 type="text"
             />
-            <div class="form-btns">
+            <div class="app-btns">
                 <my-button @click="createJob">
                     Создать
                 </my-button>

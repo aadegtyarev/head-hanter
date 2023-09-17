@@ -73,10 +73,6 @@ form {
   flex-direction: column;
 }
 
-.form-btns {
-  margin-top: 10px;
-}
-
 p {
   margin-top: 10px;
 }
@@ -97,4 +93,8 @@ p {
 
 .logo {
   cursor: pointer;
+}
+
+.app-btns {
+  margin-top: 10px;
 }

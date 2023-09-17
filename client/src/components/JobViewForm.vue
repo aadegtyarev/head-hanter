@@ -11,7 +11,7 @@
                 <p><strong>Описание: </strong>{{ job.detail }}</p>
             </div>
         </div>
-        <div class="form-btns">
+        <div class="app-btns">
             <my-button @click="editJob">Редактировать</my-button>
             <my-button
                 class="btn-primary"
