@@ -43,7 +43,7 @@
                 type="text"
             />
             <div class="app-btns">
-                <my-button @click="saveJob">
+                <my-button @click="save">
                     Сохранить
                 </my-button>
             </div>
@@ -54,7 +54,7 @@
 <script>
 export default {
     methods: {
-        saveJob() {
+        save() {
             this.$emit('save', this.job)
         }
     },

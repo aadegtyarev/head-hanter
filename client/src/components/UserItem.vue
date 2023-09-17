@@ -1,14 +1,15 @@
 <template>
     <div class="card-item">
         <div class="card-fields">
-            <div>{{ job.id }}</div>
-            <div><strong>Название: </strong>{{ job.job_title }}</div>
-            <div><strong>Описание: </strong>{{ job.detail }}</div>
+            <div>{{ user.id }}</div>
+            <div><strong>Имя: </strong>{{ user.name }}</div>
+            <div><strong>Логин: </strong>{{ user.login }}</div>
+            <div><strong>Должность: </strong>{{ user.position }}</div>
         </div>
-        <div class="btns">
+        <div class="card-btns">
             <my-button
                 class="btn-primary"
-                @click="$router.push(`/job/${job.id}`)"
+                @click="$router.push(`/user/${user.id}`)"
             >Открыть</my-button>
             <my-button @click="remove">Удалить</my-button>
         </div>
@@ -17,11 +18,13 @@
 
 <script>
 export default {
-    remove() {
-        this.$emit('remove', this.job)
+    methods: {
+        remove() {
+            this.$emit('remove', this.user)
+        }
     },
     props: {
-        job: {
+        user: {
             type: Object,
             required: true,
         },

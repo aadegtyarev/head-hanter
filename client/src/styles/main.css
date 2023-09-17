@@ -58,7 +58,7 @@
   margin-top: 10px;
 }
 
-.job-item {
+.card-item {
   padding: 15px;
   border: 2px solid teal;
   border-radius: 4px;
@@ -66,6 +66,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.card-fields {
 }
 
 form {
@@ -97,4 +100,8 @@ p {
 
 .app-btns {
   margin-top: 10px;
+}
+
+.list-empty {
+  color: red;
 }

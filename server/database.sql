@@ -5,6 +5,8 @@ create TABLE users(
     tg_login VARCHAR(120),
     email VARCHAR(255) UNIQUE,
     password VARCHAR(255),
+    closed BOOLEAN,
+    position VARCHAR(255),
     created_timestamp TIMESTAMP
 );
 

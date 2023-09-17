@@ -44,7 +44,7 @@
                 type="text"
             />
             <div class="app-btns">
-                <my-button @click="createJob">
+                <my-button @click="create">
                     Создать
                 </my-button>
             </div>
@@ -57,14 +57,12 @@ export default {
     data() {
         return {
             job: {
-                job_title: '',
-                detail: '',
+                job_title: ''
             },
         }
     },
     methods: {
-        createJob() {
-            this.job.id = Date.now()
+        create() {
             this.$emit('create', this.job) // генерация события добавления записи, которое ловится в родителе App.vue
             this.job = {
                 job_title: '',

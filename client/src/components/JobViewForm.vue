@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="app-btns">
-            <my-button @click="editJob">Редактировать</my-button>
+            <my-button @click="edit">Редактировать</my-button>
             <my-button
                 class="btn-primary"
                 @click="$router.go(-1)"
@@ -24,7 +24,7 @@
 <script>
 export default {
     methods: {
-        editJob() {
+        edit() {
             this.$emit('edit', this.job)
         }
     },

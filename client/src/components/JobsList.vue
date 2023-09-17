@@ -9,8 +9,8 @@
         />
     </div>
     <h4
+        class="list-empty"
         v-else
-        style="color: red"
     >Нет вакансий, подходящих под условие поиска</h4>
 </template>
 
