@@ -43,12 +43,11 @@
                 placeholder="Описание"
                 type="text"
             />
-            <my-button
-                class="btn_create"
-                @click="createJob"
-            >
-                Создать
-            </my-button>
+            <div class="form-btns">
+                <my-button @click="createJob">
+                    Создать
+                </my-button>
+            </div>
         </form>
     </div>
 </template>
@@ -76,14 +75,4 @@ export default {
 }
 </script>
 
-<style scoped>
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.btn_create {
-    align-self: flex-end;
-    margin-top: 15px;
-}
-</style>
+<style scoped></style>

@@ -10,13 +10,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.btn {
-    padding: 10px 15px;
-    background: none;
-    color: teal;
-    border: 1px solid teal;
-    cursor: pointer;
-    margin-right: 10px;
-}
-</style>
+<style scoped></style>

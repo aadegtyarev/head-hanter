@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Страница с вакансиями</h1>
+        <h1>Вакансии</h1>
         <my-input
             v-model="searchQuery"
             placeholder="Название для поиска"

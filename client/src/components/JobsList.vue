@@ -1,6 +1,5 @@
 <template>
     <div v-if="jobs.length > 0">
-        <h3>Вакансии</h3>
         <job-item
             v-for="job in jobs"
             :job="job"
@@ -28,9 +27,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.job-list-item {
-    display: inline-block;
-    margin-right: 10px;
-}
-</style>
+<style scoped></style>

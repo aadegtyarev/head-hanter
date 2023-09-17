@@ -1,0 +1,90 @@
+.btn {
+  padding: 10px 15px;
+  background: none;
+  color: teal;
+  border: 1px solid teal;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background: teal;
+  color: white;
+}
+
+.dialog {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  display: flex;
+}
+
+.dialog-content {
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  min-height: 50px;
+  min-width: 600px;
+  padding: 20px;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid teal;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-top: 10px;
+}
+
+.textarea {
+  width: 100%;
+  border: 1px solid teal;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-top: 10px;
+}
+
+.job-item {
+  padding: 15px;
+  border: 2px solid teal;
+  border-radius: 4px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-btns {
+  margin-top: 10px;
+}
+
+p {
+  margin-top: 10px;
+}
+
+.navbar {
+  height: 50 px;
+  background-color: lightgray;
+  box-shadow: 2px 2px 4px gray;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.navbar-btns {
+  margin-left: auto;
+  margin: 5px 5px 5px auto;
+}
+
+.logo {
+  cursor: pointer;
+}

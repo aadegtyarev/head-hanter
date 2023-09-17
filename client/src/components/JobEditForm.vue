@@ -42,11 +42,8 @@
                 placeholder="Описание"
                 type="text"
             />
-            <div class="job_btns">
-                <my-button
-                    class="btn_save"
-                    @click="saveJob"
-                >
+            <div class="form-btns">
+                <my-button @click="saveJob">
                     Сохранить
                 </my-button>
             </div>
@@ -70,19 +67,4 @@ export default {
 }
 </script>
 
-<style scoped>
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.btn_save,
-.btn_close {
-    align-self: flex-end;
-    margin-top: 15px;
-}
-
-.job_btns {
-    display: flex;
-}
-</style>
+<style scoped></style>

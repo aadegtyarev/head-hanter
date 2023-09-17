@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="job">
+        <div>
             <div>
                 <p><strong>Зарплата от, руб: </strong>{{ job.salary_from }}</p>
                 <p><strong>Зарплата до, руб: </strong>{{ job.salary_to }}</p>
@@ -11,9 +11,12 @@
                 <p><strong>Описание: </strong>{{ job.detail }}</p>
             </div>
         </div>
-        <div class="job_btns">
+        <div class="form-btns">
             <my-button @click="editJob">Редактировать</my-button>
-            <my-button @click="$router.go(-1)">Назад</my-button>
+            <my-button
+                class="btn-primary"
+                @click="$router.go(-1)"
+            >Назад</my-button>
         </div>
     </div>
 </template>
@@ -34,21 +37,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.job {
-    padding: 15px;
-    /* border: 2px solid teal; */
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-p {
-    margin-top: 10px;
-}
-
-.job_btns {
-    display: flex;
-}
-</style>
+<style scoped></style>
