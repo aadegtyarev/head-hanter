@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import InterviewForm from "@/components/InterviewForm.vue";
 import InterviewsList from "@/components/InterviewsList.vue";
 import useInterviews from "@/hooks/useInterviews"
 import useJobs from "@/hooks/useJobs"
@@ -41,7 +40,6 @@ import { ref } from 'vue'
 
 export default {
     components: {
-        InterviewForm,
         InterviewsList,
     },
     data() {

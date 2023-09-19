@@ -12,6 +12,7 @@ export default function useEditInterview() {
         result: interview.result,
         detail: interview.detail,
         user_id: interview.user_id,
+        interviewer_id: interview.interviewer_id,
         job_id: interview.job_id,
         response_id: interview.response_id,
       });

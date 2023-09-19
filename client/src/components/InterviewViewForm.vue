@@ -28,7 +28,7 @@
 <script>
 import useGetResponse from "@/hooks/useGetResponse"
 import useGetJob from "@/hooks/useGetJob"
-import ResponseRequirementsTable from "@/components/ResponseRequirementsTable"
+import ResponseRequirementsTable from "@/components/ResponseRequirementsTable.vue"
 
 export default {
     components: {

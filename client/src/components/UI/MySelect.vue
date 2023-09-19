@@ -8,7 +8,7 @@
             disabled
             value=""
             selected
-        >Выберите вакансию</option>
+        >Выберите</option>
         <option
             v-for="option in options"
             :key="option.value"

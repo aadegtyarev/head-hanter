@@ -7,9 +7,11 @@
         />
 
         <my-dialog v-model:show="dialogVisible">
-            <interview-form
+            <interview-create-form
                 :response="response"
+                :users_list="users_list"
                 @create="createInterview"
+                @cancel="hideDialog"
             />
         </my-dialog>
     </div>
@@ -20,15 +22,16 @@ import { ref } from "vue";
 import { useRoute } from 'vue-router'
 import ResponseCard from "@/components/ResponseCard.vue";
 import useGetResponse from "@/hooks/useGetResponse"
-import InterviewForm from "@/components/InterviewForm.vue";
+import InterviewCreateForm from "@/components/InterviewCreateForm.vue";
 import useCreateInterview from "@/hooks/useCreateInterview"
 import useJobs from "@/hooks/useJobs"
+import useUsers from "@/hooks/useUsers"
 
 export default {
 
     components: {
         ResponseCard,
-        InterviewForm
+        InterviewCreateForm
     },
     data() {
         return {
@@ -40,14 +43,17 @@ export default {
         const responseId = route.params.id
         const { response } = useGetResponse(responseId);
         const { jobs_list } = useJobs(50);
-        const { createInterview, showDialog, dialogVisible } = useCreateInterview()
+        const { users_list } = useUsers(50);
+        const { createInterview, hideDialog, showDialog, dialogVisible } = useCreateInterview()
 
         return {
             response,
             createInterview,
+            hideDialog,
             showDialog,
             dialogVisible,
-            jobs_list
+            jobs_list,
+            users_list
         }
     }
 };

@@ -155,7 +155,7 @@ class ResponseController {
       responses.skills,
       responses.result,
       responses.closed,
-      responses.job_id,
+      CAST (responses.job_id as VARCHAR),
       responses.user_id,
       responses.status,
       responses.created_timestamp,

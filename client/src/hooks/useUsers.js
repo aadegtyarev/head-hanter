@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default function useUsers() {
   const users = ref([]);
+  const users_list = ref([]);
   const isUsersLoading = ref(false);
   const page = ref(1);
   const searchQuery = ref("");
@@ -17,6 +18,7 @@ export default function useUsers() {
         },
       });
       users.value = response.data;
+      fillUsersArray();
     } catch (error) {
       console.log(error);
     } finally {
@@ -38,10 +40,25 @@ export default function useUsers() {
     }
   };
 
+  const fillUsersArray = async () => {
+    // jobs_list = [];
+    try {
+      users.value.forEach((element) => {
+        if (!element.closed) {
+          users_list.value.push({
+            value: String(element.id),
+            name: element.name,
+          });
+        }
+      });
+    } catch (error) {}
+  };
+
   onMounted(fetchingUsers);
 
   return {
     users,
+    users_list,
     isUsersLoading,
     loadMoreUsers,
     searchQuery,

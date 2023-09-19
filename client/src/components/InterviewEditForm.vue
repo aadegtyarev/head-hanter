@@ -1,18 +1,11 @@
 <template>
     <div>
-        <h1> Интервью на вакансию «{{ interview.job_title }}»</h1>
+        <h1> Интервью на «{{ interview.job_title }}»</h1>
         <h2>{{ interview.applicant_name }}</h2>
         <form @submit.prevent>
-            <my-input
-                v-model="interview.date_and_time"
-                type="datetime-local"
-                placeholder="Дата и время"
-                @input="changeDateTime"
-            />
-            <my-textarea
-                v-model="interview.detail"
-                type="text"
-                placeholder="Заметки"
+            <interview-form
+                :interview="interview"
+                :users_list="users_list"
             />
             <my-textarea
                 v-model="interview.result"
@@ -37,13 +30,22 @@
 <script>
 import dateFormat, { masks } from "dateformat";
 import useMyFunction from "@/hooks/useMyFunction";
+import InterviewForm from "@/components/InterviewForm.vue"
 
 var interview_undo = {}
 
 export default {
+    components: {
+        InterviewForm,
+    },
     methods: {
         save() {
             this.$emit('save', this.interview)
+            this.users_list.forEach(element => {
+                if (element.value == this.interview.interviewer_id) {
+                    this.interview.interviewer_name = element.name
+                }
+            });
         },
         cancel() {
             this.cloneObj(interview_undo, this.interview)
@@ -55,6 +57,10 @@ export default {
         }
     },
     props: {
+        users_list: {
+            type: Array,
+            required: true,
+        },
         interview: {
             type: Object,
             required: true,

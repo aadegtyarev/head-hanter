@@ -55,8 +55,6 @@ export default function useJobs(limit) {
           });
         }
       });
-
-      //   console.log(jobs_list);
     } catch (error) {}
   };
 

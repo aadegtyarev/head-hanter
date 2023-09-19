@@ -27,9 +27,18 @@ export default function useCreateInterview() {
     }
   };
 
+  const hideDialog = () => {
+    try {
+      dialogVisible.value = false;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return {
     createInterview,
     showDialog,
+    hideDialog,
     dialogVisible,
   };
 }

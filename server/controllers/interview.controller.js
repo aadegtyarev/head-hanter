@@ -70,7 +70,7 @@ class InterviewController {
         OR LOWER(job_title) LIKE LOWER('${searchText}')
         OR LOWER(interviewers.name) LIKE LOWER('${searchText}')
 
-        ORDER BY date_and_time DESC LIMIT ${limit} OFFSET ${offset}`;
+        ORDER BY date_and_time ASC LIMIT ${limit} OFFSET ${offset}`;
 
       const interviews = await db.query(queryText);
       res.json(interviews.rows);
@@ -93,6 +93,7 @@ class InterviewController {
             interviews.detail,
             interviews.job_id,
             interviews.user_id,
+            CAST (interviews.interviewer_id as VARCHAR),
             interviews.result,
             interviews.closed,
             interviews.created_timestamp,
@@ -118,8 +119,16 @@ class InterviewController {
 
   async updateInterview(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
-    const { date_and_time, job_id, response_id, detail, result, user_id, id } =
-      req.body;
+    const {
+      date_and_time,
+      job_id,
+      response_id,
+      detail,
+      result,
+      user_id,
+      interviewer_id,
+      id,
+    } = req.body;
 
     try {
       const interview = await db.query(
@@ -129,9 +138,19 @@ class InterviewController {
         response_id = $3,
         detail = $4,
         user_id = $5,
-        result =$6
-        WHERE id = $7 RETURNING *`,
-        [date_and_time, job_id, response_id, detail, user_id, result, id]
+        interviewer_id = $6,
+        result =$7
+        WHERE id = $8 RETURNING *`,
+        [
+          date_and_time,
+          job_id,
+          response_id,
+          detail,
+          user_id,
+          interviewer_id,
+          result,
+          id,
+        ]
       );
       res.json(interview.rows[0]);
     } catch (error) {

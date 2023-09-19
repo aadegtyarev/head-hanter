@@ -12,7 +12,6 @@ export default function useGetResponse(id) {
         },
       });
       response.value = resp.data;
-      response.value.job_id = String(response.value.job_id);
     } catch (error) {
       console.log(error);
     } finally {

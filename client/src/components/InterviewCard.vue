@@ -10,6 +10,7 @@
         <interview-edit-form
             v-if="formEditVisible"
             :interview="interview"
+            :users_list="users_list"
             :key="interview.id"
             @save="save"
             @cancel="hideEditForm"
@@ -30,6 +31,10 @@ export default {
     props: {
         interview: {
             type: Object,
+            required: true,
+        },
+        users_list: {
+            type: Array,
             required: true,
         },
     },

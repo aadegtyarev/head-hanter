@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>Отклик на «{{ response.job_title }}»</h1>
         <form @submit.prevent>
             <response-form
                 :response="response"
