@@ -16,6 +16,7 @@ export default function useEditJob() {
         salary_desired: response.salary_desired,
         questionnaire_result: response.questionnaire_result,
         description: response.description,
+        skills: response.skills,
         result: response.result,
         user_id: 7,
       });

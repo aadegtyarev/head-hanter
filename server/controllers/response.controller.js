@@ -13,7 +13,7 @@ class ResponseController {
       salary_desired,
       questionnaire_result,
       description,
-      result,
+      skills,
       job_id,
       user_id,
     } = req.body;
@@ -28,14 +28,15 @@ class ResponseController {
             experience, 
             salary_desired, 
             questionnaire_result, 
-            description,          
+            description,
+            skills,          
             job_id, 
             user_id,
             closed,  
             created_timestamp
                     ) 
                 values(
-                    $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, false, now()
+                    $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, false, now()
                     ) RETURNING *`,
         [
           applicant_name,
@@ -46,6 +47,7 @@ class ResponseController {
           salary_desired,
           questionnaire_result,
           description,
+          skills,
           job_id,
           user_id,
         ]
@@ -76,6 +78,7 @@ class ResponseController {
         responses.salary_desired,
         responses.questionnaire_result,
         responses.description,
+        responses.skills,
         responses.result,
         responses.closed,
         responses.job_id,
@@ -105,6 +108,7 @@ class ResponseController {
         responses.salary_desired,
         responses.questionnaire_result,
         responses.description,
+        responses.skills,
         responses.result,
         responses.closed,
         responses.job_id,
@@ -147,6 +151,7 @@ class ResponseController {
       responses.salary_desired,
       responses.questionnaire_result,
       responses.description,
+      responses.skills,
       responses.result,
       responses.closed,
       responses.job_id,
@@ -183,6 +188,7 @@ class ResponseController {
       salary_desired,
       questionnaire_result,
       description,
+      skills,
       result,
       user_id,
     } = req.body;
@@ -198,9 +204,10 @@ class ResponseController {
             salary_desired = $6,
             questionnaire_result = $7,
             description = $8,
-            result = $9,
-            user_id = $10
-        WHERE id = $11 RETURNING *`,
+            skills = $9
+            result = $10,
+            user_id = $11
+        WHERE id = $12 RETURNING *`,
         [
           applicant_name,
           email,
@@ -210,6 +217,7 @@ class ResponseController {
           salary_desired,
           questionnaire_result,
           description,
+          skills,
           result,
           user_id,
           id,

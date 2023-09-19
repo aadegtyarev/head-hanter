@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>{{ response.job_title }}</h1>
         <response-card
             :response="response"
             @interview="showDialog"

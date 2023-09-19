@@ -12,7 +12,7 @@
                 <my-button
                     class="btn-primary"
                     @click="$router.push(`/response/${response.id}`)"
-                >Открыть</my-button>
+                >Смотреть</my-button>
                 <my-button>Отказать</my-button>
             </div>
         </td>

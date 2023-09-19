@@ -15,6 +15,7 @@ export default function useCreateResponse(responses) {
         salary_desired: response.salary_desired,
         questionnaire_result: response.questionnaire_result,
         description: response.description,
+        skills: response.skills,
         result: response.result,
         job_id: response.job_id,
         user_id: 7,

@@ -34,6 +34,11 @@
                 placeholder="Опыт работы"
             />
             <my-input
+                v-model="response.skills"
+                type="text"
+                placeholder="Навыки"
+            />
+            <my-input
                 v-model="response.salary_desired"
                 type="number"
                 placeholder="Желаема зарплата, руб"

@@ -52,6 +52,7 @@ create TABLE responses(
     questionnaire_result NUMERIC,
     description TEXT,    
     result TEXT,
+    skills TEXT,
     created_timestamp TIMESTAMP,
     closed BOOLEAN,
     job_id INTEGER,

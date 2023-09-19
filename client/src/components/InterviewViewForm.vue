@@ -5,7 +5,7 @@
                 <h1> Интервью</h1>
                 <h2>Вакансия «{{ interview.job_title }}»</h2>
                 <div>
-                    <p><strong>Зарплата от </strong>{{ job.salary_from }} до {{ job.salary_to }} руб</p>
+                    <p><strong>Зарплата </strong>от {{ job.salary_from }} до {{ job.salary_to }} руб</p>
                     <p><strong>Образование: </strong>{{ job.education }}</p>
                     <p><strong>Требуемый опыт: </strong>{{ job.experience }}</p>
                     <p><strong>Нужные навыки: </strong>{{ job.skills }}</p>
