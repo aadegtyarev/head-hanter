@@ -50,7 +50,7 @@ class JobController {
       const searchText = "%" + search + "%";
 
       const jobs = await db.query(
-        `SELECT * FROM jobs WHERE LOWER(job_title) LIKE LOWER($1) ORDER BY id DESC LIMIT $2 OFFSET $3`,
+        `SELECT * FROM jobs WHERE LOWER(job_title) LIKE LOWER($1) ORDER BY closed ASC, id DESC LIMIT $2 OFFSET $3`,
         [searchText, limit, offset]
       );
       res.json(jobs.rows);
@@ -82,6 +82,7 @@ class JobController {
       experience,
       test_doc,
       detail,
+      closed,
       id,
     } = req.body;
 
@@ -95,8 +96,9 @@ class JobController {
                 education= $5,
                 experience= $6,
                 test_doc= $7,
-                detail= $8
-                WHERE id = $9 RETURNING *`,
+                detail= $8,
+                closed=$9
+                WHERE id = $10 RETURNING *`,
         [
           job_title,
           salary_from,
@@ -106,6 +108,7 @@ class JobController {
           experience,
           test_doc,
           detail,
+          closed,
           id,
         ]
       );

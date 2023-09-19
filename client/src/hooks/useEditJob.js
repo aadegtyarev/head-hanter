@@ -16,6 +16,7 @@ export default function useEditJob() {
         experience: job.experience,
         test_doc: job.test_doc,
         detail: job.detail,
+        closed: job.closed,
         user_id: 7,
       });
       formEditVisible.value = false;

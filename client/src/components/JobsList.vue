@@ -10,8 +10,8 @@
                 v-for="job in jobs"
                 :job="job"
                 :key="job.id"
-                @remove="$emit('remove', job)"
-                @edit="$emit('edit', job)"
+                @close="close"
+                @open="open"
             />
         </table>
     </div>
@@ -25,6 +25,14 @@
 import JobItem from "@/components/JobItem.vue";
 export default {
     components: { JobItem },
+    methods: {
+        close(job) {
+            this.$emit('close', job)
+        },
+        open(job) {
+            this.$emit('open', job)
+        }
+    },
     props: {
         jobs: {
             type: Array,

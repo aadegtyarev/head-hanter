@@ -1,5 +1,5 @@
 <template>
-    <tr>
+    <tr :class="{ 'gray-text': job.closed }">
         <td>{{ job.id }}</td>
         <td>{{ job.job_title }}</td>
         <td>от {{ job.salary_from }} до {{ job.salary_to }}</td>
@@ -8,9 +8,17 @@
             <div class="btns">
                 <my-button
                     class="btn-primary"
+                    :class="{ 'btn-secondary': job.closed }"
                     @click="$router.push(`/job/${job.id}`)"
-                >Открыть</my-button>
-                <my-button @click="remove">Удалить</my-button>
+                >Смотреть</my-button>
+                <my-button
+                    v-if="!job.closed"
+                    @click="close"
+                >Закрыть</my-button>
+                <my-button
+                    v-if="job.closed"
+                    @click="open"
+                >Вернуть</my-button>
             </div>
         </td>
     </tr>
@@ -18,8 +26,13 @@
 
 <script>
 export default {
-    remove() {
-        this.$emit('remove', this.job)
+    methods: {
+        close() {
+            this.$emit('close', this.job)
+        },
+        open() {
+            this.$emit('open', this.job)
+        },
     },
     props: {
         job: {

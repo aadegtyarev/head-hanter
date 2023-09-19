@@ -23,6 +23,11 @@
   color: white;
 }
 
+.btn-secondary {
+  background: none;
+  color: teal;
+}
+
 .dialog {
   top: 0;
   bottom: 0;
@@ -141,4 +146,8 @@ h2 {
 
 .green-text {
   color: green;
+}
+
+.gray-text {
+  color: gray;
 }

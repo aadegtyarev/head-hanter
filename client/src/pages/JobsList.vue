@@ -16,7 +16,8 @@
         </my-dialog>
         <jobs-list
             :jobs="jobs"
-            @remove="removeJob"
+            @close="close"
+            @open="open"
             v-if="!isJobsLoading"
         />
         <div v-else>Идёт загрузка...</div>
@@ -31,7 +32,7 @@
 import JobForm from "@/components/JobForm.vue";
 import JobsList from "@/components/JobsList.vue";
 import useJobs from "@/hooks/useJobs"
-import useRemoveJob from "@/hooks/useRemoveJob"
+import useEditJob from "@/hooks/useEditJob"
 import useCreateJob from "@/hooks/useCreateJob"
 
 import { ref } from 'vue'
@@ -41,13 +42,23 @@ export default {
         JobForm,
         JobsList,
     },
+    methods: {
+        close(job) {
+            job.closed = true
+            this.editJob(job)
+        },
+        open(job) {
+            job.closed = false
+            this.editJob(job)
+        }
+    },
     data() {
         return {
         };
     },
     setup(props) {
         const { searchQuery, jobs, isJobsLoading, loadMoreJobs, fetchingJobs } = useJobs(50);
-        const { removeJob } = useRemoveJob(jobs)
+        const { editJob } = useEditJob(jobs)
         const { createJob, showDialog, dialogVisible } = useCreateJob(jobs)
 
 
@@ -57,7 +68,7 @@ export default {
             searchQuery,
             fetchingJobs,
             loadMoreJobs,
-            removeJob,
+            editJob,
             createJob,
             showDialog,
             dialogVisible
