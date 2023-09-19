@@ -13,7 +13,7 @@
                     class="btn-primary"
                     @click="$router.push(`/response/${response.id}`)"
                 >Открыть</my-button>
-                <my-button @click="refuse">Отказать</my-button>
+                <my-button>Отказать</my-button>
             </div>
         </td>
     </tr>
@@ -21,9 +21,9 @@
 
 <script>
 export default {
-    refuse() {
-        this.$emit('refuse', this.response)
-    },
+    // refuse() {
+    //     this.$emit('refuse', this.response)
+    // },
     props: {
         response: {
             type: Object,

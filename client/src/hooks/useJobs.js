@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default function useJobs(limit) {
   const jobs = ref([]);
+  const jobs_list = ref([]);
   const isJobsLoading = ref(false);
   const page = ref(1);
   const searchQuery = ref("");
@@ -19,6 +20,7 @@ export default function useJobs(limit) {
         },
       });
       jobs.value = response.data;
+      fillJobsArray();
     } catch (error) {
       console.log(error);
     } finally {
@@ -42,10 +44,22 @@ export default function useJobs(limit) {
     }
   };
 
+  const fillJobsArray = async () => {
+    // jobs_list = [];
+    try {
+      jobs.value.forEach((element) => {
+        jobs_list.value.push({ value: element.id, name: element.job_title });
+      });
+
+      console.log(jobs_list);
+    } catch (error) {}
+  };
+
   onMounted(fetchingJobs);
 
   return {
     jobs,
+    jobs_list,
     isJobsLoading,
     loadMoreJobs,
     searchQuery,

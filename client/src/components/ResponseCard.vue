@@ -5,12 +5,14 @@
         <response-view-form
             v-if="!formEditVisible"
             :response="response"
+            :key="response.id"
             @edit="showEditForm"
         />
 
         <response-edit-form
             v-if="formEditVisible"
             :response="response"
+            :key="response.id"
             @save="editResponse"
         />
     </div>

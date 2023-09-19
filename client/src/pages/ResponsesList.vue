@@ -47,10 +47,10 @@ export default {
     },
     data() {
         return {
-            jobs_list: [
-                { value: "1", name: "Технический писатель" },
-                { value: "14", name: "Инженер-стажёр" }
-            ]
+            // jobs_list: [
+            //     { value: "1", name: "Технический писатель" },
+            //     { value: "14", name: "Инженер-стажёр" }
+            // ]
         };
     },
     methods: {
@@ -58,14 +58,13 @@ export default {
     },
     setup(props) {
         const { searchQuery, responses, isResponsesLoading, loadMoreResponses, fetchingResponses } = useResponses(50);
-        const { jobs, fetchingJobs } = useJobs(50);
+        const { jobs_list } = useJobs(50);
         // const { removeJob } = useRemoveJob(responses)
         const { createResponse, showDialog, dialogVisible } = useCreateResponse(responses)
 
 
         return {
             responses,
-            // jobs_list,
             isResponsesLoading,
             searchQuery,
             fetchingResponses,
@@ -74,8 +73,7 @@ export default {
             createResponse,
             showDialog,
             dialogVisible,
-            fetchingJobs,
-            jobs
+            jobs_list
         }
     }
 };
