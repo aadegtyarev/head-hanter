@@ -93,11 +93,15 @@ class InterviewController {
             interviews.closed,
             interviews.created_timestamp,
             jobs.job_title as job_title,
-            responses.applicant_name as applicant_name
+            responses.applicant_name as applicant_name,
+            users.name as user_name,
+            interviewers.name as interviewer_name
             FROM interviews
 
             LEFT OUTER JOIN jobs ON interviews.job_id=jobs.id
             LEFT OUTER JOIN responses ON interviews.response_id=responses.id
+            LEFT OUTER JOIN users as interviewers ON interviews.interviewer_id=interviewers.id
+            LEFT OUTER JOIN users ON interviews.user_id=users.id
       
       WHERE interviews.id=$1`,
         [id]

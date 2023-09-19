@@ -39,6 +39,7 @@ export default {
     },
     setup(props) {
         const { editInterview, showEditForm, formEditVisible } = useEditInterview()
+
         return {
             editInterview,
             showEditForm,
