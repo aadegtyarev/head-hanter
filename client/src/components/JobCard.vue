@@ -10,6 +10,7 @@
             v-if="formEditVisible"
             :job="job"
             @save="editJob"
+            @cancel="hideEditForm"
         />
     </div>
 </template>
@@ -31,9 +32,10 @@ export default {
         },
     },
     setup(props) {
-        const { editJob, showEditForm, formEditVisible } = useEditJob()
+        const { editJob, hideEditForm, showEditForm, formEditVisible } = useEditJob()
         return {
             editJob,
+            hideEditForm,
             showEditForm,
             formEditVisible
         }

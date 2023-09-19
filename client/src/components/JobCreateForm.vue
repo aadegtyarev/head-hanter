@@ -4,8 +4,14 @@
             <h2>Создание вакансии</h2>
             <job-form :job="job" />
             <div class="app-btns">
-                <my-button @click="create">
+                <my-button
+                    class="btn-primary"
+                    @click="create"
+                >
                     Создать
+                </my-button>
+                <my-button @click="cancel">
+                    Отменить
                 </my-button>
             </div>
         </form>
@@ -34,6 +40,9 @@ export default {
         create() {
             this.$emit('create', this.job)
         },
+        cancel() {
+            this.$emit('cancel')
+        }
     },
 }
 </script>

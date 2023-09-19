@@ -42,7 +42,7 @@ export default {
         },
         cancel() {
             this.cloneObj(response_undo, this.response)
-            this.$emit('cancel', this.response)
+            this.$emit('cancel')
         }
     },
     data() {

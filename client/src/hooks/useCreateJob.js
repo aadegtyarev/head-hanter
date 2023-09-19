@@ -31,9 +31,18 @@ export default function useCreateJob(jobs) {
     }
   };
 
+  const hideDialog = () => {
+    try {
+      dialogVisible.value = false;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return {
     createJob,
     showDialog,
+    hideDialog,
     dialogVisible,
   };
 }

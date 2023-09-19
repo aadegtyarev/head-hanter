@@ -32,10 +32,18 @@ export default function useEditJob() {
       console.log(e);
     }
   };
+  const hideEditForm = () => {
+    try {
+      formEditVisible.value = false;
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return {
     editJob,
     showEditForm,
+    hideEditForm,
     formEditVisible,
   };
 }

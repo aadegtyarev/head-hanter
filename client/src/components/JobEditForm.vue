@@ -10,6 +10,9 @@
                 <my-button @click="save">
                     Сохранить
                 </my-button>
+                <my-button @click="cancel">
+                    Отменить
+                </my-button>
             </div>
         </form>
     </div>
@@ -17,6 +20,10 @@
 
 <script>
 import JobForm from "@/components/JobForm.vue";
+import useMyFunction from "@/hooks/useMyFunction";
+
+var job_undo = {}
+
 export default {
     components: {
         JobForm,
@@ -24,6 +31,10 @@ export default {
     methods: {
         save() {
             this.$emit('save', this.job)
+        },
+        cancel() {
+            this.cloneObj(job_undo, this.job)
+            this.$emit('cancel', this.job)
         }
     },
     props: {
@@ -32,6 +43,14 @@ export default {
             required: true,
         },
     },
+    setup(props) {
+        const { cloneObj } = useMyFunction()
+
+        cloneObj(props.job, job_undo)
+        return {
+            cloneObj
+        }
+    }
 }
 </script>
 

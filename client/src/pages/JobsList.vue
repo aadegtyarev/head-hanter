@@ -15,6 +15,7 @@
             <job-create-form
                 :job="job"
                 @create="createJob"
+                @cancel="hideDialog"
             />
         </my-dialog>
         <jobs-list
@@ -65,7 +66,7 @@ export default {
     setup(props) {
         const { searchQuery, jobs, isJobsLoading, loadMoreJobs, fetchingJobs } = useJobs(50);
         const { editJob } = useEditJob(jobs)
-        const { createJob, showDialog, dialogVisible } = useCreateJob(jobs)
+        const { createJob, hideDialog, showDialog, dialogVisible } = useCreateJob(jobs)
 
 
         return {
@@ -76,6 +77,7 @@ export default {
             loadMoreJobs,
             editJob,
             createJob,
+            hideDialog,
             showDialog,
             dialogVisible
         }
