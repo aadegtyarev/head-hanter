@@ -1,74 +1,71 @@
 <template>
-    <div>
-        <form @submit.prevent>
-            <h4>Создание вакансии</h4>
-            <my-input
-                v-focus
-                v-model="job.job_title"
-                type="text"
-                placeholder="Название"
-            />
-            <my-input
-                v-model="job.salary_from"
-                type="number"
-                placeholder="Зарплата от, руб"
-            />
-            <my-input
-                v-model="job.salary_to"
-                type="number"
-                placeholder="Зарплата до, руб"
-            />
-            <my-input
-                v-model="job.skills"
-                type="text"
-                placeholder="Навыки"
-            />
-            <my-input
-                v-model="job.education"
-                type="text"
-                placeholder="Образование"
-            />
-            <my-input
-                v-model="job.experience"
-                type="text"
-                placeholder="Требуемый опыт"
-            />
-            <my-input
-                v-model="job.test_doc"
-                type="text"
-                placeholder="Ссылка на тестовое задание"
-            />
-            <my-textarea
-                v-model="job.detail"
-                placeholder="Описание"
-                type="text"
-            />
-            <div class="app-btns">
-                <my-button @click="create">
-                    Создать
-                </my-button>
-            </div>
-        </form>
+    <span class="label-top">Название</span>
+    <my-input
+        v-focus
+        v-model="job.job_title"
+        type="text"
+        placeholder="Эникейщик"
+    />
+    <span class="label-top">Зарплата, руб</span>
+    <div class="flex">
+        <span class="label-left">от</span>
+        <my-input
+            v-model="job.salary_from"
+            type="number"
+            placeholder="80000"
+        />
+        <span class="label-left">до</span>
+        <my-input
+            v-model="job.salary_to"
+            type="number"
+            placeholder="90000"
+        />
     </div>
+    <span class="label-top">Навыки</span>
+    <my-input
+        v-model="job.skills"
+        type="text"
+        placeholder="Linux, хорошо ладит с людьми"
+    />
+    <span class="label-top">Образование</span>
+    <my-input
+        v-model="job.education"
+        type="text"
+        placeholder="техническое высшее, радиоинженер"
+    />
+    <span class="label-top">Требуемый опыт</span>
+    <my-input
+        v-model="job.experience"
+        type="text"
+        placeholder="от 1 года"
+    />
+    <span class="label-top">Ссылка на тестовое задание</span>
+    <my-input
+        v-model="job.test_doc"
+        type="text"
+        placeholder="http://site.com/testovoe-zadanie"
+    />
+    <span class="label-top">Описание</span>
+    <my-textarea
+        v-model="job.detail"
+        placeholder="Нужно варить кофе и перезагружать компьютеры"
+        type="text"
+    />
 </template>
 
 <script>
 export default {
     data() {
         return {
-            job: {
-                job_title: ''
-            },
         }
     },
-    methods: {
-        create() {
-            this.$emit('create', this.job) // генерация события добавления записи, которое ловится в родителе App.vue
-            this.job = {
-                job_title: '',
-                detail: '',
-            }
+    props: {
+        job: {
+            type: Object,
+            required: true,
         },
+    },
+    methods: {
     },
 }
 </script>

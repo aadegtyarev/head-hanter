@@ -12,7 +12,10 @@
             <my-button @click="showDialog">Создать вакансию</my-button>
         </div>
         <my-dialog v-model:show="dialogVisible">
-            <job-form @create="createJob" />
+            <job-create-form
+                :job="job"
+                @create="createJob"
+            />
         </my-dialog>
         <jobs-list
             :jobs="jobs"
@@ -29,7 +32,7 @@
 </template>
 
 <script>
-import JobForm from "@/components/JobForm.vue";
+import JobCreateForm from "@/components/JobCreateForm.vue";
 import JobsList from "@/components/JobsList.vue";
 import useJobs from "@/hooks/useJobs"
 import useEditJob from "@/hooks/useEditJob"
@@ -39,7 +42,7 @@ import { ref } from 'vue'
 
 export default {
     components: {
-        JobForm,
+        JobCreateForm,
         JobsList,
     },
     methods: {
@@ -54,6 +57,9 @@ export default {
     },
     data() {
         return {
+            job: {
+                job_title: ''
+            },
         };
     },
     setup(props) {
