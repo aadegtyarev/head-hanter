@@ -12,9 +12,18 @@
                 <p><strong>Заметки: </strong>{{ response.description }}</p>
             </div>
         </div>
+        <div v-if="response.interview_id > 0">
+            <p class="green-text">Назначено интервью {{ response.interview_date_and_time }}, детали: {{
+                response.interview_detail
+            }}</p>
+
+        </div>
         <div class="app-btns">
             <my-button @click="edit">Редактировать</my-button>
-            <my-button @click="interview">Пригласить на интервью</my-button>
+            <my-button
+                v-if="!response.interview_id > 0"
+                @click="interview"
+            >Пригласить на интервью</my-button>
             <my-button
                 class="btn-primary"
                 @click="$router.go(-1)"

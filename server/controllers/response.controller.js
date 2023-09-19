@@ -81,10 +81,12 @@ class ResponseController {
         responses.job_id,
         responses.user_id,
         responses.created_timestamp,
-        jobs.job_title as job_title
+        jobs.job_title as job_title,
+        interviews.id as interview_id
         FROM responses
 
         LEFT OUTER JOIN jobs ON responses.job_id=jobs.id
+        LEFT OUTER JOIN interviews ON responses.job_id=interviews.id
 
         WHERE
         (LOWER(applicant_name) LIKE LOWER('${searchText}')
@@ -108,10 +110,12 @@ class ResponseController {
         responses.job_id,
         responses.user_id,
         responses.created_timestamp,
-        jobs.job_title as job_title
+        jobs.job_title as job_title,
+        interviews.id as interview_id
         FROM responses
 
         LEFT OUTER JOIN jobs ON responses.job_id=jobs.id
+        LEFT OUTER JOIN interviews ON responses.id=interviews.response_id
 
         WHERE
         LOWER(applicant_name) LIKE LOWER('${searchText}')
@@ -148,10 +152,15 @@ class ResponseController {
       responses.job_id,
       responses.user_id,
       responses.created_timestamp,
-      jobs.job_title as job_title
+      jobs.job_title as job_title,
+      interviews.id as interview_id,
+      to_char(interviews.date_and_time, 'dd Mon YYYY,HH24:mi:ss') as interview_date_and_time,
+      interviews.detail as interview_detail
+      
       FROM responses
 
       LEFT OUTER JOIN jobs ON responses.job_id=jobs.id
+      LEFT OUTER JOIN interviews ON responses.id=interviews.response_id
       
       WHERE responses.id=$1`,
         [id]

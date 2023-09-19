@@ -130,3 +130,7 @@ p {
 .list-table th {
   padding: 5px;
 }
+
+.green-text {
+  color: green;
+}

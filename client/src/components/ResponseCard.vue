@@ -7,6 +7,7 @@
             :response="response"
             :key="response.id"
             @edit="showEditForm"
+            @interview="showInterviewDialog"
         />
 
         <response-edit-form
@@ -32,6 +33,11 @@ export default {
         response: {
             type: Object,
             required: true,
+        },
+    },
+    methods: {
+        showInterviewDialog() {
+            this.$emit('interview', this.response)
         },
     },
     setup(props) {

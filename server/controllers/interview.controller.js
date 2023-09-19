@@ -4,7 +4,7 @@ class InterviewController {
   async createInterview(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
 
-    const { date_and_time, job_id, response_id, user_id } = req.body;
+    const { date_and_time, job_id, response_id, detail, user_id } = req.body;
 
     try {
       const newInterview = await db.query(
@@ -12,14 +12,15 @@ class InterviewController {
             date_and_time, 
             job_id, 
             response_id, 
+            detail,
             user_id,
             closed,  
             created_timestamp
                     ) 
                 values(
-                    $1, $2, $3, $4, false, now()
+                    $1, $2, $3, $4, $5, false, now()
                     ) RETURNING *`,
-        [date_and_time, job_id, response_id, user_id]
+        [date_and_time, job_id, response_id, detail, user_id]
       );
 
       res.json(newInterview.rows[0]);
@@ -40,6 +41,7 @@ class InterviewController {
         interviews.id,
         interviews.date_and_time,
         interviews.response_id,
+        interviews.detail,
         interviews.job_id,
         interviews.user_id,
         interviews.result,
@@ -75,6 +77,7 @@ class InterviewController {
             interviews.id,
             interviews.date_and_time,
             interviews.response_id,
+            interviews.detail,
             interviews.job_id,
             interviews.user_id,
             interviews.result,
@@ -98,7 +101,8 @@ class InterviewController {
 
   async updateInterview(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
-    const { date_and_time, job_id, response_id, result, user_id } = req.body;
+    const { date_and_time, job_id, response_id, detail, result, user_id } =
+      req.body;
 
     try {
       const interview = await db.query(
@@ -106,10 +110,11 @@ class InterviewController {
         date_and_time = $1,
         job_id = $2,
         response_id = $3,
-        user_id = $4,
-        result =$5
-        WHERE id = $6 RETURNING *`,
-        [date_and_time, job_id, response_id, user_id, result, id]
+        detail = $4,
+        user_id = $5,
+        result =$6
+        WHERE id = $7 RETURNING *`,
+        [date_and_time, job_id, response_id, detail, user_id, result, id]
       );
       res.json(interview.rows[0]);
     } catch (error) {

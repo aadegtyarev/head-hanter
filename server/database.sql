@@ -64,6 +64,7 @@ create TABLE interviews(
     id SERIAL PRIMARY KEY,
     date_and_time TIMESTAMP,
     result TEXT,
+    detail TEXT,
     closed BOOLEAN,
     created_timestamp TIMESTAMP,
     job_id INTEGER,
