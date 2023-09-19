@@ -1,12 +1,21 @@
 <template>
     <div v-if="users.length > 0">
-        <user-item
-            v-for="user in users"
-            :user="user"
-            :key="user.id"
-            @remove="$emit('remove', user)"
-            @edit="$emit('edit', user)"
-        />
+        <table class="list-table">
+            <th>#</th>
+            <th>Имя</th>
+            <th>Логин</th>
+            <th>Должность</th>
+            <th>Действия</th>
+            <user-item
+                v-for="user in users"
+                :user="user"
+                :key="user.id"
+                @remove="$emit('remove', user)"
+                @edit="$emit('edit', user)"
+            />
+        </table>
+
+
     </div>
     <h4
         class="list-empty"

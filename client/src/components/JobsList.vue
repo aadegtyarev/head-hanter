@@ -1,12 +1,18 @@
 <template>
     <div v-if="jobs.length > 0">
-        <job-item
-            v-for="job in jobs"
-            :job="job"
-            :key="job.id"
-            @remove="$emit('remove', job)"
-            @edit="$emit('edit', job)"
-        />
+        <table class="list-table">
+            <th>#</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Действия</th>
+            <job-item
+                v-for="job in jobs"
+                :job="job"
+                :key="job.id"
+                @remove="$emit('remove', job)"
+                @edit="$emit('edit', job)"
+            />
+        </table>
     </div>
     <h4
         class="list-empty"

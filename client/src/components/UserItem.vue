@@ -1,19 +1,19 @@
 <template>
-    <div class="card-item">
-        <div class="card-fields">
-            <div>{{ user.id }}</div>
-            <div><strong>Имя: </strong>{{ user.name }}</div>
-            <div><strong>Логин: </strong>{{ user.login }}</div>
-            <div><strong>Должность: </strong>{{ user.position }}</div>
-        </div>
-        <div class="card-btns">
-            <my-button
-                class="btn-primary"
-                @click="$router.push(`/user/${user.id}`)"
-            >Открыть</my-button>
-            <my-button @click="remove">Удалить</my-button>
-        </div>
-    </div>
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.login }}</td>
+        <td>{{ user.position }}</td>
+        <td>
+            <div class="card-btns">
+                <my-button
+                    class="btn-primary"
+                    @click="$router.push(`/user/${user.id}`)"
+                >Открыть</my-button>
+                <my-button @click="remove">Удалить</my-button>
+            </div>
+        </td>
+    </tr>
 </template>
 
 <script>

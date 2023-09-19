@@ -1,18 +1,18 @@
 <template>
-    <div class="card-item">
-        <div class="card-fields">
-            <div>{{ job.id }}</div>
-            <div><strong>Название: </strong>{{ job.job_title }}</div>
-            <div><strong>Описание: </strong>{{ job.detail }}</div>
-        </div>
-        <div class="btns">
-            <my-button
-                class="btn-primary"
-                @click="$router.push(`/job/${job.id}`)"
-            >Открыть</my-button>
-            <my-button @click="remove">Удалить</my-button>
-        </div>
-    </div>
+    <tr>
+        <td>{{ job.id }}</td>
+        <td>{{ job.job_title }}</td>
+        <td>{{ job.detail }}</td>
+        <td>
+            <div class="btns">
+                <my-button
+                    class="btn-primary"
+                    @click="$router.push(`/job/${job.id}`)"
+                >Открыть</my-button>
+                <my-button @click="remove">Удалить</my-button>
+            </div>
+        </td>
+    </tr>
 </template>
 
 <script>
