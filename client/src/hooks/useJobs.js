@@ -51,7 +51,7 @@ export default function useJobs(limit) {
         jobs_list.value.push({ value: element.id, name: element.job_title });
       });
 
-      console.log(jobs_list);
+      //   console.log(jobs_list);
     } catch (error) {}
   };
 
