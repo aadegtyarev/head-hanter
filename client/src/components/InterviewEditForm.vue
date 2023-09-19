@@ -20,8 +20,14 @@
                 placeholder="Заключение"
             />
             <div class="app-btns">
-                <my-button @click="save">
+                <my-button
+                    class="btn-primary"
+                    @click="save"
+                >
                     Сохранить
+                </my-button>
+                <my-button @click="cancel">
+                    Отменить
                 </my-button>
             </div>
         </form>
@@ -30,11 +36,18 @@
 
 <script>
 import dateFormat, { masks } from "dateformat";
+import useMyFunction from "@/hooks/useMyFunction";
+
+var interview_undo = {}
 
 export default {
     methods: {
         save() {
             this.$emit('save', this.interview)
+        },
+        cancel() {
+            this.cloneObj(interview_undo, this.interview)
+            this.$emit('cancel')
         },
         changeDateTime() {
             const datetime = this.interview.date_and_time;
@@ -47,6 +60,14 @@ export default {
             required: true,
         },
     },
+    setup(props) {
+        const { cloneObj } = useMyFunction()
+
+        cloneObj(props.interview, interview_undo)
+        return {
+            cloneObj
+        }
+    }
 }
 </script>
 

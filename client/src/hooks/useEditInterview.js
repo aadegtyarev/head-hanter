@@ -29,9 +29,18 @@ export default function useEditInterview() {
     }
   };
 
+  const hideEditForm = () => {
+    try {
+      formEditVisible.value = false;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return {
     editInterview,
     showEditForm,
+    hideEditForm,
     formEditVisible,
   };
 }

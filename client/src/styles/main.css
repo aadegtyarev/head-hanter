@@ -157,8 +157,13 @@ h3 {
 }
 
 .list-table td,
-.list-table th {
+.list-table th,
+.list-table caption {
   padding: 5px;
+}
+
+.list-table caption {
+  font-weight: 600;
 }
 
 .green-text {

@@ -12,6 +12,7 @@
             :interview="interview"
             :key="interview.id"
             @save="save"
+            @cancel="hideEditForm"
         />
     </div>
 </template>
@@ -38,10 +39,11 @@ export default {
         },
     },
     setup(props) {
-        const { editInterview, showEditForm, formEditVisible } = useEditInterview()
+        const { editInterview, hideEditForm, showEditForm, formEditVisible } = useEditInterview()
 
         return {
             editInterview,
+            hideEditForm,
             showEditForm,
             formEditVisible
         }
