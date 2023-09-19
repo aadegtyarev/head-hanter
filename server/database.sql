@@ -60,7 +60,7 @@ create TABLE responses(
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
-create TABLE interview(
+create TABLE interviews(
     id SERIAL PRIMARY KEY,
     date_and_time TIMESTAMP,
     result TEXT,
