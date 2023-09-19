@@ -13,7 +13,7 @@
             </div>
         </div>
         <div v-if="response.interview_id > 0">
-            <p class="green-text">Назначено интервью {{ response.interview_date_and_time }}, детали: {{
+            <p class="green-text">Назначено интервью {{ response.interview_date_human }}, детали: {{
                 response.interview_detail
             }}</p>
 

@@ -1,11 +1,12 @@
 <template>
     <tr>
         <td>{{ interview.id }}</td>
-        <td>{{ interview.date_and_time }}</td>
+        <td>{{ interview.date_human }}</td>
         <td>{{ interview.job_title }}</td>
         <td>{{ interview.applicant_name }}</td>
         <td>{{ interview.detail }}</td>
-        <td>{{ interview.user_id }}</td>
+        <td>{{ interview.interviewer_name }}</td>
+        <td>{{ interview.user_name }}</td>
         <td>
             <div class="btns">
                 <my-button

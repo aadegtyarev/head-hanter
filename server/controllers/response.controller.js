@@ -154,7 +154,7 @@ class ResponseController {
       responses.created_timestamp,
       jobs.job_title as job_title,
       interviews.id as interview_id,
-      to_char(interviews.date_and_time, 'dd Mon YYYY,HH24:mi:ss') as interview_date_and_time,
+      to_char(interviews.date_and_time, 'DD.MM.YYYY HH24:MI') as interview_date_human,
       interviews.detail as interview_detail
       
       FROM responses

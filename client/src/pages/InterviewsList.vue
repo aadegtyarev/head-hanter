@@ -3,7 +3,7 @@
         <h1>Заявки на интервью</h1>
         <my-input
             v-model="searchQuery"
-            placeholder="Имя соискателя или название вакансии для поиска"
+            placeholder="Имя соискателя, интервьювера или название вакансии для поиска"
             @input="fetchingInterviews"
             v-focus
         />

@@ -7,6 +7,7 @@
             <th>Соискатель</th>
             <th>Детали</th>
             <th>Кто ведёт</th>
+            <th>Кто назначил</th>
             <interview-item
                 v-for="interview in interviews"
                 :interview="interview"

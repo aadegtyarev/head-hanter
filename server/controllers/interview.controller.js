@@ -40,25 +40,33 @@ class InterviewController {
       queryText = `SELECT
         interviews.id,
         interviews.date_and_time,
+        to_char(date_and_time, 'DD.MM.YYYY HH12:MI') as date_human,
         interviews.response_id,
         interviews.detail,
         interviews.job_id,
         interviews.user_id,
+        interviews.interviewer_id,
         interviews.result,
         interviews.closed,
         interviews.created_timestamp,
         jobs.job_title as job_title,
-        responses.applicant_name as applicant_name
+        responses.applicant_name as applicant_name,
+        users.name as user_name,
+        interviewers.name as interviewer_name
+
         FROM interviews
 
         LEFT OUTER JOIN jobs ON interviews.job_id=jobs.id
         LEFT OUTER JOIN responses ON interviews.response_id=responses.id
+        LEFT OUTER JOIN users as interviewers ON interviews.interviewer_id=interviewers.id
+        LEFT OUTER JOIN users ON interviews.user_id=users.id
 
         WHERE
         LOWER(applicant_name) LIKE LOWER('${searchText}')
         OR LOWER(job_title) LIKE LOWER('${searchText}')
+        OR LOWER(interviewers.name) LIKE LOWER('${searchText}')
 
-        ORDER BY id DESC LIMIT ${limit} OFFSET ${offset}`;
+        ORDER BY date_and_time DESC LIMIT ${limit} OFFSET ${offset}`;
 
       const interviews = await db.query(queryText);
       res.json(interviews.rows);
@@ -76,6 +84,7 @@ class InterviewController {
         `SELECT 
             interviews.id,
             interviews.date_and_time,
+            to_char(date_and_time, 'DD.MM.YYYY HH24:MI') as date_human,
             interviews.response_id,
             interviews.detail,
             interviews.job_id,
