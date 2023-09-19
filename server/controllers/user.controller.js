@@ -58,15 +58,32 @@ class UserController {
     res.header("Access-Control-Allow-Origin", "*");
     const { id, name, login, tg_login, email, password, position } = req.body;
 
+    try {
+      const user = await db.query(
+        `UPDATE users set
+                name = $1, login = $2, tg_login = $3, email = $4, position= $5
+                WHERE id = $6 RETURNING *`,
+        [name, login, tg_login, email, position, id]
+      );
+      res.json(user.rows[0]);
+    } catch (error) {
+      res.json(error + db.query.text);
+    }
+  }
+
+  async updateUserPassword(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    const { id, password } = req.body;
+
     const salt = await bcrypt.genSalt(10);
     const password_hash = await bcrypt.hash(password, salt);
 
     try {
       const user = await db.query(
         `UPDATE users set
-                name = $1, login = $2, tg_login = $3, email = $4, password = $5, position= $6
-                WHERE id = $7 RETURNING *`,
-        [name, login, tg_login, email, password_hash, position, id]
+                password = $1
+                WHERE id = $2 RETURNING *`,
+        [password_hash, id]
       );
       res.json(user.rows[0]);
     } catch (error) {

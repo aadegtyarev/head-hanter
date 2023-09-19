@@ -12,8 +12,19 @@ export default function useEditUser() {
         login: user.login,
         tg_login: user.tg_login,
         email: user.email,
-        password: user.password,
         position: user.position,
+      });
+      formEditVisible.value = false;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editUserPassword = async (user) => {
+    try {
+      const response = await axios.put("/user-password", {
+        id: user.id,
+        password: user.password,
       });
       formEditVisible.value = false;
     } catch (error) {
@@ -31,6 +42,7 @@ export default function useEditUser() {
 
   return {
     editUser,
+    editUserPassword,
     showEditForm,
     formEditVisible,
   };

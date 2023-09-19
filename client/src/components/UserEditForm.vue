@@ -23,11 +23,6 @@
                 placeholder="Email"
             />
             <my-input
-                v-model="user.password"
-                type="password"
-                placeholder="Пароль"
-            />
-            <my-input
                 v-model="user.position"
                 type="text"
                 placeholder="Должность"

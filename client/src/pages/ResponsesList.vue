@@ -46,10 +46,6 @@ export default {
     },
     data() {
         return {
-            // jobs_list: [
-            //     { value: "1", name: "Технический писатель" },
-            //     { value: "14", name: "Инженер-стажёр" }
-            // ]
         };
     },
     methods: {
