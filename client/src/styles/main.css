@@ -23,6 +23,10 @@
   color: white;
 }
 
+.flex {
+  display: flex;
+}
+
 .btn-secondary {
   background: none;
   color: teal;
@@ -52,7 +56,16 @@
   border: 1px solid teal;
   border-radius: 4px;
   padding: 10px 15px;
+  margin-top: 5px;
+}
+.label-top {
   margin-top: 10px;
+}
+
+.label-left {
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
 }
 
 .select {
