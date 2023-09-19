@@ -6,7 +6,7 @@ export default function useEditJob() {
 
   const editResponse = async (response) => {
     try {
-      const resp = await axios.put("/job", {
+      const resp = await axios.put("/response", {
         id: response.id,
         applicant_name: response.applicant_name,
         email: response.email,

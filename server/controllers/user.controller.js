@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 class UserController {
   async createUser(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const { name, login, tg_login, email, password, position } = req.body;
 
     try {
@@ -26,6 +27,7 @@ class UserController {
   }
 
   async getUsers(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     try {
       const { search } = req.query;
       const searchText = "%" + search + "%";
@@ -41,6 +43,7 @@ class UserController {
   }
 
   async getOneUser(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const id = req.query.id;
 
     try {
@@ -52,6 +55,7 @@ class UserController {
   }
 
   async updateUser(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const { id, name, login, tg_login, email, password, position } = req.body;
 
     const salt = await bcrypt.genSalt(10);
@@ -71,6 +75,7 @@ class UserController {
   }
 
   async deleteUser(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const id = req.query.id;
 
     try {

@@ -2,6 +2,8 @@ const db = require("../db");
 
 class ResponseController {
   async createResponse(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+
     const {
       applicant_name,
       email,
@@ -56,6 +58,8 @@ class ResponseController {
   }
 
   async getResponses(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+
     try {
       const { limit, offset, search, job_id } = req.query;
       const searchText = "%" + search + "%";
@@ -124,6 +128,7 @@ class ResponseController {
   }
 
   async getOneResponse(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const id = req.query.id;
 
     try {
@@ -158,6 +163,7 @@ class ResponseController {
   }
 
   async updateResponse(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const {
       id,
       applicant_name,
@@ -207,6 +213,7 @@ class ResponseController {
   }
 
   async deleteResponse(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const id = req.query.id;
 
     try {

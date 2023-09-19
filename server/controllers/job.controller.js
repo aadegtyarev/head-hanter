@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 class JobController {
   async createJob(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const {
       job_title,
       salary_from,
@@ -36,7 +37,6 @@ class JobController {
           user_id,
         ]
       );
-      res.header("Access-Control-Allow-Origin", "*");
       res.json(newJob.rows[0]);
     } catch (error) {
       res.json(error + db.query.text);
@@ -44,6 +44,7 @@ class JobController {
   }
 
   async getJobs(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     try {
       const { limit, offset, search } = req.query;
       const searchText = "%" + search + "%";
@@ -52,7 +53,6 @@ class JobController {
         `SELECT * FROM jobs WHERE LOWER(job_title) LIKE LOWER($1) ORDER BY id DESC LIMIT $2 OFFSET $3`,
         [searchText, limit, offset]
       );
-      res.header("Access-Control-Allow-Origin", "*");
       res.json(jobs.rows);
     } catch (error) {
       res.json(error + db.query.text);
@@ -60,11 +60,11 @@ class JobController {
   }
 
   async getOneJob(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const id = req.query.id;
 
     try {
       const job = await db.query(`SELECT * FROM jobs WHERE id = $1`, [id]);
-      res.header("Access-Control-Allow-Origin", "*");
       res.json(job.rows[0]);
     } catch (error) {
       res.json(error);
@@ -72,6 +72,7 @@ class JobController {
   }
 
   async updateJob(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const {
       job_title,
       salary_from,
@@ -108,7 +109,6 @@ class JobController {
           id,
         ]
       );
-      res.header("Access-Control-Allow-Origin", "*");
       res.json(job.rows[0]);
     } catch (error) {
       res.json(error);
@@ -116,11 +116,11 @@ class JobController {
   }
 
   async deleteJob(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
     const id = req.query.id;
 
     try {
       const job = await db.query(`DELETE FROM jobs WHERE id = $1`, [id]);
-      res.header("Access-Control-Allow-Origin", "*");
       res.json(job.rows[0]);
     } catch (error) {
       res.json(error);
