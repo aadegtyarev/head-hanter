@@ -2,6 +2,7 @@
     <tr>
         <td>{{ job.id }}</td>
         <td>{{ job.job_title }}</td>
+        <td>от {{ job.salary_from }} до {{ job.salary_to }}</td>
         <td>{{ job.detail }}</td>
         <td>
             <div class="btns">

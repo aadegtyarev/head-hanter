@@ -2,8 +2,7 @@
     <div>
         <div>
             <div>
-                <p><strong>Зарплата от, руб: </strong>{{ job.salary_from }}</p>
-                <p><strong>Зарплата до, руб: </strong>{{ job.salary_to }}</p>
+                <p><strong>Зарплата </strong>от {{ job.salary_from }} до {{ job.salary_to }} руб</p>
                 <p><strong>Навыки: </strong>{{ job.skills }}</p>
                 <p><strong>Образование: </strong>{{ job.education }}</p>
                 <p><strong>Требуемый опыт: </strong>{{ job.experience }}</p>

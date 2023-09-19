@@ -3,6 +3,7 @@
         <table class="list-table">
             <th>#</th>
             <th>Название</th>
+            <th>Зарплата</th>
             <th>Описание</th>
             <th>Действия</th>
             <job-item
