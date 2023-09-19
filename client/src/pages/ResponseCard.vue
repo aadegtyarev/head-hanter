@@ -2,6 +2,7 @@
     <div>
         <response-card
             :response="response"
+            :jobs_list="jobs_list"
             @interview="showDialog"
         />
 
@@ -21,6 +22,7 @@ import ResponseCard from "@/components/ResponseCard.vue";
 import useGetResponse from "@/hooks/useGetResponse"
 import InterviewForm from "@/components/InterviewForm.vue";
 import useCreateInterview from "@/hooks/useCreateInterview"
+import useJobs from "@/hooks/useJobs"
 
 export default {
 
@@ -37,14 +39,15 @@ export default {
         const route = useRoute()
         const responseId = route.params.id
         const { response } = useGetResponse(responseId);
-
+        const { jobs_list } = useJobs(50);
         const { createInterview, showDialog, dialogVisible } = useCreateInterview()
 
         return {
             response,
             createInterview,
             showDialog,
-            dialogVisible
+            dialogVisible,
+            jobs_list
         }
     }
 };

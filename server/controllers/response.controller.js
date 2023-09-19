@@ -192,6 +192,7 @@ class ResponseController {
       description,
       skills,
       result,
+      job_id,
       user_id,
     } = req.body;
 
@@ -208,8 +209,9 @@ class ResponseController {
             description = $8,
             skills = $9,
             result = $10,
-            user_id = $11
-        WHERE id = $12 RETURNING *`,
+            job_id = $11,
+            user_id = $12
+        WHERE id = $13 RETURNING *`,
         [
           applicant_name,
           email,
@@ -221,6 +223,7 @@ class ResponseController {
           description,
           skills,
           result,
+          job_id,
           user_id,
           id,
         ]

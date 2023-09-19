@@ -48,8 +48,12 @@ export default function useJobs(limit) {
     // jobs_list = [];
     try {
       jobs.value.forEach((element) => {
-        if (!element.closed)
-          jobs_list.value.push({ value: element.id, name: element.job_title });
+        if (!element.closed) {
+          jobs_list.value.push({
+            value: String(element.id),
+            name: element.job_title,
+          });
+        }
       });
 
       //   console.log(jobs_list);

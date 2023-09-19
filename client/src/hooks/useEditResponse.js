@@ -18,6 +18,7 @@ export default function useEditJob() {
         description: response.description,
         skills: response.skills,
         result: response.result,
+        job_id: response.job_id,
         user_id: 7,
       });
       formEditVisible.value = false;

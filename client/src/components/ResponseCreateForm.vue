@@ -1,18 +1,14 @@
 <template>
     <div>
         <form @submit.prevent>
+            <h2>Добавление отклика</h2>
             <response-form
                 :response="response"
                 :jobs_list="jobs_list"
             />
-            <my-input
-                v-model="response.result"
-                placeholder="Решение"
-                type="text"
-            />
             <div class="app-btns">
-                <my-button @click="save">
-                    Сохранить
+                <my-button @click="create">
+                    Создать
                 </my-button>
             </div>
         </form>
@@ -26,11 +22,14 @@ export default {
     components: {
         ResponseForm,
     },
-
-    methods: {
-        save() {
-            this.$emit('save', this.response)
+    data() {
+        return {
         }
+    },
+    methods: {
+        create() {
+            this.$emit('create', this.response)
+        },
     },
     props: {
         jobs_list: {

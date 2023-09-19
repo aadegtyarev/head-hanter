@@ -12,8 +12,9 @@
             <my-button @click="showDialog">Добавить отклик</my-button>
         </div>
         <my-dialog v-model:show="dialogVisible">
-            <response-form
+            <response-create-form
                 :jobs_list="jobs_list"
+                :response="response"
                 @create="createResponse"
             />
         </my-dialog>
@@ -30,7 +31,7 @@
 </template>
 
 <script>
-import ResponseForm from "@/components/ResponseForm.vue";
+import ResponseCreateForm from "@/components/ResponseCreateForm.vue";
 import ResponsesList from "@/components/ResponsesList.vue";
 import useResponses from "@/hooks/useResponses"
 import useJobs from "@/hooks/useJobs"
@@ -41,11 +42,14 @@ import { ref } from 'vue'
 
 export default {
     components: {
-        ResponseForm,
+        ResponseCreateForm,
         ResponsesList,
     },
     data() {
         return {
+            response: {
+                applicant_name: ''
+            },
         };
     },
     methods: {
