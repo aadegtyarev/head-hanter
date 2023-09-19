@@ -8,6 +8,7 @@
             <th>Опыт</th>
             <th>Образование</th>
             <th>Имя</th>
+            <th>Статус</th>
             <th>Действия</th>
             <response-item
                 v-for="response in responses"

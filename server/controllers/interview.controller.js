@@ -23,6 +23,10 @@ class InterviewController {
         [date_and_time, job_id, response_id, detail, user_id]
       );
 
+      await db.query(`UPDATE responses set status=1 WHERE id=$1`, [
+        response_id,
+      ]);
+
       res.json(newInterview.rows[0]);
     } catch (error) {
       res.json(error + db.query.text);

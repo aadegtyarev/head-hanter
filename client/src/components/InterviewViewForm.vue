@@ -2,31 +2,31 @@
     <div>
         <div>
             <div>
-                <h1> Интервью</h1>
-                <h2>Вакансия «{{ interview.job_title }}»</h2>
                 <div>
-                    <p><strong>Зарплата </strong>от {{ job.salary_from }} до {{ job.salary_to }} руб</p>
-                    <p><strong>Образование: </strong>{{ job.education }}</p>
-                    <p><strong>Требуемый опыт: </strong>{{ job.experience }}</p>
-                    <p><strong>Нужные навыки: </strong>{{ job.skills }}</p>
-                    <p><strong>Ссылка на тестовое задание: </strong>{{ job.test_doc }}</p>
-                    <p><strong>Описание: </strong>{{ job.detail }}</p>
-                </div>
-                <h2> {{ interview.applicant_name }} [<a :href="`${response.resume_url}`">резюме</a>]</h2>
-                <div>
-                    <p><strong>Зарплата: </strong>{{ response.salary_desired }} руб</p>
-                    <p><strong>Образование: </strong>{{ response.education }}</p>
-                    <p><strong>Опыт работы: </strong>{{ response.experience }}</p>
+                    <h1>Интервью на «{{ job.job_title }}»</h1>
+                    <h2>Интервью</h2>
+                    <p><strong>Дата и время: </strong>{{ interview.date_human }}</p>
+                    <p><strong>Проводит: </strong>{{ interview.interviewer_name }}</p>
+                    <p><strong>Назначил: </strong>{{ interview.user_name }}</p>
+                    <p><strong>Заметки: </strong>{{ interview.detail }}</p>
+                    <p><strong>Заключение: </strong>{{ interview.result }}</p>
+                    <h2>{{ response.applicant_name }} [<a :href="`${response.resume_url}`">резюме</a>]</h2>
+                    <p><a :href="`mailo:${response.email}`">{{ response.email }}</a></p>
                     <p><strong>Результат теста: </strong>{{ response.questionnaire_result }}</p>
                     <p><strong>Заметки: </strong>{{ response.description }}</p>
-                    <a :href="`mailo:${response.email}`">{{ response.email }}</a>
+                    <h3>Зарплата</h3>
+                    <p><strong>Предлагаем </strong>от {{ job.salary_from }} до {{ job.salary_to }} руб</p>
+                    <p><strong>Хочет: </strong>{{ response.salary_desired }} руб</p>
+                    <h3>Образование</h3>
+                    <p><strong>Надо: </strong>{{ job.education }}</p>
+                    <p><strong>Есть: </strong>{{ response.education }}</p>
+                    <h3>Опыт</h3>
+                    <p><strong>Надо: </strong>{{ job.experience }}</p>
+                    <p><strong>Есть: </strong>{{ response.experience }}</p>
+                    <h3>Навыки</h3>
+                    <p><strong>Надо: </strong>{{ job.skills }}</p>
+                    <p><strong>Есть: </strong>{{ response.skills }}</p>
                 </div>
-                <h2>Интервью</h2>
-                <p><strong>Дата и время: </strong>{{ interview.date_human }}</p>
-                <p><strong>Проводит: </strong>{{ interview.interviewer_name }}</p>
-                <p><strong>Назначил: </strong>{{ interview.user_name }}</p>
-                <p><strong>Заметки: </strong>{{ interview.detail }}</p>
-                <p><strong>Заключение: </strong>{{ interview.result }}</p>
             </div>
         </div>
         <div class="app-btns">

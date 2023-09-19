@@ -57,6 +57,7 @@ create TABLE responses(
     closed BOOLEAN,
     job_id INTEGER,
     user_id INTEGER,
+    status INTEGER DEFAULT 0,
     FOREIGN KEY (job_id) REFERENCES jobs (id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );

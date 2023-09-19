@@ -113,6 +113,7 @@ class ResponseController {
         responses.closed,
         responses.job_id,
         responses.user_id,
+        responses.status,
         responses.created_timestamp,
         jobs.job_title as job_title,
         interviews.id as interview_id
@@ -156,6 +157,7 @@ class ResponseController {
       responses.closed,
       responses.job_id,
       responses.user_id,
+      responses.status,
       responses.created_timestamp,
       jobs.job_title as job_title,
       interviews.id as interview_id,
@@ -204,7 +206,7 @@ class ResponseController {
             salary_desired = $6,
             questionnaire_result = $7,
             description = $8,
-            skills = $9
+            skills = $9,
             result = $10,
             user_id = $11
         WHERE id = $12 RETURNING *`,
