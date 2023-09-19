@@ -7,6 +7,7 @@ import UserCard from "@/pages/UserCard";
 import ResponsesList from "@/pages/ResponsesList";
 import ResponseCard from "@/pages/ResponseCard";
 import InterviewsList from "@/pages/InterviewsList";
+import InterviewCard from "@/pages/InterviewCard";
 
 const routes = [
   {
@@ -40,6 +41,10 @@ const routes = [
   {
     path: "/interviews",
     component: InterviewsList,
+  },
+  {
+    path: "/interview/:id",
+    component: InterviewCard,
   },
 ];
 

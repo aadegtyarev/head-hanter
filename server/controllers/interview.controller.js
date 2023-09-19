@@ -40,7 +40,7 @@ class InterviewController {
       queryText = `SELECT
         interviews.id,
         interviews.date_and_time,
-        to_char(date_and_time, 'DD.MM.YYYY HH12:MI') as date_human,
+        to_char(date_and_time, 'DD.MM.YYYY HH24:MI') as date_human,
         interviews.response_id,
         interviews.detail,
         interviews.job_id,
@@ -84,7 +84,7 @@ class InterviewController {
         `SELECT 
             interviews.id,
             interviews.date_and_time,
-            to_char(date_and_time, 'DD.MM.YYYY HH24:MI') as date_human,
+            to_char(interviews.date_and_time, 'DD.MM.YYYY HH24:MI') as date_human,
             interviews.response_id,
             interviews.detail,
             interviews.job_id,
@@ -99,7 +99,7 @@ class InterviewController {
             LEFT OUTER JOIN jobs ON interviews.job_id=jobs.id
             LEFT OUTER JOIN responses ON interviews.response_id=responses.id
       
-      WHERE interview.id=$1`,
+      WHERE interviews.id=$1`,
         [id]
       );
       res.json(interview.rows[0]);
@@ -110,7 +110,7 @@ class InterviewController {
 
   async updateInterview(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
-    const { date_and_time, job_id, response_id, detail, result, user_id } =
+    const { date_and_time, job_id, response_id, detail, result, user_id, id } =
       req.body;
 
     try {

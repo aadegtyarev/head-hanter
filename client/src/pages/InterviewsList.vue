@@ -8,9 +8,9 @@
             v-focus
         />
 
-        <div class="app-btns">
+        <!-- <div class="app-btns">
             <my-button>Добавить заявку на интервью</my-button>
-        </div>
+        </div> -->
         <!-- <my-dialog v-model:show="dialogVisible">
             <interview-form
                 :jobs_list="jobs_list"

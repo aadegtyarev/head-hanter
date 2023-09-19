@@ -8,6 +8,7 @@
             <th>Детали</th>
             <th>Кто ведёт</th>
             <th>Кто назначил</th>
+            <th>Действия</th>
             <interview-item
                 v-for="interview in interviews"
                 :interview="interview"

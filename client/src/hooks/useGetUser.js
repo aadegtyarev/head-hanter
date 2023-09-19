@@ -1,7 +1,7 @@
 import { onMounted, ref } from "vue";
 import axios from "axios";
 
-export default function useUsers(id) {
+export default function useGetUser(id) {
   const user = ref([]);
 
   const loadOneUser = async () => {
