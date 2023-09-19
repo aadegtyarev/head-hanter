@@ -16,6 +16,7 @@
             :jobs_list="jobs_list"
             :key="response.id"
             @save="editResponse"
+            @cancel="hideEditForm"
         />
     </div>
 </template>
@@ -46,9 +47,10 @@ export default {
         },
     },
     setup(props) {
-        const { editResponse, showEditForm, formEditVisible } = useEditResponse()
+        const { editResponse, hideEditForm, showEditForm, formEditVisible } = useEditResponse()
         return {
             editResponse,
+            hideEditForm,
             showEditForm,
             formEditVisible
         }

@@ -11,8 +11,14 @@
                 type="text"
             />
             <div class="app-btns">
-                <my-button @click="save">
+                <my-button
+                    class="btn-primary"
+                    @click="save"
+                >
                     Сохранить
+                </my-button>
+                <my-button @click="cancel">
+                    Отменить
                 </my-button>
             </div>
         </form>
@@ -21,6 +27,9 @@
 
 <script>
 import ResponseForm from "@/components/ResponseForm.vue";
+import useMyFunction from "@/hooks/useMyFunction";
+
+var response_undo = {}
 
 export default {
     components: {
@@ -30,7 +39,15 @@ export default {
     methods: {
         save() {
             this.$emit('save', this.response)
+        },
+        cancel() {
+            this.cloneObj(response_undo, this.response)
+            this.$emit('cancel', this.response)
         }
+    },
+    data() {
+        return {
+        };
     },
     props: {
         jobs_list: {
@@ -40,8 +57,16 @@ export default {
         response: {
             type: Object,
             required: true,
-        },
+        }
     },
+    setup(props) {
+        const { cloneObj } = useMyFunction()
+
+        cloneObj(props.response, response_undo)
+        return {
+            cloneObj
+        }
+    }
 }
 </script>
 
