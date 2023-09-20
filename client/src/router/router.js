@@ -13,6 +13,7 @@ import TestTemplateCard from "@/pages/TestTemplateCard";
 import TestTemplateCreateForm from "@/pages/TestTemplateCreateForm";
 import JobCreateForm from "@/pages/JobCreateForm";
 import ResponseCreateForm from "@/pages/ResponseCreateForm";
+import UserCreateForm from "@/pages/UserCreateForm";
 
 const routes = [
   {
@@ -30,6 +31,10 @@ const routes = [
   {
     path: "/job-create",
     component: JobCreateForm,
+  },
+  {
+    path: "/user-create",
+    component: UserCreateForm,
   },
   {
     path: "/users",

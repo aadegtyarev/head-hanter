@@ -10,6 +10,7 @@
             v-if="formEditVisible"
             :user="user"
             @save="editUser"
+            @cancel="hideEditForm"
         />
     </div>
 </template>
@@ -31,9 +32,10 @@ export default {
         },
     },
     setup(props) {
-        const { editUser, showEditForm, formEditVisible } = useEditUser()
+        const { editUser, hideEditForm, showEditForm, formEditVisible } = useEditUser()
         return {
             editUser,
+            hideEditForm,
             showEditForm,
             formEditVisible
         }

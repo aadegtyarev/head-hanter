@@ -9,11 +9,11 @@
         />
 
         <div class="app-btns">
-            <my-button @click="showDialog">Создать пользователя</my-button>
+            <my-button @click="create">Создать пользователя</my-button>
         </div>
-        <my-dialog v-model:show="dialogVisible">
+        <!-- <my-dialog v-model:show="dialogVisible">
             <user-form @create="createUser" />
-        </my-dialog>
+        </my-dialog> -->
         <users-list
             :users="users"
             @remove="removeUser"
@@ -32,12 +32,25 @@ import UserForm from "@/components/UserForm.vue";
 import UsersList from "@/components/UsersList.vue";
 import useUsers from "@/hooks/useUsers"
 import useRemoveUser from "@/hooks/useRemoveUser"
-import useCreateUser from "@/hooks/useCreateUser"
+// import useCreateUser from "@/hooks/useCreateUser"
 
 export default {
     components: {
         UserForm,
         UsersList,
+    },
+    methods: {
+        close(job) {
+            job.closed = true
+            this.editJob(job)
+        },
+        open(job) {
+            job.closed = false
+            this.editJob(job)
+        },
+        create() {
+            this.$router.push('/user-create')
+        }
     },
     data() {
         return {
@@ -46,7 +59,7 @@ export default {
     setup(props) {
         const { searchQuery, users, isUsersLoading, loadMoreUsers, fetchingUsers } = useUsers();
         const { removeUser } = useRemoveUser(users)
-        const { createUser, showDialog, dialogVisible } = useCreateUser(users)
+        // const { createUser, showDialog, dialogVisible } = useCreateUser(users)
 
 
         return {
@@ -56,9 +69,9 @@ export default {
             fetchingUsers,
             loadMoreUsers,
             removeUser,
-            createUser,
-            showDialog,
-            dialogVisible
+            // createUser,
+            // showDialog,
+            // dialogVisible
         }
     }
 };

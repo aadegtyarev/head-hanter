@@ -1,7 +1,6 @@
 <template>
     <div>
         <form @submit.prevent>
-            <h4>Создание пользователя</h4>
             <my-input
                 v-focus
                 v-model="user.name"
@@ -24,20 +23,10 @@
                 placeholder="Email"
             />
             <my-input
-                v-model="user.password"
-                type="password"
-                placeholder="Пароль"
-            />
-            <my-input
                 v-model="user.position"
                 type="text"
                 placeholder="Должность"
             />
-            <div class="app-btns">
-                <my-button @click="create">
-                    Создать
-                </my-button>
-            </div>
         </form>
     </div>
 </template>
@@ -46,14 +35,15 @@
 export default {
     data() {
         return {
-            user: {
-                name: ''
-            },
+
         }
     },
     methods: {
-        create() {
-            this.$emit('create', this.user)
+    },
+    props: {
+        user: {
+            type: Object,
+            required: true,
         },
     },
 }

@@ -1,16 +1,19 @@
 <template>
     <div>
         <form @submit.prevent>
-            <user-form
-                :user="user"
-                @cancel="cancel"
+            <h1>Создание пользователя</h1>
+            <user-form :user="user" />
+            <my-input
+                v-model="user.password"
+                type="password"
+                placeholder="Пароль"
             />
             <div class="app-btns">
                 <my-button
                     class="btn-primary"
-                    @click="save"
+                    @click="create"
                 >
-                    Сохранить
+                    Создать
                 </my-button>
                 <my-button @click="cancel">
                     Отменить
@@ -22,37 +25,27 @@
 
 <script>
 import UserForm from "@/components/UserForm.vue";
-import useMyFunction from "@/hooks/useMyFunction";
-var user_undo = {}
 
 export default {
     components: {
         UserForm,
     },
-
-    methods: {
-        save() {
-            this.$emit('save', this.user)
-        },
-        cancel() {
-            this.cloneObj(user_undo, this.user)
-            this.$emit('cancel')
+    data() {
+        return {
+            user: {
+            },
         }
     },
     props: {
-        user: {
-            type: Object,
-            required: true,
-        },
     },
-    setup(props) {
-        const { cloneObj } = useMyFunction()
-
-        cloneObj(props.user, user_undo)
-        return {
-            cloneObj
+    methods: {
+        create() {
+            this.$emit('create', this.user)
+        },
+        cancel() {
+            this.$emit('cancel')
         }
-    }
+    },
 }
 </script>
 

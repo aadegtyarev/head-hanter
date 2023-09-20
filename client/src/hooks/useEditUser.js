@@ -40,10 +40,19 @@ export default function useEditUser() {
     }
   };
 
+  const hideEditForm = () => {
+    try {
+      formEditVisible.value = false;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return {
     editUser,
     editUserPassword,
     showEditForm,
+    hideEditForm,
     formEditVisible,
   };
 }
