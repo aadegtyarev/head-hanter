@@ -92,9 +92,13 @@ class JobController {
       jobs.experience,
       CAST (jobs.test_doc_id AS VARCHAR),
       jobs.detail,
-      jobs.closed      
+      jobs.closed,
+      test_docs.name as test_doc_name           
          
-      FROM jobs WHERE id = $1`,
+      FROM jobs 
+      LEFT OUTER JOIN test_docs ON jobs.test_doc_id=test_docs.id 
+
+      WHERE jobs.id = $1`,
         [id]
       );
       res.json(job.rows[0]);

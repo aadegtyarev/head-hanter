@@ -6,7 +6,8 @@
             <p><strong>Навыки: </strong>{{ job.skills }}</p>
             <p><strong>Образование: </strong>{{ job.education }}</p>
             <p><strong>Требуемый опыт: </strong>{{ job.experience }}</p>
-            <p><strong>Ссылка на тестовое задание: </strong>{{ job.test_doc }}</p>
+            <p><strong>Тестовое задание: </strong>{{ job.test_doc_name }} <a
+                    :href="`/test-doc/${job.test_doc_id}`">[смотреть]</a></p>
             <p><strong>Описание: </strong>{{ job.detail }}</p>
         </div>
         <div class="app-btns">

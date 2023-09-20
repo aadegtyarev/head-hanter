@@ -33,7 +33,6 @@ create TABLE jobs(
     skills TEXT,
     education VARCHAR(255),
     experience VARCHAR(255),
-    test_doc TEXT,
     detail TEXT,
     closed BOOLEAN,
     created_timestamp TIMESTAMP,    
