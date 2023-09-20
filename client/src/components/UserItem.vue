@@ -10,7 +10,7 @@
                     class="btn-primary"
                     @click="$router.push(`/user/${user.id}`)"
                 >Открыть</my-button>
-                <my-button @click="remove">Удалить</my-button>
+                <my-button @click="close">Блокировать</my-button>
             </div>
         </td>
     </tr>
@@ -19,8 +19,8 @@
 <script>
 export default {
     methods: {
-        remove() {
-            this.$emit('remove', this.user)
+        close() {
+            this.$emit('close', this.user)
         }
     },
     props: {

@@ -10,8 +10,6 @@
                 v-for="user in users"
                 :user="user"
                 :key="user.id"
-                @remove="$emit('remove', user)"
-                @edit="$emit('edit', user)"
             />
         </table>
 
