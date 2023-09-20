@@ -1,15 +1,17 @@
 <template>
-    <span class="label-top">Статус</span>
+    <span class="label-left">Статус</span>
     <my-select
         v-focus
         v-model="response.status"
         :options="response_statuses_list"
-        @change="save"
+        @changeOption="changeOption"
     />
 </template>
 
 <script>
 import useResponseStatuses from "@/hooks/useResponseStatuses"
+import useEditResponse from "@/hooks/useEditResponse"
+
 
 export default {
     data() {
@@ -17,8 +19,8 @@ export default {
         }
     },
     methods: {
-        save(response) {
-            console.log(response)
+        changeOption() {
+            this.editResponse(this.response)
         },
     },
     props: {
@@ -29,9 +31,11 @@ export default {
     },
     setup(props) {
         const { response_statuses_list } = useResponseStatuses();
+        const { editResponse } = useEditResponse();
 
         return {
-            response_statuses_list
+            response_statuses_list,
+            editResponse
         }
     }
 }

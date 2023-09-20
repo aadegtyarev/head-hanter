@@ -17,6 +17,7 @@ export default function useEditJob() {
         questionnaire_result: response.questionnaire_result,
         description: response.description,
         skills: response.skills,
+        status: Number(response.status),
         result: response.result,
         job_id: response.job_id,
         user_id: 7,

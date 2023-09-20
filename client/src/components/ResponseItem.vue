@@ -14,7 +14,6 @@
                     class="btn-primary"
                     @click="$router.push(`/response/${response.id}`)"
                 >Смотреть</my-button>
-                <my-button>Отказать</my-button>
             </div>
         </td>
     </tr>

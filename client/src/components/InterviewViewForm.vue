@@ -12,7 +12,7 @@
                 class="btn-primary"
                 @click="edit"
             >Редактировать</my-button>
-            <my-button @click="sendTestDoc">Отправить тестовое задание</my-button>
+            <my-button @click="sendMail">Создать письмо с тестовым заданием</my-button>
             <my-button @click="$router.go(-1)">Назад</my-button>
         </div>
         <h2>{{ response.applicant_name }} [<a :href="`${response.resume_url}`">резюме</a>]</h2>
@@ -28,6 +28,7 @@
 
 <script>
 import useGetResponse from "@/hooks/useGetResponse"
+import useSendEmails from "@/hooks/useSendEmails"
 import useGetJob from "@/hooks/useGetJob"
 import useGetTestDoc from "@/hooks/useGetTestDoc"
 import ResponseRequirementsTable from "@/components/ResponseRequirementsTable.vue"
@@ -40,10 +41,8 @@ export default {
         edit() {
             this.$emit('edit', this.interview)
         },
-        sendTestDoc() {
-            const subject = `Тестовое задание на вакансию ` + this.job.job_title
-            const body = this.test_doc.text
-            window.location.href = `mailto:user@example.com?subject=${subject}&body=${body}`
+        sendMail() {
+            this.sendTestDoc(this.response.email, this.job.job_title, this.test_doc.text)
         }
     },
     props: {
@@ -56,11 +55,13 @@ export default {
         const { job } = useGetJob(props.interview.job_id)
         const { response } = useGetResponse(props.interview.response_id)
         const { test_doc } = useGetTestDoc(props.interview.test_doc_id)
+        const { sendTestDoc } = useSendEmails()
 
         return {
             response,
             job,
-            test_doc
+            test_doc,
+            sendTestDoc
         }
     }
 }

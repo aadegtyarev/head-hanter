@@ -198,6 +198,7 @@ class ResponseController {
       questionnaire_result,
       description,
       skills,
+      status,
       result,
       job_id,
       user_id,
@@ -215,10 +216,11 @@ class ResponseController {
             questionnaire_result = $7,
             description = $8,
             skills = $9,
-            result = $10,
-            job_id = $11,
-            user_id = $12
-        WHERE id = $13 RETURNING *`,
+            status = $10,
+            result = $11,
+            job_id = $12,
+            user_id = $13
+        WHERE id = $14 RETURNING *`,
         [
           applicant_name,
           email,
@@ -229,6 +231,7 @@ class ResponseController {
           questionnaire_result,
           description,
           skills,
+          status,
           result,
           job_id,
           user_id,

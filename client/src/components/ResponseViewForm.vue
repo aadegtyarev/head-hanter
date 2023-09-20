@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="form">
+        <div>
             <h1>Отклик на «{{ job.job_title }}»</h1>
             <h2>{{ response.applicant_name }} [<a :href="`${response.resume_url}`">резюме</a>]</h2>
             <div v-if="response.interview_id > 0">
@@ -24,10 +24,7 @@
         </div>
         <div class="app-btns">
             <my-button @click="edit">Редактировать</my-button>
-            <my-button
-                v-if="!response.interview_id > 0"
-                @click="interview"
-            >Пригласить на интервью</my-button>
+            <my-button @click="sendMail">Создать письмо с приглашением на интервью</my-button>
             <my-button>Отказать</my-button>
             <my-button
                 class="btn-primary"
@@ -39,8 +36,10 @@
 
 <script>
 import useGetJob from "@/hooks/useGetJob"
+import useSendEmails from "@/hooks/useSendEmails"
 import ResponseRequirementsTable from "@/components/ResponseRequirementsTable"
 import ResponseChangeStatusForm from "@/components/ResponseChangeStatusForm"
+
 
 export default {
     components: {
@@ -51,8 +50,8 @@ export default {
         edit() {
             this.$emit('edit', this.response)
         },
-        interview() {
-            this.$emit('interview', this.response)
+        sendMail() {
+            this.sendInterviewMail(this.response.email, this.response.job_title)
         }
     },
     props: {
@@ -63,9 +62,12 @@ export default {
     },
     setup(props) {
         const { job } = useGetJob(props.response.job_id)
+        const { sendInterviewMail } = useSendEmails()
 
         return {
-            job
+            job,
+            sendInterviewMail
+
         }
     }
 }

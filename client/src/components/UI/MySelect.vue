@@ -34,8 +34,9 @@ export default {
         changeOption(event) {
             // console.log(event);
             this.$emit("update:modelValue", event.target.value);
+            this.$emit("changeOption", event.target.value);
         },
-    },
+    }
 };
 </script>
 <style></style>

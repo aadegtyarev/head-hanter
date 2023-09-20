@@ -68,7 +68,7 @@
 
 .label-left {
   margin: 0 5px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
 }
 
@@ -87,11 +87,9 @@
 }
 
 form {
-  /* display: flex; */
   display: inline-flex;
   flex-direction: column;
   min-width: 500px;
-  /* max-width: 900px; */
 }
 
 .search-input {
