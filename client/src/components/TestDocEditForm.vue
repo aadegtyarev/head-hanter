@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h1>Редактирование задания «{{ test_template.name }}»</h1>
+        <h1>Редактирование задания «{{ test_doc.name }}»</h1>
         <form @submit.prevent>
-            <test-template-form :test_template="test_template" />
+            <test-doc-form :test_doc="test_doc" />
             <div class="app-btns">
                 <my-button
                     class="btn-primary"
@@ -19,22 +19,22 @@
 </template>
 
 <script>
-import TestTemplateForm from "@/components/TestTemplateForm.vue";
+import TestDocForm from "@/components/TestDocForm.vue";
 import useMyFunction from "@/hooks/useMyFunction";
 
-var test_template_undo = {}
+var test_doc_undo = {}
 
 export default {
     components: {
-        TestTemplateForm,
+        TestDocForm,
     },
 
     methods: {
         save() {
-            this.$emit('save', this.test_template)
+            this.$emit('save', this.test_doc)
         },
         cancel() {
-            this.cloneObj(test_template_undo, this.test_template)
+            this.cloneObj(test_doc_undo, this.test_doc)
             this.$emit('cancel')
         }
     },
@@ -43,7 +43,7 @@ export default {
         };
     },
     props: {
-        test_template: {
+        test_doc: {
             type: Object,
             required: true,
         }
@@ -51,7 +51,7 @@ export default {
     setup(props) {
         const { cloneObj } = useMyFunction()
 
-        cloneObj(props.test_template, test_template_undo)
+        cloneObj(props.test_doc, test_doc_undo)
         return {
             cloneObj
         }

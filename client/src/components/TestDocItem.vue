@@ -1,21 +1,21 @@
 <template>
-    <tr :class="{ 'gray-text': test_template.closed }">
-        <td>{{ test_template.id }}</td>
-        <td>{{ test_template.name }}</td>
-        <td>{{ test_template.remark }}</td>
+    <tr :class="{ 'gray-text': test_doc.closed }">
+        <td>{{ test_doc.id }}</td>
+        <td>{{ test_doc.name }}</td>
+        <td>{{ test_doc.remark }}</td>
         <td>
             <div class="btns">
                 <my-button
                     class="btn-primary"
-                    :class="{ 'btn-secondary': test_template.closed }"
-                    @click="$router.push(`/test-template/${test_template.id}`)"
+                    :class="{ 'btn-secondary': test_doc.closed }"
+                    @click="$router.push(`/test-doc/${test_doc.id}`)"
                 >Смотреть</my-button>
                 <my-button
-                    v-if="!test_template.closed"
+                    v-if="!test_doc.closed"
                     @click="close"
                 >Закрыть</my-button>
                 <my-button
-                    v-if="test_template.closed"
+                    v-if="test_doc.closed"
                     @click="open"
                 >Вернуть</my-button>
             </div>
@@ -27,14 +27,14 @@
 export default {
     methods: {
         close() {
-            this.$emit('close', this.test_template)
+            this.$emit('close', this.test_doc)
         },
         open() {
-            this.$emit('open', this.test_template)
+            this.$emit('open', this.test_doc)
         },
     },
     props: {
-        test_template: {
+        test_doc: {
             type: Object,
             required: true,
         },

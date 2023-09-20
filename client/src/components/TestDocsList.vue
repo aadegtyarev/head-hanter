@@ -1,14 +1,14 @@
 <template>
-    <div v-if="test_templates.length > 0">
+    <div v-if="test_docs.length > 0">
         <table class="list-table">
             <th>#</th>
             <th>Название</th>
             <th>Заметки</th>
             <th>Действия</th>
-            <test-template-item
-                v-for="test_template in test_templates"
-                :test_template="test_template"
-                :key="test_template.id"
+            <test-doc-item
+                v-for="test_doc in test_docs"
+                :test_doc="test_doc"
+                :key="test_doc.id"
                 @close="close"
                 @open="open"
             />
@@ -21,19 +21,19 @@
 </template>
 
 <script>
-import TestTemplateItem from "@/components/TestTemplateItem.vue";
+import TestDocItem from "@/components/TestDocItem.vue";
 export default {
-    components: { TestTemplateItem },
+    components: { TestDocItem },
     methods: {
-        close(test_template) {
-            this.$emit('close', test_template)
+        close(test_doc) {
+            this.$emit('close', test_doc)
         },
-        open(test_template) {
-            this.$emit('open', test_template)
+        open(test_doc) {
+            this.$emit('open', test_doc)
         }
     },
     props: {
-        test_templates: {
+        test_docs: {
             type: Array,
             required: true,
         },

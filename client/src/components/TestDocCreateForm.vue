@@ -2,7 +2,7 @@
     <div>
         <form @submit.prevent>
             <h1>Создание тестового задания</h1>
-            <test-template-form :test_template="test_template" />
+            <test-doc-form :test_doc="test_doc" />
             <div class="app-btns">
                 <my-button
                     class="btn-primary"
@@ -19,11 +19,11 @@
 </template>
 
 <script>
-import TestTemplateForm from "@/components/TestTemplateForm.vue";
+import TestDocForm from "@/components/TestDocForm.vue";
 
 export default {
     components: {
-        TestTemplateForm,
+        TestDocForm,
     },
     data() {
         return {
@@ -31,14 +31,14 @@ export default {
         }
     },
     props: {
-        test_template: {
+        test_doc: {
             type: Object,
             required: true,
         },
     },
     methods: {
         create() {
-            this.$emit('create', this.test_template)
+            this.$emit('create', this.test_doc)
         },
         cancel() {
             this.$emit('cancel')

@@ -8,9 +8,9 @@ import ResponsesList from "@/pages/ResponsesList";
 import ResponseCard from "@/pages/ResponseCard";
 import InterviewsList from "@/pages/InterviewsList";
 import InterviewCard from "@/pages/InterviewCard";
-import TestTemplatesList from "@/pages/TestTemplatesList";
-import TestTemplateCard from "@/pages/TestTemplateCard";
-import TestTemplateCreateForm from "@/pages/TestTemplateCreateForm";
+import TestDocsList from "@/pages/TestDocsList";
+import TestDocCard from "@/pages/TestDocCard";
+import TestDocCreateForm from "@/pages/TestDocCreateForm";
 import JobCreateForm from "@/pages/JobCreateForm";
 import ResponseCreateForm from "@/pages/ResponseCreateForm";
 import UserCreateForm from "@/pages/UserCreateForm";
@@ -65,16 +65,16 @@ const routes = [
     component: InterviewCard,
   },
   {
-    path: "/test-templates",
-    component: TestTemplatesList,
+    path: "/test-docs",
+    component: TestDocsList,
   },
   {
-    path: "/test-template/:id",
-    component: TestTemplateCard,
+    path: "/test-doc/:id",
+    component: TestDocCard,
   },
   {
-    path: "/test-template-create",
-    component: TestTemplateCreateForm,
+    path: "/test-doc-create",
+    component: TestDocCreateForm,
   },
 ];
 

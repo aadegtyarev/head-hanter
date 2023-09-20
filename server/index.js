@@ -5,7 +5,7 @@ const roleRouter = require("./routes/role.routes");
 const jobRouter = require("./routes/job.routes");
 const responseRouter = require("./routes/response.routes");
 const interviewRouter = require("./routes/interview.routes");
-const testTemplateRouter = require("./routes/test-templates.routes");
+const TestDocRouter = require("./routes/test-docs.routes");
 
 const PORT = process.env.PORT || 8081;
 
@@ -18,6 +18,6 @@ app.use("/api", roleRouter);
 app.use("/api", jobRouter);
 app.use("/api", responseRouter);
 app.use("/api", interviewRouter);
-app.use("/api", testTemplateRouter);
+app.use("/api", TestDocRouter);
 
 app.listen(PORT, () => console.log(`server started on post ${PORT}`));

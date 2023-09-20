@@ -1,7 +1,7 @@
 <template>
     <div>
-        <test-template-create-form
-            :test_template="test_template"
+        <test-doc-create-form
+            :test_doc="test_doc"
             @create="create"
             @cancel="cancel"
         />
@@ -9,16 +9,16 @@
 </template>
 
 <script>
-import TestTemplateCreateForm from "@/components/TestTemplateCreateForm.vue";
-import useCreateTestTemplate from "@/hooks/useCreateTestTemplate"
+import TestDocCreateForm from "@/components/TestDocCreateForm.vue";
+import useCreateTestDoc from "@/hooks/useCreateTestDoc"
 
 export default {
     components: {
-        TestTemplateCreateForm
+        TestDocCreateForm
     },
     methods: {
-        create(test_template) {
-            this.createTestTemplate(test_template)
+        create(test_doc) {
+            this.createTestDoc(test_doc)
             this.$router.back()
         },
         cancel() {
@@ -27,16 +27,16 @@ export default {
     },
     data() {
         return {
-            test_template: {
+            test_doc: {
                 name: ""
             }
         };
     },
     setup(props) {
-        const { createTestTemplate } = useCreateTestTemplate()
+        const { createTestDoc } = useCreateTestDoc()
 
         return {
-            createTestTemplate,
+            createTestDoc,
         }
     }
 };

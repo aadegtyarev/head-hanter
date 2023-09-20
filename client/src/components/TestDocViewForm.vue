@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h1>Задание «{{ test_template.name }}»</h1>
+        <h1>Задание «{{ test_doc.name }}»</h1>
         <div>
-            <p><strong>Заметки: </strong>{{ test_template.remark }}</p>
-            <p><strong>Текст: </strong>{{ test_template.text }}</p>
+            <p><strong>Заметки: </strong>{{ test_doc.remark }}</p>
+            <p><strong>Текст: </strong>{{ test_doc.text }}</p>
         </div>
         <div class="app-btns">
             <my-button @click="edit">Редактировать</my-button>
@@ -19,11 +19,11 @@
 export default {
     methods: {
         edit() {
-            this.$emit('edit', this.test_template)
+            this.$emit('edit', this.test_doc)
         }
     },
     props: {
-        test_template: {
+        test_doc: {
             type: Object,
             required: true,
         },

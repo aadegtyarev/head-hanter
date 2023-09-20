@@ -79,7 +79,7 @@ create TABLE interviews(
     FOREIGN KEY (interviewer_id) REFERENCES users (id)
 );
 
-create TABLE test_templates(
+create TABLE test_docs(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     remark VARCHAR(255),

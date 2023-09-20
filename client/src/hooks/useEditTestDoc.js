@@ -1,17 +1,17 @@
 import { ref } from "vue";
 import axios from "axios";
 
-export default function useEditTestTemplate() {
+export default function useEditTestDoc() {
   const formEditVisible = ref(false);
 
-  const editTestTemplate = async (test_template) => {
+  const editTestDoc = async (test_doc) => {
     try {
-      const response = await axios.put("/test-template", {
-        id: test_template.id,
-        name: test_template.name,
-        remark: test_template.remark,
-        text: test_template.text,
-        closed: test_template.closed,
+      const response = await axios.put("/test-doc", {
+        id: test_doc.id,
+        name: test_doc.name,
+        remark: test_doc.remark,
+        text: test_doc.text,
+        closed: test_doc.closed,
         user_id: 7,
       });
       formEditVisible.value = false;
@@ -36,7 +36,7 @@ export default function useEditTestTemplate() {
   };
 
   return {
-    editTestTemplate,
+    editTestDoc,
     showEditForm,
     hideEditForm,
     formEditVisible,
