@@ -84,7 +84,6 @@ create TABLE test_templates(
     name VARCHAR(255),
     remark VARCHAR(255),
     text TEXT,    
-    job_id INTEGER,
     user_id INTEGER,
     closed BOOLEAN,
     created_timestamp TIMESTAMP,

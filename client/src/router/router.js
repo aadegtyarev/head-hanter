@@ -8,6 +8,9 @@ import ResponsesList from "@/pages/ResponsesList";
 import ResponseCard from "@/pages/ResponseCard";
 import InterviewsList from "@/pages/InterviewsList";
 import InterviewCard from "@/pages/InterviewCard";
+import TestTemplatesList from "@/pages/TestTemplatesList";
+import TestTemplateCard from "@/pages/TestTemplateCard";
+import TestTemplateCreateForm from "@/pages/TestTemplateCreateForm";
 
 const routes = [
   {
@@ -45,6 +48,18 @@ const routes = [
   {
     path: "/interview/:id",
     component: InterviewCard,
+  },
+  {
+    path: "/test-templates",
+    component: TestTemplatesList,
+  },
+  {
+    path: "/test-template/:id",
+    component: TestTemplateCard,
+  },
+  {
+    path: "/test-template-create",
+    component: TestTemplateCreateForm,
   },
 ];
 

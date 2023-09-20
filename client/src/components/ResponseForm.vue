@@ -59,9 +59,6 @@ export default {
         }
     },
     methods: {
-        create() {
-            this.$emit('create', this.response)
-        },
     },
     props: {
         jobs_list: {

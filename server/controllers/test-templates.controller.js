@@ -3,17 +3,17 @@ const db = require("../db");
 class TestTemplatesController {
   async createTestTemplate(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
-    const { id, name, remark, text, job_id, user_id } = req.body;
+    const { id, name, remark, text, user_id } = req.body;
 
     try {
       const newUser = await db.query(
         `INSERT INTO test_templates (
-                    id, name, remark, text, job_id, user_id, closed, created_timestamp
+                    name, remark, text,  user_id, closed, created_timestamp
                     ) 
                 values(
-                    $1, $2, $3, $4, $5, $6, false, now()
+                    $1, $2, $3, $4, false, now()
                     ) RETURNING *`,
-        [id, name, remark, text, job_id, user_id]
+        [name, remark, text, user_id]
       );
 
       res.json(newUser.rows[0]);
@@ -55,14 +55,14 @@ class TestTemplatesController {
 
   async updateTestTemplate(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
-    const { id, name, remark, text, job_id, user_id, closed } = req.body;
+    const { id, name, remark, text, user_id, closed } = req.body;
 
     try {
       const test_template = await db.query(
         `UPDATE test_templates set
-                name = $1, remark = $2, text = $3, job_id = $4, user_id= $5, closed= $6
-                WHERE id = $7 RETURNING *`,
-        [name, remark, text, job_id, user_id, closed, id]
+                name = $1, remark = $2, text = $3, user_id= $4, closed= $5
+                WHERE id = $6 RETURNING *`,
+        [name, remark, text, user_id, closed, id]
       );
       res.json(test_template.rows[0]);
     } catch (error) {
