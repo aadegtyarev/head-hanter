@@ -1,7 +1,7 @@
 <template>
     <div>
         <form @submit.prevent>
-            <h2>Создание вакансии</h2>
+            <h1>Создание вакансии</h1>
             <job-form :job="job" />
             <div class="app-btns">
                 <my-button

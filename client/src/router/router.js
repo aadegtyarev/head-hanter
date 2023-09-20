@@ -11,6 +11,7 @@ import InterviewCard from "@/pages/InterviewCard";
 import TestTemplatesList from "@/pages/TestTemplatesList";
 import TestTemplateCard from "@/pages/TestTemplateCard";
 import TestTemplateCreateForm from "@/pages/TestTemplateCreateForm";
+import JobCreateForm from "@/pages/JobCreateForm";
 
 const routes = [
   {
@@ -24,6 +25,10 @@ const routes = [
   {
     path: "/job/:id",
     component: JobCard,
+  },
+  {
+    path: "/job-create",
+    component: JobCreateForm,
   },
   {
     path: "/users",

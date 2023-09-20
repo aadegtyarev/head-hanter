@@ -19,6 +19,7 @@ export default {
     methods: {
         create(test_template) {
             this.createTestTemplate(test_template)
+            this.$router.back()
         },
         cancel() {
             this.$router.back()

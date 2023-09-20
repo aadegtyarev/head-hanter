@@ -2,8 +2,6 @@ import { ref } from "vue";
 import axios from "axios";
 
 export default function useCreateJob(jobs) {
-  const dialogVisible = ref(false);
-
   const createJob = async (job) => {
     try {
       const response = await axios.post("/job", {
@@ -23,26 +21,7 @@ export default function useCreateJob(jobs) {
     }
   };
 
-  const showDialog = () => {
-    try {
-      dialogVisible.value = true;
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const hideDialog = () => {
-    try {
-      dialogVisible.value = false;
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   return {
     createJob,
-    showDialog,
-    hideDialog,
-    dialogVisible,
   };
 }

@@ -9,15 +9,8 @@
         />
 
         <div class="app-btns">
-            <my-button @click="showDialog">Создать вакансию</my-button>
+            <my-button @click="create">Создать вакансию</my-button>
         </div>
-        <my-dialog v-model:show="dialogVisible">
-            <job-create-form
-                :job="job"
-                @create="createJob"
-                @cancel="hideDialog"
-            />
-        </my-dialog>
         <jobs-list
             :jobs="jobs"
             @close="close"
@@ -54,6 +47,9 @@ export default {
         open(job) {
             job.closed = false
             this.editJob(job)
+        },
+        create() {
+            this.$router.push('/job-create')
         }
     },
     data() {

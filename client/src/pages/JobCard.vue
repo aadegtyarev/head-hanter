@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>{{ job.job_title }}</h1>
         <job-card :job="job" />
     </div>
 </template>

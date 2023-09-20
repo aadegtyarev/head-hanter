@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Редактирование вакансии</h2>
+        <h1>Редактирование вакансии</h1>
         <form
             @submit.prevent
             style="max-width: 600px;"

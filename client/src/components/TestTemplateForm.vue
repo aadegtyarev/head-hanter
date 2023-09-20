@@ -4,7 +4,7 @@
         v-focus
         v-model="test_template.name"
         type="text"
-        placeholder="Новый шаблон"
+        placeholder="Тут лучше писать название вакансии"
     />
     <span class="label-top">Комментарий</span>
     <my-textarea
