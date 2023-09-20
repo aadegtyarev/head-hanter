@@ -2,10 +2,7 @@
     <div>
         <h1>Отклик на «{{ response.job_title }}»</h1>
         <form @submit.prevent>
-            <response-form
-                :response="response"
-                :jobs_list="jobs_list"
-            />
+            <response-form :response="response" />
             <my-input
                 v-model="response.result"
                 placeholder="Решение"
@@ -51,10 +48,6 @@ export default {
         };
     },
     props: {
-        jobs_list: {
-            type: Array,
-            required: true,
-        },
         response: {
             type: Object,
             required: true,

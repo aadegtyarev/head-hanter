@@ -45,7 +45,6 @@ export default function useJobs(limit) {
   };
 
   const fillJobsArray = async () => {
-    // jobs_list = [];
     try {
       jobs.value.forEach((element) => {
         if (!element.closed) {

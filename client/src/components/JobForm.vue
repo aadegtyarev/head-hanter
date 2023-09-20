@@ -39,11 +39,12 @@
         type="text"
         placeholder="от 1 года"
     />
-    <span class="label-top">Ссылка на тестовое задание</span>
-    <my-input
-        v-model="job.test_doc"
-        type="text"
-        placeholder="http://site.com/testovoe-zadanie"
+    <span class="label-top">Тестовое задание</span>
+    <my-select
+        v-focus
+        v-model="job.test_doc_id"
+        :options="test_docs_list"
+        placeholder="Вакансия"
     />
     <span class="label-top">Описание</span>
     <my-textarea
@@ -54,6 +55,7 @@
 </template>
 
 <script>
+import useTestDocs from "@/hooks/useTestDocs"
 export default {
     data() {
         return {
@@ -63,10 +65,17 @@ export default {
         job: {
             type: Object,
             required: true,
-        },
+        }
     },
     methods: {
     },
+    setup(props) {
+        const { test_docs_list } = useTestDocs()
+
+        return {
+            test_docs_list
+        }
+    }
 }
 </script>
 

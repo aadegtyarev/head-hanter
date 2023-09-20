@@ -8,15 +8,6 @@
             v-focus
         />
 
-        <!-- <div class="app-btns">
-            <my-button>Добавить заявку на интервью</my-button>
-        </div> -->
-        <!-- <my-dialog v-model:show="dialogVisible">
-            <interview-form
-                :jobs_list="jobs_list"
-                @create="createInterview"
-            />
-        </my-dialog> -->
         <interviews-list
             :interviews="interviews"
             v-if="!isInterviewsLoading"
@@ -33,8 +24,6 @@
 import InterviewsList from "@/components/InterviewsList.vue";
 import useInterviews from "@/hooks/useInterviews"
 import useJobs from "@/hooks/useJobs"
-// import useRemoveJob from "@/hooks/useRemoveJob"
-// import useCreateInterview from "@/hooks/useCreateInterview"
 
 import { ref } from 'vue'
 
@@ -51,21 +40,12 @@ export default {
     },
     setup(props) {
         const { searchQuery, interviews, isInterviewsLoading, loadMoreInterviews, fetchingInterviews } = useInterviews(50);
-        const { jobs_list } = useJobs(50);
-        // const { removeJob } = useRemoveJob(interviews)
-        // const { createInterview, showDialog, dialogVisible } = useCreateInterview(interviews)
-
-
         return {
             interviews,
             isInterviewsLoading,
             searchQuery,
             fetchingInterviews,
             loadMoreInterviews,
-            // createInterview,
-            // showDialog,
-            // dialogVisible,
-            jobs_list
         }
     }
 };

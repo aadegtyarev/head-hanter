@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import useJobs from "@/hooks/useJobs"
 export default {
     data() {
         return {
@@ -61,15 +62,18 @@ export default {
     methods: {
     },
     props: {
-        jobs_list: {
-            type: Array,
-            required: true,
-        },
         response: {
             type: Object,
             required: true,
         },
     },
+    setup(props) {
+        const { jobs_list } = useJobs(50);
+
+        return {
+            jobs_list
+        }
+    }
 }
 </script>
 

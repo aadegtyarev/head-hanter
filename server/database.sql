@@ -38,7 +38,9 @@ create TABLE jobs(
     closed BOOLEAN,
     created_timestamp TIMESTAMP,    
     user_id INTEGER,
-    FOREIGN KEY (user_id) REFERENCES users (id)
+    test_doc_id INTEGER,
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (test_doc_id) REFERENCES test_docs (id)
 );
 
 create TABLE responses(

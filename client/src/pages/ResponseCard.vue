@@ -2,7 +2,6 @@
     <div>
         <response-card
             :response="response"
-            :jobs_list="jobs_list"
             @interview="showDialog"
         />
 
@@ -42,7 +41,6 @@ export default {
         const route = useRoute()
         const responseId = route.params.id
         const { response } = useGetResponse(responseId);
-        const { jobs_list } = useJobs(50);
         const { users_list } = useUsers(50);
         const { createInterview, hideDialog, showDialog, dialogVisible } = useCreateInterview()
 
@@ -52,7 +50,6 @@ export default {
             hideDialog,
             showDialog,
             dialogVisible,
-            jobs_list,
             users_list
         }
     }

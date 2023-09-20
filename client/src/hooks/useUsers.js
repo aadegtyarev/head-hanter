@@ -41,7 +41,6 @@ export default function useUsers() {
   };
 
   const fillUsersArray = async () => {
-    // jobs_list = [];
     try {
       users.value.forEach((element) => {
         if (!element.closed) {

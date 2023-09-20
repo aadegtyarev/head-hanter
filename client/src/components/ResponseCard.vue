@@ -13,7 +13,6 @@
         <response-edit-form
             v-if="formEditVisible"
             :response="response"
-            :jobs_list="jobs_list"
             :key="response.id"
             @save="editResponse"
             @cancel="hideEditForm"
@@ -34,10 +33,6 @@ export default {
     props: {
         response: {
             type: Object,
-            required: true,
-        },
-        jobs_list: {
-            type: Array,
             required: true,
         },
     },

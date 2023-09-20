@@ -2,10 +2,7 @@
     <div>
         <form @submit.prevent>
             <h2>Добавление отклика</h2>
-            <response-form
-                :response="response"
-                :jobs_list="jobs_list"
-            />
+            <response-form :response="response" />
             <div class="app-btns">
                 <my-button @click="create">
                     Создать
@@ -32,10 +29,6 @@ export default {
         },
     },
     props: {
-        jobs_list: {
-            type: Array,
-            required: true,
-        },
         response: {
             type: Object,
             required: true,

@@ -2,7 +2,6 @@
     <div>
         <response-create-form
             :response="response"
-            :jobs_list="jobs_list"
             @create="create"
             @cancel="cancel"
         />
@@ -12,7 +11,6 @@
 <script>
 import ResponseCreateForm from "@/components/ResponseCreateForm.vue";
 import useCreateResponse from "@/hooks/useCreateResponse"
-import useJobs from "@/hooks/useJobs"
 
 export default {
     components: {
@@ -35,11 +33,9 @@ export default {
     },
     setup(props) {
         const { createResponse } = useCreateResponse()
-        const { jobs_list } = useJobs(50);
 
         return {
-            createResponse,
-            jobs_list
+            createResponse
         }
     }
 };
