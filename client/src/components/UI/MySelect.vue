@@ -1,7 +1,7 @@
 <template>
     <select
         class="select"
-        v-model="modelValue"
+        :value="modelValue"
         @change="changeOption"
     >
         <option
@@ -32,7 +32,7 @@ export default {
     },
     methods: {
         changeOption(event) {
-            console.log(event);
+            // console.log(event);
             this.$emit("update:modelValue", event.target.value);
         },
     },
