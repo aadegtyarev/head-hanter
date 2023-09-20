@@ -2,6 +2,7 @@
     <div>
         <h1>Тестовые задания</h1>
         <my-input
+            class="search-input"
             v-model="searchQuery"
             placeholder="Название для поиска"
             @input="fetchingTestDocs"

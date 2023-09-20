@@ -6,12 +6,14 @@ export default function useGetJob(id) {
 
   const loadOneJob = async () => {
     try {
-      const response = await axios.get("/job", {
-        params: {
-          id: id,
-        },
-      });
-      job.value = response.data;
+      if (id != undefined) {
+        const response = await axios.get("/job", {
+          params: {
+            id: id,
+          },
+        });
+        job.value = response.data;
+      }
     } catch (error) {
       console.log(error);
     } finally {

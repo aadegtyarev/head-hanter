@@ -85,11 +85,15 @@ class ResponseController {
         responses.user_id,
         responses.created_timestamp,
         jobs.job_title as job_title,
-        interviews.id as interview_id
+        interviews.id as interview_id,
+        CAST(responses.status as VARCHAR),
+        response_statuses.name as status_name
+
         FROM responses
 
         LEFT OUTER JOIN jobs ON responses.job_id=jobs.id
         LEFT OUTER JOIN interviews ON responses.job_id=interviews.id
+        LEFT OUTER JOIN response_statuses ON responses.status=response_statuses.id
 
         WHERE
         (LOWER(applicant_name) LIKE LOWER('${searchText}')
@@ -113,14 +117,17 @@ class ResponseController {
         responses.closed,
         responses.job_id,
         responses.user_id,
-        responses.status,
         responses.created_timestamp,
         jobs.job_title as job_title,
-        interviews.id as interview_id
+        interviews.id as interview_id,
+        CAST(responses.status as VARCHAR),
+        response_statuses.name as status_name
+
         FROM responses
 
         LEFT OUTER JOIN jobs ON responses.job_id=jobs.id
         LEFT OUTER JOIN interviews ON responses.id=interviews.response_id
+        LEFT OUTER JOIN response_statuses ON responses.status=response_statuses.id
 
         WHERE
         LOWER(applicant_name) LIKE LOWER('${searchText}')
@@ -157,7 +164,7 @@ class ResponseController {
       responses.closed,
       CAST (responses.job_id as VARCHAR),
       responses.user_id,
-      responses.status,
+      CAST(responses.status as VARCHAR),
       responses.created_timestamp,
       jobs.job_title as job_title,
       interviews.id as interview_id,

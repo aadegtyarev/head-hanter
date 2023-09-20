@@ -1,10 +1,7 @@
 <template>
     <div>
         <h1>Редактирование вакансии</h1>
-        <form
-            @submit.prevent
-            style="max-width: 600px;"
-        >
+        <form @submit.prevent>
             <job-form :job="job" />
             <div class="app-btns">
                 <my-button

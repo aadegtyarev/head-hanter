@@ -7,7 +7,7 @@
         <td>{{ response.experience }}</td>
         <td>{{ response.education }}</td>
         <td>{{ response.applicant_name }}</td>
-        <td>{{ getStatus(response) }}</td>
+        <td>{{ response.status_name }}</td>
         <td>
             <div class="btns">
                 <my-button
@@ -26,17 +26,7 @@ export default {
     //     this.$emit('refuse', this.response)
     // },
     methods: {
-        getStatus(response) {
-            switch (response.status) {
-                case 1:
-                    return "интервью"
-                    break;
 
-                default:
-                    return ""
-                    break;
-            }
-        },
     },
     props: {
         response: {

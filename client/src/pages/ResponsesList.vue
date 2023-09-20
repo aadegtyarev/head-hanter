@@ -2,6 +2,7 @@
     <div>
         <h1>Отклики</h1>
         <my-input
+            class="search-input"
             v-model="searchQuery"
             placeholder="Имя соискателя или название вакансии для поиска"
             @input="fetchingResponses"

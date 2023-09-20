@@ -2,6 +2,7 @@
     <div>
         <h1>Заявки на интервью</h1>
         <my-input
+            class="search-input"
             v-model="searchQuery"
             placeholder="Имя соискателя, интервьювера или название вакансии для поиска"
             @input="fetchingInterviews"

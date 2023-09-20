@@ -58,7 +58,7 @@ create TABLE responses(
     closed BOOLEAN,
     job_id INTEGER,
     user_id INTEGER,
-    status INTEGER DEFAULT 0,
+    status INTEGER DEFAULT 1,
     FOREIGN KEY (job_id) REFERENCES jobs (id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
@@ -92,3 +92,14 @@ create TABLE test_docs(
     FOREIGN KEY (user_id) REFERENCES users (id)    
 );
 
+create TABLE response_statuses(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255)
+);
+INSERT INTO response_statuses (name) values ('');
+INSERT INTO response_statuses (name) values ('Интервью');
+INSERT INTO response_statuses (name) values ('Отправлено тестовое');
+INSERT INTO response_statuses (name) values ('Думаем');
+INSERT INTO response_statuses (name) values ('Отправлен оффер');
+INSERT INTO response_statuses (name) values ('Отказ');
+INSERT INTO response_statuses (name) values ('Принят на работу');

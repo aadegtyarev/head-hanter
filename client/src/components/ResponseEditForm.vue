@@ -1,11 +1,12 @@
 <template>
     <div>
-        <h1>Отклик на «{{ response.job_title }}»</h1>
+        <h1>Редактирование отклика «{{ job.job_title }}»</h1>
         <form @submit.prevent>
             <response-form :response="response" />
+            <span class="label-top">Решение</span>
             <my-input
                 v-model="response.result"
-                placeholder="Решение"
+                placeholder="Берём на работу с испытательным сроком 3 месяца."
                 type="text"
             />
             <div class="app-btns">
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import useGetJob from "@/hooks/useGetJob"
 import ResponseForm from "@/components/ResponseForm.vue";
 import useMyFunction from "@/hooks/useMyFunction";
 
@@ -55,10 +57,12 @@ export default {
     },
     setup(props) {
         const { cloneObj } = useMyFunction()
+        const { job } = useGetJob(props.response.job_id)
 
         cloneObj(props.response, response_undo)
         return {
-            cloneObj
+            cloneObj,
+            job
         }
     }
 }

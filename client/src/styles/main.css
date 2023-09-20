@@ -52,7 +52,6 @@
 }
 
 .input {
-  width: 100%;
   border: 1px solid teal;
   border-radius: 4px;
   padding: 10px 15px;
@@ -74,19 +73,29 @@
 }
 
 .select {
-  width: 100%;
+  border: 1px solid teal;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-top: 5px;
+}
+
+.textarea {
   border: 1px solid teal;
   border-radius: 4px;
   padding: 10px 15px;
   margin-top: 10px;
 }
 
-.textarea {
+form {
+  /* display: flex; */
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 500px;
+  /* max-width: 900px; */
+}
+
+.search-input {
   width: 100%;
-  border: 1px solid teal;
-  border-radius: 4px;
-  padding: 10px 15px;
-  margin-top: 10px;
 }
 
 .card-item {
@@ -97,12 +106,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 900px;
 }
 
 p {

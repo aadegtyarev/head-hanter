@@ -4,7 +4,7 @@ import axios from "axios";
 export default function useGetTestDoc(id) {
   const test_doc = ref([]);
 
-  const TestDoc = async () => {
+  const loadOneTestDoc = async () => {
     try {
       const response = await axios.get("/test-doc", {
         params: {
@@ -18,10 +18,10 @@ export default function useGetTestDoc(id) {
     }
   };
 
-  onMounted(TestDoc);
+  onMounted(loadOneTestDoc);
 
   return {
     test_doc,
-    TestDoc,
+    loadOneTestDoc,
   };
 }

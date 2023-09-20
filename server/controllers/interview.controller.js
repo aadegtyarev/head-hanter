@@ -23,10 +23,6 @@ class InterviewController {
         [date_and_time, job_id, response_id, detail, user_id]
       );
 
-      await db.query(`UPDATE responses set status=1 WHERE id=$1`, [
-        response_id,
-      ]);
-
       res.json(newInterview.rows[0]);
     } catch (error) {
       res.json(error + db.query.text);
@@ -98,9 +94,11 @@ class InterviewController {
             interviews.closed,
             interviews.created_timestamp,
             jobs.job_title as job_title,
+            jobs.test_doc_id as test_doc_id,
             responses.applicant_name as applicant_name,
             users.name as user_name,
             interviewers.name as interviewer_name
+            
             FROM interviews
 
             LEFT OUTER JOIN jobs ON interviews.job_id=jobs.id
