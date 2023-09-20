@@ -7,7 +7,10 @@
         >
             <job-form :job="job" />
             <div class="app-btns">
-                <my-button @click="save">
+                <my-button
+                    class="btn-primary"
+                    @click="save"
+                >
                     Сохранить
                 </my-button>
                 <my-button @click="cancel">

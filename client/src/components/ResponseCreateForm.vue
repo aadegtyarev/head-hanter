@@ -4,8 +4,14 @@
             <h2>Добавление отклика</h2>
             <response-form :response="response" />
             <div class="app-btns">
-                <my-button @click="create">
+                <my-button
+                    class="btn-primary"
+                    @click="create"
+                >
                     Создать
+                </my-button>
+                <my-button @click="cancel">
+                    Отменить
                 </my-button>
             </div>
         </form>
@@ -27,6 +33,9 @@ export default {
         create() {
             this.$emit('create', this.response)
         },
+        cancel() {
+            this.$emit('cancel')
+        }
     },
     props: {
         response: {

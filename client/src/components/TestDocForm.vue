@@ -14,6 +14,7 @@
     />
     <span class="label-top">Текст</span>
     <my-textarea
+        class="editor"
         v-model="test_doc.text"
         type="text"
         placeholder="Подробное описание задания"

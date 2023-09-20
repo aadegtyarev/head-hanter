@@ -47,6 +47,7 @@
     />
     <my-textarea
         v-model="response.description"
+        class="editor"
         placeholder="Заметки"
         type="text"
     />

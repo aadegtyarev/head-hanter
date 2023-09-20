@@ -48,6 +48,7 @@
     />
     <span class="label-top">Описание</span>
     <my-textarea
+        class="editor"
         v-model="job.detail"
         placeholder="#Заголовок&#10;&#10;Какой-то текст, а теперь список:&#10;- первый элемент списка;&#10;- второй элемент списка."
         type="text"

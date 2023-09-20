@@ -62,6 +62,11 @@
   margin-top: 10px;
 }
 
+.editor {
+  min-height: 100px;
+  height: fit-content;
+}
+
 .label-left {
   margin: 0 5px;
   display: flex;
