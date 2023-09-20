@@ -1,5 +1,5 @@
 <template>
-    <span class="label-left">Статус</span>
+    <span class="label-left">Статус отклика</span>
     <my-select
         v-focus
         v-model="response.status"

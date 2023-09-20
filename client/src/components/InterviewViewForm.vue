@@ -7,6 +7,7 @@
         <p><strong>Назначил: </strong>{{ interview.user_name }}</p>
         <p><strong>Заметки: </strong>{{ interview.detail }}</p>
         <p><strong>Заключение: </strong>{{ interview.result }}</p>
+        <response-change-status-form :response="response" />
         <div class="app-btns">
             <my-button
                 class="btn-primary"
@@ -32,10 +33,12 @@ import useSendEmails from "@/hooks/useSendEmails"
 import useGetJob from "@/hooks/useGetJob"
 import useGetTestDoc from "@/hooks/useGetTestDoc"
 import ResponseRequirementsTable from "@/components/ResponseRequirementsTable.vue"
+import ResponseChangeStatusForm from "@/components/ResponseChangeStatusForm"
 
 export default {
     components: {
         ResponseRequirementsTable,
+        ResponseChangeStatusForm
     },
     methods: {
         edit() {
