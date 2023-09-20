@@ -14,7 +14,7 @@ export default function useEditJob() {
         skills: job.skills,
         education: job.education,
         experience: job.experience,
-        test_doc: job.test_doc,
+        test_doc_id: job.test_doc_id,
         detail: job.detail,
         closed: job.closed,
         user_id: 7,

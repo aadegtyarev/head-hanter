@@ -50,7 +50,24 @@ class JobController {
       const searchText = "%" + search + "%";
 
       const jobs = await db.query(
-        `SELECT * FROM jobs WHERE LOWER(job_title) LIKE LOWER($1) ORDER BY closed ASC, id DESC LIMIT $2 OFFSET $3`,
+        `SELECT 
+        jobs.id,
+        jobs.job_title,
+        jobs.salary_from,
+        jobs.salary_to,
+        jobs.skills,
+        jobs.education,
+        jobs.experience,
+        CAST (jobs.test_doc_id AS VARCHAR),
+        jobs.detail,
+        jobs.closed,
+        test_docs.name as test_doc_name        
+
+        FROM jobs 
+
+        LEFT OUTER JOIN test_docs ON jobs.test_doc_id=test_docs.id
+
+        WHERE LOWER(job_title) LIKE LOWER($1) ORDER BY closed ASC, id DESC LIMIT $2 OFFSET $3`,
         [searchText, limit, offset]
       );
       res.json(jobs.rows);
@@ -64,7 +81,22 @@ class JobController {
     const id = req.query.id;
 
     try {
-      const job = await db.query(`SELECT * FROM jobs WHERE id = $1`, [id]);
+      const job = await db.query(
+        `SELECT 
+      jobs.id,
+      jobs.job_title,
+      jobs.salary_from,
+      jobs.salary_to,
+      jobs.skills,
+      jobs.education,
+      jobs.experience,
+      CAST (jobs.test_doc_id AS VARCHAR),
+      jobs.detail,
+      jobs.closed      
+         
+      FROM jobs WHERE id = $1`,
+        [id]
+      );
       res.json(job.rows[0]);
     } catch (error) {
       res.json(error);
@@ -80,7 +112,7 @@ class JobController {
       skills,
       education,
       experience,
-      test_doc,
+      test_doc_id,
       detail,
       closed,
       id,
@@ -95,7 +127,7 @@ class JobController {
                 skills= $4,
                 education= $5,
                 experience= $6,
-                test_doc= $7,
+                test_doc_id= $7,
                 detail= $8,
                 closed=$9
                 WHERE id = $10 RETURNING *`,
@@ -106,7 +138,7 @@ class JobController {
           skills,
           education,
           experience,
-          test_doc,
+          test_doc_id,
           detail,
           closed,
           id,
