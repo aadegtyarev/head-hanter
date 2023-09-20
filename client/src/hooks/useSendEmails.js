@@ -21,8 +21,20 @@ export default function useSendEmails() {
     }
   };
 
+  const sendRefuseMail = async (email, job_title) => {
+    try {
+      const subject = `Отказ по вакансии ` + job_title;
+      const body = `Привет! Мы не готовы пока предложить вам сотрудничество`;
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    } catch (error) {
+      console.log(error);
+    } finally {
+    }
+  };
+
   return {
     sendTestDoc,
     sendInterviewMail,
+    sendRefuseMail,
   };
 }

@@ -19,13 +19,22 @@
                     :response="response"
                     :job="job"
                 />
-                <response-change-status-form :response="response" />
             </div>
         </div>
+        <fieldset class="card-item">
+            <legend>Изменить статус</legend>
+            <response-change-status-form :response="response" />
+        </fieldset>
+
+        <fieldset class="card-item">
+            <legend>Создать письма</legend>
+            <div>
+                <my-button @click="interview">Приглашение на интервью</my-button>
+                <my-button @click="refuse">Отказ</my-button>
+            </div>
+        </fieldset>
         <div class="app-btns">
             <my-button @click="edit">Редактировать</my-button>
-            <my-button @click="sendMail">Создать письмо с приглашением на интервью</my-button>
-            <my-button>Отказать</my-button>
             <my-button
                 class="btn-primary"
                 @click="$router.go(-1)"
@@ -50,8 +59,11 @@ export default {
         edit() {
             this.$emit('edit', this.response)
         },
-        sendMail() {
+        interview() {
             this.sendInterviewMail(this.response.email, this.response.job_title)
+        },
+        refuse() {
+            this.sendRefuseMail(this.response.email, this.response.job_title)
         }
     },
     props: {
@@ -62,11 +74,12 @@ export default {
     },
     setup(props) {
         const { job } = useGetJob(props.response.job_id)
-        const { sendInterviewMail } = useSendEmails()
+        const { sendInterviewMail, sendRefuseMail } = useSendEmails()
 
         return {
             job,
-            sendInterviewMail
+            sendInterviewMail,
+            sendRefuseMail
 
         }
     }

@@ -23,14 +23,18 @@
 
 <script>
 import JobItem from "@/components/JobItem.vue";
+import useEditJob from "@/hooks/useEditJob"
+
 export default {
     components: { JobItem },
     methods: {
         close(job) {
-            this.$emit('close', job)
+            job.closed = true
+            this.editJob(job)
         },
         open(job) {
-            this.$emit('open', job)
+            job.closed = false
+            this.editJob(job)
         }
     },
     props: {
@@ -39,6 +43,13 @@ export default {
             required: true,
         },
     },
+    setup(props) {
+        const { editJob } = useEditJob(props.jobs)
+
+        return {
+            editJob,
+        }
+    }
 };
 </script>
 

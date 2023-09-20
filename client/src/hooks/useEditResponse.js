@@ -20,6 +20,7 @@ export default function useEditJob() {
         status: Number(response.status),
         result: response.result,
         job_id: response.job_id,
+        closed: response.closed,
         user_id: 7,
       });
       formEditVisible.value = false;

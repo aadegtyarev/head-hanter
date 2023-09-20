@@ -66,7 +66,7 @@ class InterviewController {
         OR LOWER(job_title) LIKE LOWER('${searchText}')
         OR LOWER(interviewers.name) LIKE LOWER('${searchText}')
 
-        ORDER BY date_and_time ASC LIMIT ${limit} OFFSET ${offset}`;
+        ORDER BY closed ASC, date_and_time ASC LIMIT ${limit} OFFSET ${offset}`;
 
       const interviews = await db.query(queryText);
       res.json(interviews.rows);
@@ -125,6 +125,7 @@ class InterviewController {
       result,
       user_id,
       interviewer_id,
+      closed,
       id,
     } = req.body;
 
@@ -137,8 +138,9 @@ class InterviewController {
         detail = $4,
         user_id = $5,
         interviewer_id = $6,
-        result =$7
-        WHERE id = $8 RETURNING *`,
+        result =$7,
+        closed = $8
+        WHERE id = $9 RETURNING *`,
         [
           date_and_time,
           job_id,
@@ -147,6 +149,7 @@ class InterviewController {
           user_id,
           interviewer_id,
           result,
+          closed,
           id,
         ]
       );

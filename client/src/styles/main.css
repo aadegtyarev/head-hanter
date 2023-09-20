@@ -59,6 +59,8 @@
 }
 .label-top {
   margin-top: 10px;
+  margin-bottom: 5px;
+  display: block;
 }
 
 .editor {
@@ -76,7 +78,7 @@
   border: 1px solid teal;
   border-radius: 4px;
   padding: 10px 15px;
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 
 .textarea {
@@ -97,13 +99,14 @@ form {
 }
 
 .card-item {
-  padding: 15px;
-  border: 2px solid teal;
+  padding: 10px;
+  border: 1px solid teal;
   border-radius: 4px;
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin: 10px 10px 5px 0;
+  display: inline-block;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: space-between; */
 }
 
 p {

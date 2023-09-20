@@ -7,7 +7,10 @@
         <p><strong>Назначил: </strong>{{ interview.user_name }}</p>
         <p><strong>Заметки: </strong>{{ interview.detail }}</p>
         <p><strong>Заключение: </strong>{{ interview.result }}</p>
-        <response-change-status-form :response="response" />
+        <div>
+            <span class="label-top">Статус отклика</span>
+            <response-change-status-form :response="response" />
+        </div>
         <div class="app-btns">
             <my-button
                 class="btn-primary"

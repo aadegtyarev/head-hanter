@@ -14,6 +14,7 @@ export default function useEditInterview() {
         user_id: interview.user_id,
         interviewer_id: interview.interviewer_id,
         job_id: interview.job_id,
+        closed: interview.closed,
         response_id: interview.response_id,
       });
       formEditVisible.value = false;

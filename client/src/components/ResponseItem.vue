@@ -1,5 +1,5 @@
 <template>
-    <tr>
+    <tr :class="{ 'gray-text': response.closed }">
         <td>{{ response.id }}</td>
         <td>{{ response.job_title }}</td>
         <td>{{ response.salary_desired }}</td>
@@ -12,8 +12,17 @@
             <div class="btns">
                 <my-button
                     class="btn-primary"
+                    :class="{ 'btn-secondary': response.closed }"
                     @click="$router.push(`/response/${response.id}`)"
                 >Смотреть</my-button>
+                <my-button
+                    v-if="!response.closed"
+                    @click="close"
+                >В архив</my-button>
+                <my-button
+                    v-if="response.closed"
+                    @click="open"
+                >Вернуть</my-button>
             </div>
         </td>
     </tr>
@@ -21,11 +30,13 @@
 
 <script>
 export default {
-    // refuse() {
-    //     this.$emit('refuse', this.response)
-    // },
     methods: {
-
+        close() {
+            this.$emit('close', this.response)
+        },
+        open() {
+            this.$emit('open', this.response)
+        },
     },
     props: {
         response: {

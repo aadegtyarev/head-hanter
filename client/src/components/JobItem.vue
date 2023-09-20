@@ -14,7 +14,7 @@
                 <my-button
                     v-if="!job.closed"
                     @click="close"
-                >Закрыть</my-button>
+                >В архив</my-button>
                 <my-button
                     v-if="job.closed"
                     @click="open"

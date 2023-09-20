@@ -14,8 +14,9 @@
                 v-for="response in responses"
                 :response="response"
                 :key="response.id"
-                @remove="$emit('remove', response)"
                 @edit="$emit('edit', response)"
+                @close="close"
+                @open="open"
             />
         </table>
     </div>
@@ -27,14 +28,33 @@
 
 <script>
 import ResponseItem from "@/components/ResponseItem.vue";
+import useEditResponse from "@/hooks/useEditResponse"
+
 export default {
     components: { ResponseItem },
+    methods: {
+        close(response) {
+            response.closed = true
+            this.editResponse(response)
+        },
+        open(response) {
+            response.closed = false
+            this.editResponse(response)
+        }
+    },
     props: {
         responses: {
             type: Array,
             required: true,
         },
     },
+    setup(props) {
+        const { editResponse } = useEditResponse(props.responses)
+
+        return {
+            editResponse,
+        }
+    }
 };
 </script>
 

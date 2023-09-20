@@ -14,8 +14,6 @@
         </div>
         <jobs-list
             :jobs="jobs"
-            @close="close"
-            @open="open"
             v-if="!isJobsLoading"
         />
         <div v-else>Идёт загрузка...</div>
@@ -29,7 +27,6 @@
 <script>
 import JobsList from "@/components/JobsList.vue";
 import useJobs from "@/hooks/useJobs"
-import useEditJob from "@/hooks/useEditJob"
 import useCreateJob from "@/hooks/useCreateJob"
 
 import { ref } from 'vue'
@@ -39,14 +36,6 @@ export default {
         JobsList,
     },
     methods: {
-        close(job) {
-            job.closed = true
-            this.editJob(job)
-        },
-        open(job) {
-            job.closed = false
-            this.editJob(job)
-        },
         create() {
             this.$router.push('/job-create')
         }
@@ -60,7 +49,6 @@ export default {
     },
     setup(props) {
         const { searchQuery, jobs, isJobsLoading, loadMoreJobs, fetchingJobs } = useJobs(50);
-        const { editJob } = useEditJob(jobs)
         const { createJob, hideDialog, showDialog, dialogVisible } = useCreateJob(jobs)
 
 
@@ -70,7 +58,6 @@ export default {
             searchQuery,
             fetchingJobs,
             loadMoreJobs,
-            editJob,
             createJob,
             hideDialog,
             showDialog,

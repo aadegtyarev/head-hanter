@@ -133,7 +133,7 @@ class ResponseController {
         LOWER(applicant_name) LIKE LOWER('${searchText}')
         OR LOWER(job_title) LIKE LOWER('${searchText}')
 
-        ORDER BY id DESC LIMIT ${limit} OFFSET ${offset}`;
+        ORDER BY closed ASC, id DESC LIMIT ${limit} OFFSET ${offset}`;
       }
 
       const responses = await db.query(queryText);
@@ -202,6 +202,7 @@ class ResponseController {
       result,
       job_id,
       user_id,
+      closed,
     } = req.body;
 
     try {
@@ -219,8 +220,9 @@ class ResponseController {
             status = $10,
             result = $11,
             job_id = $12,
-            user_id = $13
-        WHERE id = $14 RETURNING *`,
+            user_id = $13,
+            closed = $14
+        WHERE id = $15 RETURNING *`,
         [
           applicant_name,
           email,
@@ -235,6 +237,7 @@ class ResponseController {
           result,
           job_id,
           user_id,
+          closed,
           id,
         ]
       );
