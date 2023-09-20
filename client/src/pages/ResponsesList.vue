@@ -9,15 +9,8 @@
         />
 
         <div class="app-btns">
-            <my-button @click="showDialog">Добавить отклик</my-button>
+            <my-button @click="create">Добавить отклик</my-button>
         </div>
-        <my-dialog v-model:show="dialogVisible">
-            <response-create-form
-                :jobs_list="jobs_list"
-                :response="response"
-                @create="createResponse"
-            />
-        </my-dialog>
         <responses-list
             :responses="responses"
             v-if="!isResponsesLoading"
@@ -31,18 +24,13 @@
 </template>
 
 <script>
-import ResponseCreateForm from "@/components/ResponseCreateForm.vue";
 import ResponsesList from "@/components/ResponsesList.vue";
 import useResponses from "@/hooks/useResponses"
-import useJobs from "@/hooks/useJobs"
-// import useRemoveJob from "@/hooks/useRemoveJob"
-import useCreateResponse from "@/hooks/useCreateResponse"
 
 import { ref } from 'vue'
 
 export default {
     components: {
-        ResponseCreateForm,
         ResponsesList,
     },
     data() {
@@ -53,26 +41,19 @@ export default {
         };
     },
     methods: {
-
+        create() {
+            this.$router.push('/response-create')
+        }
     },
     setup(props) {
         const { searchQuery, responses, isResponsesLoading, loadMoreResponses, fetchingResponses } = useResponses(50);
-        const { jobs_list } = useJobs(50);
-        // const { removeJob } = useRemoveJob(responses)
-        const { createResponse, showDialog, dialogVisible } = useCreateResponse(responses)
-
 
         return {
             responses,
             isResponsesLoading,
             searchQuery,
             fetchingResponses,
-            loadMoreResponses,
-            // removeJob,
-            createResponse,
-            showDialog,
-            dialogVisible,
-            jobs_list
+            loadMoreResponses
         }
     }
 };

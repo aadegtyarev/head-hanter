@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import JobCreateForm from "@/components/JobCreateForm.vue";
 import JobsList from "@/components/JobsList.vue";
 import useJobs from "@/hooks/useJobs"
 import useEditJob from "@/hooks/useEditJob"
@@ -36,7 +35,6 @@ import { ref } from 'vue'
 
 export default {
     components: {
-        JobCreateForm,
         JobsList,
     },
     methods: {

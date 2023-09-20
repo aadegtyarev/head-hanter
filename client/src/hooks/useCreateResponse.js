@@ -1,9 +1,7 @@
 import { ref } from "vue";
 import axios from "axios";
 
-export default function useCreateResponse(responses) {
-  const dialogVisible = ref(false);
-
+export default function useCreateResponse() {
   const createResponse = async (response) => {
     try {
       const resp = await axios.post("/response", {
@@ -20,23 +18,12 @@ export default function useCreateResponse(responses) {
         job_id: response.job_id,
         user_id: 7,
       });
-      dialogVisible.value = false;
     } catch (error) {
       console.log(error);
     }
   };
 
-  const showDialog = () => {
-    try {
-      dialogVisible.value = true;
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   return {
     createResponse,
-    showDialog,
-    dialogVisible,
   };
 }

@@ -12,6 +12,7 @@ import TestTemplatesList from "@/pages/TestTemplatesList";
 import TestTemplateCard from "@/pages/TestTemplateCard";
 import TestTemplateCreateForm from "@/pages/TestTemplateCreateForm";
 import JobCreateForm from "@/pages/JobCreateForm";
+import ResponseCreateForm from "@/pages/ResponseCreateForm";
 
 const routes = [
   {
@@ -45,6 +46,10 @@ const routes = [
   {
     path: "/response/:id",
     component: ResponseCard,
+  },
+  {
+    path: "/response-create",
+    component: ResponseCreateForm,
   },
   {
     path: "/interviews",
