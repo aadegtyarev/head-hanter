@@ -75,7 +75,20 @@ create TABLE interviews(
     interviewer_id INTEGER,
     FOREIGN KEY (job_id) REFERENCES jobs (id),
     FOREIGN KEY (response_id) REFERENCES responses (id),
-    FOREIGN KEY (user_id) REFERENCES users (id)
+    FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (interviewer_id) REFERENCES users (id)
+);
+
+create TABLE test_templates(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    remark VARCHAR(255),
+    text TEXT,    
+    job_id INTEGER,
+    user_id INTEGER,
+    closed BOOLEAN,
+    created_timestamp TIMESTAMP,
+    FOREIGN KEY (job_id) REFERENCES jobs (id),
+    FOREIGN KEY (user_id) REFERENCES users (id)    
 );
 

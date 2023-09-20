@@ -48,7 +48,7 @@
     <span class="label-top">Описание</span>
     <my-textarea
         v-model="job.detail"
-        placeholder="Нужно варить кофе и перезагружать компьютеры"
+        placeholder="#Заголовок&#10;&#10;Какой-то текст, а теперь список:&#10;- первый элемент списка;&#10;- второй элемент списка."
         type="text"
     />
 </template>
