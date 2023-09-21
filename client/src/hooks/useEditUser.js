@@ -13,6 +13,7 @@ export default function useEditUser() {
         tg_login: user.tg_login,
         email: user.email,
         position: user.position,
+        role_id: Number(user.role_id),
       });
       formEditVisible.value = false;
     } catch (error) {

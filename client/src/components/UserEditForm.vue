@@ -1,10 +1,7 @@
 <template>
     <div>
         <form @submit.prevent>
-            <user-form
-                :user="user"
-                @cancel="cancel"
-            />
+            <user-form :user="user" />
             <div class="app-btns">
                 <my-button
                     class="btn-primary"

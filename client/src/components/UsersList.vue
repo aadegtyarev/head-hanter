@@ -5,6 +5,7 @@
             <th>Имя</th>
             <th>Логин</th>
             <th>Должность</th>
+            <th>Роль</th>
             <th>Действия</th>
             <user-item
                 v-for="user in users"

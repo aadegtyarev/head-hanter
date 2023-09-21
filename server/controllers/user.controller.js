@@ -4,7 +4,8 @@ const bcrypt = require("bcrypt");
 class UserController {
   async createUser(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
-    const { name, login, tg_login, email, password, position } = req.body;
+    const { name, login, tg_login, email, password, position, role_id } =
+      req.body;
 
     try {
       const salt = await bcrypt.genSalt(10);
@@ -12,12 +13,12 @@ class UserController {
 
       const newUser = await db.query(
         `INSERT INTO users (
-                    name, login, tg_login, email, password, position, closed, created_timestamp
+                    name, login, tg_login, email, password, position, role_id, closed, created_timestamp
                     ) 
                 values(
-                    $1, $2, $3, $4, $5, $6, false, now()
+                    $1, $2, $3, $4, $5, $6, $7, false, now()
                     ) RETURNING *`,
-        [name, login, tg_login, email, password_hash, position]
+        [name, login, tg_login, email, password_hash, position, role_id]
       );
 
       res.json(newUser.rows[0]);
@@ -33,7 +34,23 @@ class UserController {
       const searchText = "%" + search + "%";
 
       const users = await db.query(
-        `SELECT * FROM users WHERE LOWER(name) LIKE LOWER($1) ORDER BY name ASC `,
+        `SELECT 
+        users.id,
+        users.name, 
+        users.login, 
+        users.tg_login, 
+        users.email, 
+        users.password, 
+        users.position, 
+        CAST(users.role_id AS VARCHAR), 
+        users.closed, 
+        users.created_timestamp,
+        roles.name as role_name
+
+        FROM users 
+        LEFT OUTER JOIN roles ON users.role_id=roles.id
+
+        WHERE LOWER(users.name) LIKE LOWER($1) ORDER BY users.name ASC `,
         [searchText]
       );
       res.json(users.rows);
@@ -47,7 +64,26 @@ class UserController {
     const id = req.query.id;
 
     try {
-      const user = await db.query(`SELECT * FROM users WHERE id=$1`, [id]);
+      const user = await db.query(
+        `SELECT 
+        users.id,
+      users.name, 
+      users.login, 
+      users.tg_login, 
+      users.email, 
+      users.password, 
+      users.position, 
+      users.role_id, 
+      users.closed, 
+      users.created_timestamp,
+      roles.name as role_name
+
+      FROM users 
+      LEFT OUTER JOIN roles ON users.role_id=roles.id
+      
+      WHERE users.id=$1`,
+        [id]
+      );
       res.json(user.rows[0]);
     } catch (error) {
       res.json(error + db.query.text);
@@ -56,14 +92,14 @@ class UserController {
 
   async updateUser(req, res) {
     res.header("Access-Control-Allow-Origin", "*");
-    const { id, name, login, tg_login, email, password, position } = req.body;
+    const { id, name, login, tg_login, email, position, role_id } = req.body;
 
     try {
       const user = await db.query(
         `UPDATE users set
-                name = $1, login = $2, tg_login = $3, email = $4, position= $5
-                WHERE id = $6 RETURNING *`,
-        [name, login, tg_login, email, position, id]
+                name = $1, login = $2, tg_login = $3, email = $4, position= $5, role_id=$6
+                WHERE id = $7 RETURNING *`,
+        [name, login, tg_login, email, position, role_id, id]
       );
       res.json(user.rows[0]);
     } catch (error) {

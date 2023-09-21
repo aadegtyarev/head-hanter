@@ -6,6 +6,7 @@
                 <p><strong>Логин Телеграм: </strong>{{ user.tg_login }}</p>
                 <p><strong>Email: </strong>{{ user.email }}</p>
                 <p><strong>Должность: </strong>{{ user.position }}</p>
+                <p><strong>Роль: </strong>{{ user.role_name }}</p>
             </div>
         </div>
         <div class="app-btns">

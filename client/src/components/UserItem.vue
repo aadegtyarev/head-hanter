@@ -4,6 +4,7 @@
         <td>{{ user.name }}</td>
         <td>{{ user.login }}</td>
         <td>{{ user.position }}</td>
+        <td>{{ user.role_name }}</td>
         <td>
             <div class="card-btns">
                 <my-button

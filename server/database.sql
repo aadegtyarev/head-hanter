@@ -7,23 +7,21 @@ create TABLE users(
     password VARCHAR(255),
     closed BOOLEAN,
     position VARCHAR(255),
-    created_timestamp TIMESTAMP
+    role_id INTEGER,
+    created_timestamp TIMESTAMP,
+    FOREIGN KEY (role_id) REFERENCES roles (id)
 );
 
 create TABLE roles(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
+    short_name VARCHAR(25),
     created_timestamp TIMESTAMP
 );
 
-create TABLE user_roles(
-    id SERIAL PRIMARY KEY,
-    role_id INTEGER,
-    user_id INTEGER,
-    created_timestamp TIMESTAMP,
-    FOREIGN KEY (role_id) REFERENCES roles (id),
-    FOREIGN KEY (user_id) REFERENCES users (id)
-);
+INSERT INTO roles (name, short_name, created_timestamp) values ('Администратор', 'Admin');
+INSERT INTO roles (name, short_name, created_timestamp) values ('Менеджер вакансий', 'HR');
+INSERT INTO roles (name, short_name, created_timestamp) values ('Начальник отдела', 'Boss');
 
 create TABLE jobs(
     id SERIAL PRIMARY KEY,
