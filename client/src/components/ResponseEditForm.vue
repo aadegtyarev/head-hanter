@@ -7,7 +7,7 @@
             <my-textarea
                 v-model="response.result"
                 class="editor"
-                placeholder="Берём на работу с испытательным сроком 3 месяца."
+                placeholder="Берём на работу с испытательным сроком 3 месяца и зарплатой 90к/мес на руки."
                 type="text"
             />
             <div class="app-btns">
