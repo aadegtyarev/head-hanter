@@ -8,6 +8,7 @@
         <td>{{ response.education }}</td>
         <td>{{ response.applicant_name }}</td>
         <td>{{ response.status_name }}</td>
+        <td>{{ response.result }}</td>
         <td>
             <div class="btns">
                 <my-button

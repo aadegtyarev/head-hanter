@@ -7,10 +7,11 @@
                 :interview="interview"
                 :users_list="users_list"
             />
+            <span class="label-top">Отзыв руководителя</span>
             <my-textarea
                 v-model="interview.result"
                 type="text"
-                placeholder="Заключение"
+                placeholder="Хорошо знает то-то, плохо то-то. Нам подходит."
             />
             <div class="app-btns">
                 <my-button

@@ -9,6 +9,7 @@
             <th>Образование</th>
             <th>Имя</th>
             <th>Статус</th>
+            <th>Решение</th>
             <th>Действия</th>
             <response-item
                 v-for="response in responses"

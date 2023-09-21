@@ -4,8 +4,9 @@
         <form @submit.prevent>
             <response-form :response="response" />
             <span class="label-top">Решение</span>
-            <my-input
+            <my-textarea
                 v-model="response.result"
+                class="editor"
                 placeholder="Берём на работу с испытательным сроком 3 месяца."
                 type="text"
             />

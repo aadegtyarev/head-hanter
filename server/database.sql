@@ -88,7 +88,6 @@ create TABLE test_docs(
     user_id INTEGER,
     closed BOOLEAN,
     created_timestamp TIMESTAMP,
-    FOREIGN KEY (job_id) REFERENCES jobs (id),
     FOREIGN KEY (user_id) REFERENCES users (id)    
 );
 

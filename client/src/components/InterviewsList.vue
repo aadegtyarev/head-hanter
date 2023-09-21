@@ -7,7 +7,7 @@
             <th>Соискатель</th>
             <th>Детали</th>
             <th>Кто ведёт</th>
-            <th>Заключение</th>
+            <th>Отзыв руководителя</th>
             <th>Действия</th>
             <interview-item
                 v-for="interview in interviews"
