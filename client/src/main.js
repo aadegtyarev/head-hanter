@@ -22,7 +22,9 @@ directives.forEach(directive => {
 axios.defaults.baseURL = 'http://localhost:8081/api';
 
 store.state.auth.isAuth = $cookies.get("head-hunter")
-store.state.auth.user_id = $cookies.get("head-hunter").id
+
+if (store.state.auth.isAuth)
+    store.state.auth.user_id = $cookies.get("head-hunter").id
 
 app
     .use(router) // таким образом подключаются плагины, бутстрап и т.п.
