@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Main from "@/pages/Main";
+import Login from "@/pages/Login";
 import JobsList from "@/pages/JobsList";
 import JobCard from "@/pages/JobCard";
 import UsersList from "@/pages/UsersList";
@@ -14,74 +15,92 @@ import TestDocCreateForm from "@/pages/TestDocCreateForm";
 import JobCreateForm from "@/pages/JobCreateForm";
 import ResponseCreateForm from "@/pages/ResponseCreateForm";
 import UserCreateForm from "@/pages/UserCreateForm";
+import store from "@/store"
 
 const routes = [
-  {
-    path: "/",
-    component: Main,
-  },
-  {
-    path: "/jobs",
-    component: JobsList,
-  },
-  {
-    path: "/job/:id",
-    component: JobCard,
-  },
-  {
-    path: "/job-create",
-    component: JobCreateForm,
-  },
-  {
-    path: "/user-create",
-    component: UserCreateForm,
-  },
-  {
-    path: "/users",
-    component: UsersList,
-  },
-  {
-    path: "/user/:id",
-    component: UserCard,
-  },
-  {
-    path: "/responses",
-    component: ResponsesList,
-  },
-  {
-    path: "/response/:id",
-    component: ResponseCard,
-  },
-  {
-    path: "/response-create",
-    component: ResponseCreateForm,
-  },
-  {
-    path: "/interviews",
-    component: InterviewsList,
-  },
-  {
-    path: "/interview/:id",
-    component: InterviewCard,
-  },
-  {
-    path: "/test-docs",
-    component: TestDocsList,
-  },
-  {
-    path: "/test-doc/:id",
-    component: TestDocCard,
-  },
-  {
-    path: "/test-doc-create",
-    component: TestDocCreateForm,
-  },
+    {
+        path: "/",
+        component: Main,
+    },
+    {
+        path: "/login",
+        component: Login,
+    },
+    {
+        path: "/jobs",
+        component: JobsList,
+    },
+    {
+        path: "/job/:id",
+        component: JobCard,
+    },
+    {
+        path: "/job-create",
+        component: JobCreateForm,
+    },
+    {
+        path: "/user-create",
+        component: UserCreateForm,
+    },
+    {
+        path: "/users",
+        component: UsersList,
+    },
+    {
+        path: "/user/:id",
+        component: UserCard,
+    },
+    {
+        path: "/responses",
+        component: ResponsesList,
+    },
+    {
+        path: "/response/:id",
+        component: ResponseCard,
+    },
+    {
+        path: "/response-create",
+        component: ResponseCreateForm,
+    },
+    {
+        path: "/interviews",
+        component: InterviewsList,
+    },
+    {
+        path: "/interview/:id",
+        component: InterviewCard,
+    },
+    {
+        path: "/test-docs",
+        component: TestDocsList,
+    },
+    {
+        path: "/test-doc/:id",
+        component: TestDocCard,
+    },
+    {
+        path: "/test-doc-create",
+        component: TestDocCreateForm,
+    }
 ];
 
 const router = createRouter({
-  routes,
-  history: createWebHistory(process.env.BASE_URL),
-  props: true,
+    routes,
+    history: createWebHistory(process.env.BASE_URL),
+    props: true,
 });
+
+router.beforeEach((to, from, next) => {
+    const publicPages = ['/login'];
+    const authRequired = !publicPages.includes(to.path);
+
+    const loggedIn = store.state.auth.isAuth
+
+    if (authRequired && !loggedIn) {
+        return next('/login');
+    }
+
+    next();
+})
 
 export default router;

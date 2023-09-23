@@ -14,8 +14,6 @@ export default {
         Navbar
     }
 }
-
-
 </script>
 
 <style></style>

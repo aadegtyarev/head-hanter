@@ -1,52 +1,52 @@
 <template>
-    <span class="label-top">Название</span>
+    <label class="label-top">Название</label>
     <my-input
         v-focus
         v-model="job.job_title"
         type="text"
         placeholder="Эникейщик"
     />
-    <span class="label-top">Зарплата, руб</span>
+    <label class="label-top">Зарплата, руб</label>
     <div class="flex">
-        <span class="label-left">от</span>
+        <label class="label-left">от</label>
         <my-input
             v-model="job.salary_from"
             type="number"
             placeholder="80000"
         />
-        <span class="label-left">до</span>
+        <label class="label-left">до</label>
         <my-input
             v-model="job.salary_to"
             type="number"
             placeholder="90000"
         />
     </div>
-    <span class="label-top">Навыки</span>
+    <label class="label-top">Навыки</label>
     <my-input
         v-model="job.skills"
         type="text"
         placeholder="Linux, хорошо ладит с людьми"
     />
-    <span class="label-top">Образование</span>
+    <label class="label-top">Образование</label>
     <my-input
         v-model="job.education"
         type="text"
         placeholder="техническое высшее, радиоинженер"
     />
-    <span class="label-top">Требуемый опыт</span>
+    <label class="label-top">Требуемый опыт</label>
     <my-input
         v-model="job.experience"
         type="text"
         placeholder="от 1 года"
     />
-    <span class="label-top">Тестовое задание</span>
+    <label class="label-top">Тестовое задание</label>
     <my-select
         v-focus
         v-model="job.test_doc_id"
         :options="test_docs_list"
         placeholder="Вакансия"
     />
-    <span class="label-top">Описание</span>
+    <label class="label-top">Описание</label>
     <my-textarea
         class="editor"
         v-model="job.detail"

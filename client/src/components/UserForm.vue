@@ -1,38 +1,38 @@
 <template>
     <div>
         <form @submit.prevent>
-            <span class="label-top">Имя</span>
+            <label class="label-top">Имя</label>
             <my-input
                 v-focus
                 v-model="user.name"
                 type="text"
                 placeholder="Иван Петров"
             />
-            <span class="label-top">Логин</span>
+            <label class="label-top">Логин</label>
             <my-input
                 v-model="user.login"
                 type="text"
                 placeholder="petrovi"
             />
-            <span class="label-top">Логин в Телеграм</span>
+            <label class="label-top">Логин в Телеграм</label>
             <my-input
                 v-model="user.tg_login"
                 type="text"
                 placeholder="petrov-i"
             />
-            <span class="label-top">Email</span>
+            <label class="label-top">Email</label>
             <my-input
                 v-model="user.email"
                 type="email"
                 placeholder="petrovi@mail.com"
             />
-            <span class="label-top">Должность</span>
+            <label class="label-top">Должность</label>
             <my-input
                 v-model="user.position"
                 type="text"
                 placeholder="Инженер"
             />
-            <span class="label-top">Роль</span>
+            <label class="label-top">Роль</label>
             <my-select
                 v-focus
                 v-model="user.role_id"

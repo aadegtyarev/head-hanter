@@ -1,59 +1,59 @@
 <template>
-    <span class="label-top">Вакансия</span>
+    <label class="label-top">Вакансия</label>
     <my-select
         v-focus
         v-model="response.job_id"
         :options="jobs_list"
     />
-    <span class="label-top">Имя соискателя</span>
+    <label class="label-top">Имя соискателя</label>
     <my-input
         v-model="response.applicant_name"
         type="text"
         placeholder="Иванов Иван"
     />
-    <span class="label-top">Email</span>
+    <label class="label-top">Email</label>
     <my-input
         v-model="response.email"
         type="email"
         placeholder="ivanov@mail.ru"
     />
-    <span class="label-top">Ссылка на резюме</span>
+    <label class="label-top">Ссылка на резюме</label>
     <my-input
         v-model="response.resume_url"
         type="text"
         placeholder="http://hh.ru/resume/ivanov"
     />
-    <span class="label-top">Образование</span>
+    <label class="label-top">Образование</label>
     <my-input
         v-model="response.education"
         type="text"
         placeholder="Высшее, инженер-электронщик"
     />
-    <span class="label-top">Опыт работы</span>
+    <label class="label-top">Опыт работы</label>
     <my-input
         v-model="response.experience"
         type="text"
         placeholder="1 год радиоинженером"
     />
-    <span class="label-top">Навыки</span>
+    <label class="label-top">Навыки</label>
     <my-input
         v-model="response.skills"
         type="text"
         placeholder="Проектирование плат, KiCAD, общение с людьми"
     />
-    <span class="label-top">Хочет денег в рублях</span>
+    <label class="label-top">Хочет денег в рублях</label>
     <my-input
         v-model="response.salary_desired"
         type="number"
         placeholder="60000"
     />
-    <span class="label-top">Результат теста</span>
+    <label class="label-top">Результат теста</label>
     <my-input
         v-model="response.questionnaire_result"
         type="number"
         placeholder="82"
     />
-    <span class="label-top">Заметки</span>
+    <label class="label-top">Заметки</label>
     <my-textarea
         v-model="response.description"
         class="editor"

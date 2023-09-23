@@ -1,19 +1,19 @@
 <template>
-    <span class="label-top">Кто будет проводить</span>
+    <label class="label-top">Кто будет проводить</label>
     <my-select
         v-focus
         v-model="interview.interviewer_id"
         :options="users_list"
         placeholder="Кто будет проводить"
     />
-    <span class="label-top">Дата и время</span>
+    <label class="label-top">Дата и время</label>
     <my-input
         v-focus
         v-model="interview.date_and_time"
         type="datetime-local"
         placeholder="Дата и время"
     />
-    <span class="label-top">Заметки</span>
+    <label class="label-top">Заметки</label>
     <my-input
         v-model="interview.detail"
         type="text"

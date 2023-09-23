@@ -3,7 +3,7 @@
         <h1>Редактирование отклика «{{ job.job_title }}»</h1>
         <form @submit.prevent>
             <response-form :response="response" />
-            <span class="label-top">Решение</span>
+            <label class="label-top">Решение</label>
             <my-textarea
                 v-model="response.result"
                 class="editor"

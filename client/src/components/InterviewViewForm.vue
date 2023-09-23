@@ -8,7 +8,7 @@
         <p><strong>Заметки: </strong>{{ interview.detail }}</p>
         <p><strong>Заключение: </strong>{{ interview.result }}</p>
         <div>
-            <span class="label-top">Статус отклика</span>
+            <label class="label-top">Статус отклика</label>
             <response-change-status-form :response="response" />
         </div>
         <div class="app-btns">

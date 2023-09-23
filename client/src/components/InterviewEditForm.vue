@@ -7,7 +7,7 @@
                 :interview="interview"
                 :users_list="users_list"
             />
-            <span class="label-top">Отзыв руководителя</span>
+            <label class="label-top">Отзыв руководителя</label>
             <my-textarea
                 v-model="interview.result"
                 type="text"
