@@ -19,8 +19,8 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE tokens (
     id SERIAL PRIMARY KEY,
     value uuid default uuid_generate_v4() not null unique,
-    expiration_date TIMESTAMP default now() + interval '15 day',
-    user_id INTEGER,
+    expiration_date TIMESTAMP default now() + interval '14 day',
+    user_id INTEGER not null unique,
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 

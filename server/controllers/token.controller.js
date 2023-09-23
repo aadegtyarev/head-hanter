@@ -8,50 +8,32 @@ class TokenController {
 
         try {
 
-            const newUser = await db.query(
-                `INSERT INTO tokens (
-            user_id
-                    ) 
-                values(
-                    $1, 
-                    ) RETURNING *`,
-                [user_id]
-            );
-
-            res.json(newUser.rows[0]);
-        } catch (error) {
-            res.json(error + db.query.text);
-        }
-    }
-
-    async getTokenByUser(req, res) {
-        res.header("Access-Control-Allow-Origin", "*");
-        const user_id = req.query.user_id;
-
-        try {
             const token = await db.query(
-                `SELECT id, value, (expiration_date>now()) as token_valid 
-                FROM tokens WHERE user_id=$1`,
-                [user_id]
+                `INSERT INTO tokens (user_id) 
+                values(${user_id}) 
+                ON CONFLICT (user_id)
+                DO UPDATE set
+                value = uuid_generate_v4(), expiration_date = (now() + interval '1 day')                                
+                RETURNING *`
             );
-            res.json(token.rows);
+
+            res.json(token.rows[0]);
         } catch (error) {
             res.json(error + db.query.text);
         }
     }
 
-    async updateToken(req, res) {
+    async checkToken(req, res) {
         res.header("Access-Control-Allow-Origin", "*");
-        const { id, value, expiration_date } = req.body;
+        const { token } = req.query;
 
         try {
-            const user = await db.query(
-                `UPDATE tokens set
-        value = $1, expiration_date = $2
-                WHERE id = $3 RETURNING *`,
-                [value, expiration_date, id]
+
+            const response = await db.query(
+                `SELECT (tokens.expiration_date>now()) as token_valid FROM tokens WHERE value=${token}`
             );
-            res.json(user.rows[0]);
+
+            res.json(response.rows[0]);
         } catch (error) {
             res.json(error + db.query.text);
         }
@@ -59,10 +41,10 @@ class TokenController {
 
     async deleteToken(req, res) {
         res.header("Access-Control-Allow-Origin", "*");
-        const id = req.query.id;
+        const { user_id } = req.body;
 
         try {
-            const user = await db.query(`DELETE FROM tokens WHERE id = $1`, [id]);
+            const user = await db.query(`DELETE FROM tokens WHERE user_id = ${user_id}`);
             res.json(user.rows[0]);
         } catch (error) {
             res.json(error + db.query.text);

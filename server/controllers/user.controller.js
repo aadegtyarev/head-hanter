@@ -126,20 +126,16 @@ class UserController {
         try {
             const result = await db.query(
                 `SELECT users.id as user_id,
-                roles.short_name as role,
-                tokens.value as token
-                
+                roles.short_name as role                
                 FROM users 
                 LEFT OUTER JOIN roles ON users.role_id=roles.id                
-                LEFT OUTER JOIN tokens ON users.id=tokens.user_id
                 WHERE password=crypt('${password}', password) AND login='${login}'`
             );
 
             res.json({
                 "isValid": result.rowCount > 0,
                 "user_id": (result.rowCount > 0) ? result.rows[0].user_id : 0,
-                "role": (result.rowCount > 0) ? result.rows[0].role : 0,
-                "token": (result.rowCount > 0) ? result.rows[0].token : 0
+                "role": (result.rowCount > 0) ? result.rows[0].role : 0
             });
         } catch (error) {
             res.json(error + db.query.text);

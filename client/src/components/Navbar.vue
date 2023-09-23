@@ -45,7 +45,7 @@ export default {
         log_out() {
             this.$store.state.auth.isAuth = false
             this.logout()
-            this.$router.push('/')
+            this.$router.push('/login')
         }
     },
     computed: {
