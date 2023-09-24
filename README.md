@@ -1,2 +1,3 @@
-# head-hanter
-Application for hiring valuable employees
+# Учебное приложения для найма сотрудников
+
+Это учебный проект разработки приложения на VueJS 3 и PostgreSQL.
