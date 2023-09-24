@@ -8,7 +8,7 @@
                     class="btn-primary"
                     @click="create"
                 >
-                    Создать
+                    Добавить
                 </my-button>
                 <my-button @click="cancel">
                     Отменить

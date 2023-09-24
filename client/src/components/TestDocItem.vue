@@ -13,7 +13,7 @@
                 <my-button
                     v-if="!test_doc.closed"
                     @click="close"
-                >Закрыть</my-button>
+                >В архив</my-button>
                 <my-button
                     v-if="test_doc.closed"
                     @click="open"

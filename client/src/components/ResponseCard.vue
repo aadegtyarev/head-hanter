@@ -7,7 +7,7 @@
             :response="response"
             :key="response.id"
             @edit="showEditForm"
-            @interview="showInterviewDialog"
+            @inviteInterview="showInterviewDialog"
         />
 
         <response-edit-form

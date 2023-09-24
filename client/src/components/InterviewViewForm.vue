@@ -57,8 +57,7 @@ export default {
 
         return {
             response,
-            job,
-            test_doc
+            job
 
         }
     }

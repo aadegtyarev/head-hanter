@@ -1,14 +1,17 @@
 <template>
     <div>
         <form @submit.prevent>
-            <h4>Пригласить на вакансию «{{ response.job_title }}»</h4>
+            <h4>Записать на интервью «{{ response.job_title }}»</h4>
             <interview-form
                 :interview="interview"
                 :users_list="users_list"
             />
             <div class="app-btns">
-                <my-button @click="create">
-                    Создать
+                <my-button
+                    class="btn-primary"
+                    @click="create"
+                >
+                    Записать
                 </my-button>
                 <my-button @click="cancel">
                     Отменить
