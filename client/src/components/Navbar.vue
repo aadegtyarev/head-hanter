@@ -3,7 +3,7 @@
         <div
             class="logo"
             @click="$router.push('/')"
-        >Head Hunter App</div>
+        >Наниматель</div>
         <div class="navbar-btns">
             <my-button
                 v-if="isAuth"

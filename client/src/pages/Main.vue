@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Наниматель 3000</h1>        
+        <h1>Наниматель</h1>
     </div>
 </template>
 
@@ -8,6 +8,4 @@
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

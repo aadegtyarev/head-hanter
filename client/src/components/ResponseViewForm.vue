@@ -29,8 +29,9 @@
         <fieldset class="card-item">
             <legend>Создать письма</legend>
             <div>
-                <my-button @click="interview">Приглашение на интервью</my-button>
-                <my-button @click="refuse">Отказ</my-button>
+                <my-button @click="testDoc">Тестовое задание</my-button>
+                <my-button @click="interview">Пригласить на интервью</my-button>
+                <my-button @click="refuse">Отказать</my-button>
             </div>
         </fieldset>
         <div class="app-btns">
@@ -48,7 +49,7 @@ import useGetJob from "@/hooks/useGetJob"
 import useSendEmails from "@/hooks/useSendEmails"
 import ResponseRequirementsTable from "@/components/ResponseRequirementsTable"
 import ResponseChangeStatusForm from "@/components/ResponseChangeStatusForm"
-
+import useGetTestDoc from "@/hooks/useGetTestDoc"
 
 export default {
     components: {
@@ -64,6 +65,9 @@ export default {
         },
         refuse() {
             this.sendRefuseMail(this.response.email, this.response.job_title)
+        },
+        testDoc() {
+            this.sendTestDoc(this.response.email, this.response.job_title, this.test_doc.text)
         }
     },
     props: {
@@ -74,13 +78,15 @@ export default {
     },
     setup(props) {
         const { job } = useGetJob(props.response.job_id)
-        const { sendInterviewMail, sendRefuseMail } = useSendEmails()
+        const { sendInterviewMail, sendRefuseMail, sendTestDoc } = useSendEmails()
+        const { test_doc } = useGetTestDoc(props.response.test_doc_id)
 
         return {
             job,
+            test_doc,
             sendInterviewMail,
-            sendRefuseMail
-
+            sendRefuseMail,
+            sendTestDoc
         }
     }
 }
