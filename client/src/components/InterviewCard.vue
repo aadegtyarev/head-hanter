@@ -12,7 +12,7 @@
             :interview="interview"
             :users_list="users_list"
             :key="interview.id"
-            @save="save"
+            @save="editInterview"
             @cancel="hideEditForm"
         />
     </div>
@@ -36,11 +36,6 @@ export default {
         users_list: {
             type: Array,
             required: true,
-        },
-    },
-    methods: {
-        save(interview) {
-            this.editInterview(interview)
         },
     },
     setup(props) {

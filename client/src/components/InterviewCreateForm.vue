@@ -33,8 +33,6 @@ export default {
             interview: {}
         }
     },
-    //date_and_time:Tue Sep 19 2023 11:01:08 GMT+0400 (GMT+04:00)
-    //"2023-09-19T12:00"
     props: {
         response: {
             type: Object,
