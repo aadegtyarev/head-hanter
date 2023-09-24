@@ -38,33 +38,20 @@
 </template>
 
 <script>
-import useAuth from "@/hooks/useAuth"
+
 
 export default {
     methods: {
         log_out() {
-            this.$store.state.auth.isAuth = false
-            this.logout()
-            this.$router.push('/login')
+            this.$emit('log_out')
         }
     },
     computed: {
         isAuth() {
             return this.$store.state.auth.isAuth
         },
-    },
-    props: {
-
-    },
-    setup(props) {
-        const { logout } = useAuth()
-        return {
-            logout
-        }
-    },
+    }
 }
-
-
 </script>
 
 <style scoped></style>

@@ -25,11 +25,6 @@ export default {
     components: {
         JobForm,
     },
-    data() {
-        return {
-
-        }
-    },
     props: {
         job: {
             type: Object,

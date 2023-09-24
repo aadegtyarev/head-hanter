@@ -58,17 +58,11 @@
 <script>
 import useTestDocs from "@/hooks/useTestDocs"
 export default {
-    data() {
-        return {
-        }
-    },
     props: {
         job: {
             type: Object,
             required: true,
         }
-    },
-    methods: {
     },
     setup(props) {
         const { test_docs_list } = useTestDocs()
