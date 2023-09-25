@@ -1,7 +1,5 @@
 <template>
     <div>
-        <!-- <response-view-form :response="response" /> -->
-
         <response-view-form
             v-if="!formEditVisible"
             :response="response"

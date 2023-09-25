@@ -46,10 +46,6 @@ export default {
             this.$emit('cancel')
         }
     },
-    data() {
-        return {
-        };
-    },
     props: {
         response: {
             type: Object,

@@ -25,10 +25,6 @@ export default {
     components: {
         ResponseForm,
     },
-    data() {
-        return {
-        }
-    },
     methods: {
         create() {
             this.$emit('create', this.response)
