@@ -37,8 +37,6 @@ export default function useAuth() {
     return {
         login,
         logout,
-        createToken,
-        deleteToken,
-        checkToken
+        createToken
     };
 }

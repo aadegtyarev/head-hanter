@@ -41,7 +41,7 @@ class TokenController {
 
     async deleteToken(req, res) {
         res.header("Access-Control-Allow-Origin", "*");
-        const { user_id } = req.body;
+        const { user_id } = req.query;
 
         try {
             const user = await db.query(`DELETE FROM tokens WHERE user_id = ${user_id}`);
