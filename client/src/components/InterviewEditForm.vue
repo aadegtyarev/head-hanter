@@ -51,6 +51,12 @@ export default {
         cancel() {
             this.cloneObj(interview_undo, this.interview)
             this.$emit('cancel')
+            // this.$notify({
+            //     title: 'Заполните форму',
+            //     text: 'This is some <b>content</b>',
+            //     type: 'error'
+            // }
+            // );
         },
         changeDateTime() {
             const datetime = this.interview.date_and_time;

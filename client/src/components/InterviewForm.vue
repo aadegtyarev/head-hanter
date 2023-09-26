@@ -4,6 +4,7 @@
         v-focus
         v-model="interview.interviewer_id"
         :options="users_list"
+        name="interviewer_id"
         placeholder="Кто будет проводить"
     />
     <label class="label-top">Дата и время</label>
@@ -11,13 +12,15 @@
         v-focus
         v-model="interview.date_and_time"
         type="datetime-local"
+        name="date_and_time"
         placeholder="Дата и время"
     />
     <label class="label-top">Заметки</label>
     <my-input
         v-model="interview.detail"
         type="text"
-        placeholder="Заметки"
+        name="detail"
+        placeholder="Место проведения и другие пометки"
     />
 </template>
 

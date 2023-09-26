@@ -7,26 +7,32 @@
         <div class="navbar-btns">
             <my-button
                 v-if="isAuth"
+                :class="{ 'btn-disabled': $route.path == '/' }"
                 @click="$router.push('/')"
             >Главная</my-button>
             <my-button
                 v-if="isAuth"
+                :class="{ 'btn-disabled': $route.path == '/jobs' }"
                 @click="$router.push('/jobs')"
             >Вакансии</my-button>
             <my-button
                 v-if="isAuth"
+                :class="{ 'btn-disabled': $route.path == '/responses' }"
                 @click="$router.push('/responses')"
             >Отклики</my-button>
             <my-button
                 v-if="isAuth"
+                :class="{ 'btn-disabled': $route.path == '/interviews' }"
                 @click="$router.push('/interviews')"
             >Интервью</my-button>
             <my-button
                 v-if="isAuth"
+                :class="{ 'btn-disabled': $route.path == '/test-docs' }"
                 @click="$router.push('/test-docs')"
             >Тестовые задания</my-button>
             <my-button
                 v-if="isAuth"
+                :class="{ 'btn-disabled': $route.path == '/users' }"
                 @click="$router.push('/users')"
             >Пользователи</my-button>
             <my-button
