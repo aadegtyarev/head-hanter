@@ -23,17 +23,11 @@
 
 <script>
 export default {
-    data() {
-        return {
-        }
-    },
     props: {
         test_doc: {
             type: Object,
             required: true,
         },
-    },
-    methods: {
     },
 }
 </script>

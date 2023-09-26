@@ -7,9 +7,8 @@ create TABLE users(
     password VARCHAR(255),
     closed BOOLEAN,
     position VARCHAR(255),
-    role_id INTEGER,
-    created_timestamp TIMESTAMP,
-    FOREIGN KEY (role_id) REFERENCES roles (id)
+    role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE,
+    created_timestamp TIMESTAMP
 );
 
 create extension pgcrypto;
@@ -20,8 +19,7 @@ CREATE TABLE tokens (
     id SERIAL PRIMARY KEY,
     value uuid default uuid_generate_v4() not null unique,
     expiration_date TIMESTAMP default now() + interval '14 day',
-    user_id INTEGER not null unique,
-    FOREIGN KEY (user_id) REFERENCES users (id)
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE not null unique
 );
 
 create TABLE roles(
@@ -46,10 +44,8 @@ create TABLE jobs(
     detail TEXT,
     closed BOOLEAN,
     created_timestamp TIMESTAMP,    
-    user_id INTEGER,
-    test_doc_id INTEGER,
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (test_doc_id) REFERENCES test_docs (id)
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    test_doc_id INTEGER REFERENCES test_docs(id) ON DELETE CASCADE
 );
 
 create TABLE responses(
@@ -66,11 +62,9 @@ create TABLE responses(
     skills TEXT,
     created_timestamp TIMESTAMP,
     closed BOOLEAN,
-    job_id INTEGER,
-    user_id INTEGER,
-    status INTEGER DEFAULT 1,
-    FOREIGN KEY (job_id) REFERENCES jobs (id),
-    FOREIGN KEY (user_id) REFERENCES users (id)
+    job_id INTEGER REFERENCES jobs(id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    status INTEGER DEFAULT 1
 );
 
 create TABLE interviews(
@@ -80,14 +74,10 @@ create TABLE interviews(
     detail TEXT,
     closed BOOLEAN,
     created_timestamp TIMESTAMP,
-    job_id INTEGER,
-    response_id INTEGER,
-    user_id INTEGER,
-    interviewer_id INTEGER,
-    FOREIGN KEY (job_id) REFERENCES jobs (id),
-    FOREIGN KEY (response_id) REFERENCES responses (id),
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (interviewer_id) REFERENCES users (id)
+    job_id INTEGER REFERENCES jobs(id) ON DELETE CASCADE,
+    response_id INTEGER REFERENCES responses(id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    interviewer_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
 create TABLE test_docs(
@@ -95,10 +85,9 @@ create TABLE test_docs(
     name VARCHAR(255),
     remark VARCHAR(255),
     text TEXT,    
-    user_id INTEGER,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     closed BOOLEAN,
-    created_timestamp TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users (id)    
+    created_timestamp TIMESTAMP   
 );
 
 create TABLE response_statuses(
