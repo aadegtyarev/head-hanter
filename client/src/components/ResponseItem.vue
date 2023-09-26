@@ -24,6 +24,7 @@
                     v-if="response.closed"
                     @click="open"
                 >Вернуть</my-button>
+                <my-button>Удалить</my-button>
             </div>
         </td>
     </tr>

@@ -12,6 +12,7 @@
                     @click="$router.push(`/user/${user.id}`)"
                 >Открыть</my-button>
                 <my-button @click="close">Блокировать</my-button>
+                <my-button>Удалить</my-button>
             </div>
         </td>
     </tr>

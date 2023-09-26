@@ -30,22 +30,6 @@ export default function useToken() {
         })
     };
 
-    const checkToken2 = async (token) => {
-        try {
-
-            const response = await axios.get("/token", {
-                params: {
-                    token: token
-                },
-            });
-
-            return (response.data.token_valid)
-        } catch (error) {
-            console.log(error);
-        } finally {
-        }
-    };
-
     const deleteToken = async (user_id) => {
         try {
             await axios.delete("/token", {

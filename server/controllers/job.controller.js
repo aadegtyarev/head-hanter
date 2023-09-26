@@ -10,7 +10,7 @@ class JobController {
             skills,
             education,
             experience,
-            test_doc,
+            test_doc_id,
             detail,
             user_id,
         } = req.body;
@@ -19,7 +19,7 @@ class JobController {
             const newJob = await db.query(
                 `INSERT INTO jobs (
                 job_title, salary_from, salary_to, skills, education, 
-                experience, test_doc, detail, user_id, closed, created_timestamp
+                experience, test_doc_id, detail, user_id, closed, created_timestamp
                     ) 
                 values(
                     $1, $2, $3, $4, $5, $6, $7, $8, $9, false, now()
@@ -31,7 +31,7 @@ class JobController {
                     skills,
                     education,
                     experience,
-                    test_doc,
+                    test_doc_id,
                     detail,
                     user_id,
                 ]

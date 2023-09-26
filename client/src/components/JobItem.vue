@@ -19,6 +19,7 @@
                     v-if="job.closed"
                     @click="open"
                 >Вернуть</my-button>
+                <my-button @click="del">Удалить</my-button>
             </div>
         </td>
     </tr>
@@ -32,6 +33,9 @@ export default {
         },
         open() {
             this.$emit('open', this.job)
+        },
+        del() {
+            this.$emit('del', this.job)
         },
     },
     props: {

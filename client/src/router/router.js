@@ -93,9 +93,28 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const publicPages = ['/login'];
+
+    const adminPages = ['/test-docs', '/users'];
+    const bossPages = ['/test-docs'];
+
     const authRequired = !publicPages.includes(to.path);
+    const adminRequired = adminPages.includes(to.path);
+    const bossRequired = bossPages.includes(to.path);
 
     const loggedIn = store.state.auth.isAuth
+    const role = store.state.auth.role
+
+    if (role == "HR") {
+        if (bossRequired || adminRequired) {
+            return next('/');
+        }
+    }
+
+    if (role == "Boss") {
+        if (adminRequired && !bossRequired) {
+            return next('/');
+        }
+    }
 
     if (authRequired && !loggedIn) {
         return next('/login');

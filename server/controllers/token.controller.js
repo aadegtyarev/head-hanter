@@ -30,7 +30,7 @@ class TokenController {
         try {
 
             const response = await db.query(
-                `SELECT (tokens.expiration_date>now()) as token_valid FROM tokens WHERE value='${token}'`
+                `SELECT (tokens.expiration_date>now()) as token_valid, user_id FROM tokens WHERE value='${token}'`
             );
 
             res.json(response.rows[0]);

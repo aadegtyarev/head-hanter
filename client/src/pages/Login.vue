@@ -2,6 +2,12 @@
     <div>
         <h1>Вход</h1>
         <login-form @log_in="log_in" />
+        <div
+            v-if="showLoginError"
+            class="msg-errors"
+        >
+            <p>Неверный логин или пароль</p>
+        </div>
     </div>
 </template>
 
@@ -19,10 +25,11 @@ export default {
         },
     },
     setup(props) {
-        const { login } = useAuth()
+        const { login, showLoginError } = useAuth()
 
         return {
-            login
+            login,
+            showLoginError
         }
     }
 

@@ -26,12 +26,12 @@
                 @click="$router.push('/interviews')"
             >Интервью</my-button>
             <my-button
-                v-if="isAuth"
+                v-if="isAuth && (isBoss || isAdmin)"
                 :class="{ 'btn-disabled': $route.path == '/test-docs' }"
                 @click="$router.push('/test-docs')"
             >Тестовые задания</my-button>
             <my-button
-                v-if="isAuth"
+                v-if="isAuth && isAdmin"
                 :class="{ 'btn-disabled': $route.path == '/users' }"
                 @click="$router.push('/users')"
             >Пользователи</my-button>
@@ -55,6 +55,15 @@ export default {
     computed: {
         isAuth() {
             return this.$store.state.auth.isAuth
+        },
+        isAdmin() {
+            return this.$store.state.auth.role == "Admin"
+        },
+        isHR() {
+            return this.$store.state.auth.role == "HR"
+        },
+        isBoss() {
+            return this.$store.state.auth.role == "Boss"
         },
     }
 }

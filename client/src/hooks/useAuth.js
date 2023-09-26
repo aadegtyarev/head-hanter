@@ -5,6 +5,8 @@ import store from "@/store";
 import router from "@/router/router";
 
 export default function useAuth() {
+    const showLoginError = ref(false)
+
     const { createToken, deleteToken, checkToken } = useToken()
 
     const login = async (auth) => {
@@ -14,12 +16,14 @@ export default function useAuth() {
 
         if (response.isValid) {
             store.state.auth.isAuth = true
+            showLoginError.value = false
             router.push('/')
 
             const [token] = await Promise.all([
                 createToken(response.user_id)
             ]);
-            // console.log(token)
+            store.state.auth.user_id = response.user_id
+            store.state.auth.role = response.role
 
             const [res] = await Promise.all([
                 checkToken(token)
@@ -27,8 +31,12 @@ export default function useAuth() {
 
             $cookies.set("head-hunter", {
                 "id": response.user_id,
-                "token": token
+                "token": token,
+                "role": response.role,
             }, "7d")
+        } else {
+            store.state.auth.isAuth = false
+            showLoginError.value = true
         }
     };
 
@@ -70,7 +78,10 @@ export default function useAuth() {
                     checkToken(cookie.token)
                 ]);
                 store.state.auth.isAuth = res
-                if (res) {
+                store.state.auth.user_id = cookie.id
+                store.state.auth.role = cookie.role
+                if (res.token_valid) {
+
                     router.push('/')
                 }
             }
@@ -83,6 +94,7 @@ export default function useAuth() {
     return {
         login,
         logout,
-        checkCookie
+        checkCookie,
+        showLoginError
     };
 }

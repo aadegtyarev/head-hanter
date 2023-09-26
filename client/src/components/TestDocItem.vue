@@ -18,6 +18,7 @@
                     v-if="test_doc.closed"
                     @click="open"
                 >Вернуть</my-button>
+                <my-button>Удалить</my-button>
             </div>
         </td>
     </tr>

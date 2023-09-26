@@ -12,8 +12,19 @@
                 :key="job.id"
                 @close="close"
                 @open="open"
+                @del="del"
             />
         </table>
+        <my-dialog v-model:show="dialogVisible">
+            <h3>Удалить вакансию {{ job.job_title }}?</h3>
+            <div class="btns">
+                <my-button @click="remove">Удалить</my-button>
+                <my-button
+                    class="btn-primary"
+                    @click="cancel"
+                >Отменить</my-button>
+            </div>
+        </my-dialog>
     </div>
     <h4
         class="list-empty"
@@ -24,8 +35,17 @@
 <script>
 import JobItem from "@/components/JobItem.vue";
 import useEditJob from "@/hooks/useEditJob"
+import useRemoveJob from "@/hooks/useRemoveJob";
+import MyDialog from "./UI/MyDialog.vue";
 
 export default {
+    data() {
+        return {
+            dialogVisible: false,
+            MyDialog,
+            job: {}
+        }
+    },
     components: { JobItem },
     methods: {
         close(job) {
@@ -35,6 +55,18 @@ export default {
         open(job) {
             job.closed = false
             this.editJob(job)
+        },
+        del(job) {
+            console.log("del")
+            this.job = job
+            this.dialogVisible = true
+        },
+        cancel() {
+            this.dialogVisible = false
+        },
+        remove() {
+            this.removeJob(this.job)
+            this.dialogVisible = false
         }
     },
     props: {
@@ -45,9 +77,11 @@ export default {
     },
     setup(props) {
         const { editJob } = useEditJob(props.jobs)
+        const { removeJob } = useRemoveJob()
 
         return {
             editJob,
+            removeJob
         }
     }
 };
