@@ -5,42 +5,29 @@ import useToken from "./useToken";
 export default function useAuth() {
     const { createToken, deleteToken, checkToken } = useToken()
 
-    const login = async (auth) => {
-
-        try {
-
-            const response = await axios.get("/user-valid-password", {
-                params: {
-                    login: auth.login,
-                    password: auth.password,
-                },
-            });
-            if (response.data.isValid) {
-                $cookies.set("head-hunter", {
-                    "id": response.data.user_id,
-                    "role": response.data.role,
-                    "token": createToken(response.data.user_id)
-                }, "1d")
-                return true
-            } else {
-                if ($cookies.get("head-hunter")) {
-                    $cookies.remove("head-hunter")
+    const login = (auth) => {
+        return new Promise((resolve, reject) => {
+            axios.get("/user-valid-password",
+                {
+                    params: {
+                        login: auth.login,
+                        password: auth.password,
+                    },
                 }
-                return false
-            }
-
-        } catch (error) {
-            console.log(error);
-        } finally {
-        }
+            ).then(response => {
+                resolve(response.data);
+            }, error => {
+                reject(error);
+            })
+        })
     };
-
     const logout = async () => {
         try {
-            const user_id = $cookies.get("head-hunter").id
-            deleteToken(user_id)
-            $cookies.remove("head-hunter")
-
+            if ($cookies.get("head-hunter")) {
+                const user_id = $cookies.get("head-hunter").id
+                deleteToken(user_id)
+                $cookies.remove("head-hunter")
+            }
         } catch (error) {
             console.log(error);
         } finally {

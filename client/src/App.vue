@@ -17,8 +17,8 @@ export default {
     },
     methods: {
         log_out() {
+            this.logout(this.$store.state.auth.id)
             this.$store.state.auth.isAuth = false
-            this.logout()
             this.$router.push('/login')
         },
     },

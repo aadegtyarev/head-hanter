@@ -16,7 +16,6 @@ import JobCreateForm from "@/pages/JobCreateForm";
 import ResponseCreateForm from "@/pages/ResponseCreateForm";
 import UserCreateForm from "@/pages/UserCreateForm";
 import store from "@/store"
-import useAuth from "@/hooks/useAuth";
 
 const routes = [
     {
@@ -91,19 +90,18 @@ const router = createRouter({
     props: true,
 });
 
-const { checkToken, deleteToken } = useAuth()
 
-router.beforeEach((to, from, next) => {
-    const publicPages = ['/login'];
-    const authRequired = !publicPages.includes(to.path);
+// router.beforeEach((to, from, next) => {
+//     const publicPages = ['/login'];
+//     const authRequired = !publicPages.includes(to.path);
 
-    const loggedIn = store.state.auth.isAuth
+//     const loggedIn = store.state.auth.isAuth
 
-    if (authRequired && !loggedIn && checkToken(store.state.auth.user_id)) {
-        return next('/login');
-    }
+//     if (authRequired && !loggedIn && checkToken(store.state.auth.user_id)) {
+//         return next('/login');
+//     }
 
-    next();
-})
+//     next();
+// })
 
 export default router;

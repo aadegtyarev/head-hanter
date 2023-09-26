@@ -2,20 +2,19 @@ import axios from "axios";
 
 export default function useToken() {
 
-    const createToken = async (user_id) => {
-        try {
-
-            const response = await axios.post("/token", {
-                params: {
+    const createToken = (user_id) => {
+        return new Promise((resolve, reject) => {
+            axios.post("/token",
+                {
                     user_id: user_id
-                },
-            });
-            return response.data.value
-
-        } catch (error) {
-            console.log(error);
-        } finally {
-        }
+                }
+            ).then(response => {
+                console.log(response)
+                resolve(response.data.value);
+            }, error => {
+                reject(error);
+            })
+        })
     };
 
     const checkToken = async (token) => {
@@ -38,9 +37,7 @@ export default function useToken() {
         try {
 
             const response = await axios.delete("/token", {
-                params: {
-                    user_id: user_id
-                },
+                user_id: user_id
             });
             return response.data.value
 

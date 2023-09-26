@@ -17,14 +17,23 @@ directives.forEach(directive => {
     app.directive(directive.name, directive)
 })
 
+let token = ""
+if ($cookies.get("head-hunter")) {
+    token = $cookies.get("head-hunter")
+}
 
+console.log("token", token)
 
 axios.defaults.baseURL = 'http://localhost:8081/api';
+axios.defaults.headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+}
 
-store.state.auth.isAuth = $cookies.get("head-hunter")
+// store.state.auth.isAuth = $cookies.get("head-hunter")
 
-if (store.state.auth.isAuth)
-    store.state.auth.user_id = $cookies.get("head-hunter").id
+// if (store.state.auth.isAuth)
+//     store.state.auth.user_id = $cookies.get("head-hunter").id
 
 app
     .use(router) // таким образом подключаются плагины, бутстрап и т.п.

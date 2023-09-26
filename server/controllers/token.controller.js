@@ -10,7 +10,7 @@ class TokenController {
 
             const token = await db.query(
                 `INSERT INTO tokens (user_id) 
-                values(${user_id}) 
+                values (${user_id}) 
                 ON CONFLICT (user_id)
                 DO UPDATE set
                 value = uuid_generate_v4(), expiration_date = (now() + interval '1 day')                                
