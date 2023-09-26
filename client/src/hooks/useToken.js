@@ -1,49 +1,42 @@
-import { onMounted, ref } from "vue";
 import axios from "axios";
 
 export default function useToken() {
 
-    const createToken = async (user_id) => {
-        try {
-
-            const response = await axios.post("/token", {
-                params: {
+    const createToken = (user_id) => {
+        return new Promise((resolve, reject) => {
+            axios.post("/token",
+                {
                     user_id: user_id
-                },
-            });
-            return response.data.value
-
-        } catch (error) {
-            console.log(error);
-        } finally {
-        }
+                }
+            ).then(response => {
+                resolve(response.data.value);
+            }, error => {
+                reject(error);
+            })
+        })
     };
 
-    const checkToken = async (token) => {
-        try {
-
-            const response = await axios.get("/token", {
+    const checkToken = (token) => {
+        return new Promise((resolve, reject) => {
+            axios.get("/token", {
                 params: {
                     token: token
                 },
-            });
-
-            return (response.data.token_valid)
-        } catch (error) {
-            console.log(error);
-        } finally {
-        }
+            }).then(response => {
+                resolve(response.data.token_valid);
+            }, error => {
+                reject(error);
+            })
+        })
     };
 
     const deleteToken = async (user_id) => {
         try {
-
-            const response = await axios.delete("/token", {
+            await axios.delete("/token", {
                 params: {
                     user_id: user_id
                 },
             });
-            return response.data.value
 
         } catch (error) {
             console.log(error);

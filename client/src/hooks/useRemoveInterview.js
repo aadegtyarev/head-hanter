@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export default function useRemoveJob(jobs) {
+export default function useRemoveInterview() {
 
-    const removeJob = async (job) => {
+    const removeInterview = async (interview) => {
         try {
             const response = await axios.delete(
-                "/job", {
+                "/interview", {
                 params: {
-                    id: job.id
+                    id: interview.id
                 }
             }
             );
@@ -17,6 +17,6 @@ export default function useRemoveJob(jobs) {
     }
 
     return {
-        removeJob
+        removeInterview
     }
 }

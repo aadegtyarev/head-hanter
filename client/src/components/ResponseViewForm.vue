@@ -36,6 +36,7 @@
         </fieldset>
         <div class="app-btns">
             <my-button @click="edit">Редактировать</my-button>
+            <my-button @click="inviteInterview">Записать на интервью</my-button>
             <my-button
                 class="btn-primary"
                 @click="$router.go(-1)"
@@ -68,6 +69,9 @@ export default {
         },
         testDoc() {
             this.sendTestDoc(this.response.email, this.response.job_title, this.test_doc.text)
+        },
+        inviteInterview() {
+            this.$emit('inviteInterview', this.response)
         }
     },
     props: {

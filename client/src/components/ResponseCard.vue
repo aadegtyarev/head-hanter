@@ -1,13 +1,11 @@
 <template>
     <div>
-        <!-- <response-view-form :response="response" /> -->
-
         <response-view-form
             v-if="!formEditVisible"
             :response="response"
             :key="response.id"
             @edit="showEditForm"
-            @interview="showInterviewDialog"
+            @inviteInterview="showInterviewDialog"
         />
 
         <response-edit-form

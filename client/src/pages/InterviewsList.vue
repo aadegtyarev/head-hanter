@@ -24,20 +24,10 @@
 <script>
 import InterviewsList from "@/components/InterviewsList.vue";
 import useInterviews from "@/hooks/useInterviews"
-import useJobs from "@/hooks/useJobs"
-
-import { ref } from 'vue'
 
 export default {
     components: {
         InterviewsList,
-    },
-    data() {
-        return {
-        };
-    },
-    methods: {
-
     },
     setup(props) {
         const { searchQuery, interviews, isInterviewsLoading, loadMoreInterviews, fetchingInterviews } = useInterviews(50);

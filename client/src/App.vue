@@ -1,5 +1,5 @@
 <template>
-    <navbar></navbar>
+    <navbar @log_out="log_out"></navbar>
     <div class="app">
         <router-view></router-view>
     </div>
@@ -7,12 +7,27 @@
 
 <script>
 import Navbar from "@/components/Navbar"
+import useAuth from "@/hooks/useAuth"
+
 import "@/styles/main.css"
 
 export default {
     components: {
         Navbar
-    }
+    },
+    methods: {
+        log_out() {
+            this.logout(this.$store.state.auth.id)
+            this.$store.state.auth.isAuth = false
+            this.$router.push('/login')
+        },
+    },
+    setup(props) {
+        const { logout } = useAuth()
+        return {
+            logout
+        }
+    },
 }
 </script>
 

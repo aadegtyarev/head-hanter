@@ -10,10 +10,10 @@ class TokenController {
 
             const token = await db.query(
                 `INSERT INTO tokens (user_id) 
-                values(${user_id}) 
+                values (${user_id}) 
                 ON CONFLICT (user_id)
                 DO UPDATE set
-                value = uuid_generate_v4(), expiration_date = (now() + interval '1 day')                                
+                value = uuid_generate_v4(), expiration_date = (now() + interval '7 day')                                
                 RETURNING *`
             );
 
@@ -30,7 +30,7 @@ class TokenController {
         try {
 
             const response = await db.query(
-                `SELECT (tokens.expiration_date>now()) as token_valid FROM tokens WHERE value=${token}`
+                `SELECT (tokens.expiration_date>now()) as token_valid, user_id FROM tokens WHERE value='${token}'`
             );
 
             res.json(response.rows[0]);
@@ -41,7 +41,7 @@ class TokenController {
 
     async deleteToken(req, res) {
         res.header("Access-Control-Allow-Origin", "*");
-        const { user_id } = req.body;
+        const { user_id } = req.query;
 
         try {
             const user = await db.query(`DELETE FROM tokens WHERE user_id = ${user_id}`);

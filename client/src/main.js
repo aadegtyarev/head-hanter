@@ -5,7 +5,8 @@ import router from '@/router/router'
 import directives from '@/directives'
 import axios from "axios";
 import VueCookies from 'vue-cookies'
-import store from '@/store'
+import useAuth from './hooks/useAuth'
+import store from './store'
 
 const app = createApp(App)
 
@@ -17,14 +18,14 @@ directives.forEach(directive => {
     app.directive(directive.name, directive)
 })
 
-
-
 axios.defaults.baseURL = 'http://localhost:8081/api';
 
-store.state.auth.isAuth = $cookies.get("head-hunter")
+const { checkCookie } = useAuth()
+checkCookie()
+// store.state.auth.isAuth = $cookies.get("head-hunter")
 
-if (store.state.auth.isAuth)
-    store.state.auth.user_id = $cookies.get("head-hunter").id
+// if (store.state.auth.isAuth)
+//     store.state.auth.user_id = $cookies.get("head-hunter").id
 
 app
     .use(router) // таким образом подключаются плагины, бутстрап и т.п.

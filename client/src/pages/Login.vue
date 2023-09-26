@@ -2,12 +2,18 @@
     <div>
         <h1>Вход</h1>
         <login-form @log_in="log_in" />
+        <div
+            v-if="showLoginError"
+            class="msg-errors"
+        >
+            <p>Неверный логин или пароль</p>
+        </div>
     </div>
 </template>
 
 <script>
-import LoginForm from "@/components/LoginForm.vue";
-import useAuth from "@/hooks/useAuth"
+import LoginForm from '@/components/LoginForm.vue'
+import useAuth from '@/hooks/useAuth'
 
 export default {
     components: {
@@ -15,17 +21,15 @@ export default {
     },
     methods: {
         log_in(auth) {
-            if (this.login(auth)) {
-                this.$store.state.auth.isAuth = true
-                this.$router.push('/')
-            }
-        }
+            this.login(auth)
+        },
     },
     setup(props) {
-        const { login } = useAuth()
+        const { login, showLoginError } = useAuth()
 
         return {
-            login
+            login,
+            showLoginError
         }
     }
 

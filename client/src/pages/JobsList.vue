@@ -51,7 +51,6 @@ export default {
         const { searchQuery, jobs, isJobsLoading, loadMoreJobs, fetchingJobs } = useJobs(50);
         const { createJob, hideDialog, showDialog, dialogVisible } = useCreateJob(jobs)
 
-
         return {
             jobs,
             isJobsLoading,

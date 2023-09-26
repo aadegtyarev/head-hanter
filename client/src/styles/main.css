@@ -32,6 +32,12 @@
   color: teal;
 }
 
+.btn-disabled{
+    color: black;
+    border-color: black;
+    cursor: default;
+}
+
 .dialog {
   top: 0;
   bottom: 0;
@@ -40,6 +46,14 @@
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   display: flex;
+}
+.msg-errors{
+    border: 1px solid red;
+    padding: 5px 10px 10px 10px;
+}
+
+.msg-errors ul{
+    margin-left: 25px;
 }
 
 .dialog-content {

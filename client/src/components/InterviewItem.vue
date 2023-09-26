@@ -22,6 +22,7 @@
                     v-if="interview.closed"
                     @click="open"
                 >Возобновить</my-button>
+                <my-button>Удалить</my-button>
             </div>
         </td>
     </tr>

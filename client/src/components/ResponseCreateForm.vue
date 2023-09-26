@@ -8,7 +8,7 @@
                     class="btn-primary"
                     @click="create"
                 >
-                    Создать
+                    Добавить
                 </my-button>
                 <my-button @click="cancel">
                     Отменить
@@ -24,10 +24,6 @@ import ResponseForm from "@/components/ResponseForm.vue";
 export default {
     components: {
         ResponseForm,
-    },
-    data() {
-        return {
-        }
     },
     methods: {
         create() {

@@ -16,7 +16,6 @@ import JobCreateForm from "@/pages/JobCreateForm";
 import ResponseCreateForm from "@/pages/ResponseCreateForm";
 import UserCreateForm from "@/pages/UserCreateForm";
 import store from "@/store"
-import useAuth from "@/hooks/useAuth";
 
 const routes = [
     {
@@ -91,15 +90,33 @@ const router = createRouter({
     props: true,
 });
 
-const { checkToken, deleteToken } = useAuth()
 
 router.beforeEach((to, from, next) => {
     const publicPages = ['/login'];
+
+    const adminPages = ['/test-docs', '/users'];
+    const bossPages = ['/test-docs'];
+
     const authRequired = !publicPages.includes(to.path);
+    const adminRequired = adminPages.includes(to.path);
+    const bossRequired = bossPages.includes(to.path);
 
     const loggedIn = store.state.auth.isAuth
+    const role = store.state.auth.role
 
-    if (authRequired && !loggedIn && checkToken(store.state.auth.user_id)) {
+    if (role == "HR") {
+        if (bossRequired || adminRequired) {
+            return next('/');
+        }
+    }
+
+    if (role == "Boss") {
+        if (adminRequired && !bossRequired) {
+            return next('/');
+        }
+    }
+
+    if (authRequired && !loggedIn) {
         return next('/login');
     }
 

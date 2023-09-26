@@ -7,26 +7,32 @@
         <div class="navbar-btns">
             <my-button
                 v-if="isAuth"
+                :class="{ 'btn-disabled': $route.path == '/' }"
                 @click="$router.push('/')"
             >Главная</my-button>
             <my-button
                 v-if="isAuth"
+                :class="{ 'btn-disabled': $route.path == '/jobs' }"
                 @click="$router.push('/jobs')"
             >Вакансии</my-button>
             <my-button
                 v-if="isAuth"
+                :class="{ 'btn-disabled': $route.path == '/responses' }"
                 @click="$router.push('/responses')"
             >Отклики</my-button>
             <my-button
                 v-if="isAuth"
+                :class="{ 'btn-disabled': $route.path == '/interviews' }"
                 @click="$router.push('/interviews')"
             >Интервью</my-button>
             <my-button
-                v-if="isAuth"
+                v-if="isAuth && (isBoss || isAdmin)"
+                :class="{ 'btn-disabled': $route.path == '/test-docs' }"
                 @click="$router.push('/test-docs')"
             >Тестовые задания</my-button>
             <my-button
-                v-if="isAuth"
+                v-if="isAuth && isAdmin"
+                :class="{ 'btn-disabled': $route.path == '/users' }"
                 @click="$router.push('/users')"
             >Пользователи</my-button>
             <my-button
@@ -38,33 +44,29 @@
 </template>
 
 <script>
-import useAuth from "@/hooks/useAuth"
+
 
 export default {
     methods: {
         log_out() {
-            this.$store.state.auth.isAuth = false
-            this.logout()
-            this.$router.push('/login')
+            this.$emit('log_out')
         }
     },
     computed: {
         isAuth() {
             return this.$store.state.auth.isAuth
         },
-    },
-    props: {
-
-    },
-    setup(props) {
-        const { logout } = useAuth()
-        return {
-            logout
-        }
-    },
+        isAdmin() {
+            return this.$store.state.auth.role == "Admin"
+        },
+        isHR() {
+            return this.$store.state.auth.role == "HR"
+        },
+        isBoss() {
+            return this.$store.state.auth.role == "Boss"
+        },
+    }
 }
-
-
 </script>
 
 <style scoped></style>

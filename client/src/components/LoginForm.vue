@@ -34,22 +34,19 @@ import MyButton from "@/components/UI/MyButton";
 
 
 export default {
+    components: {
+        MyInput,
+        MyButton
+    },
     data() {
         return {
             auth: {}
         }
     },
-    components: {
-        MyInput,
-        MyButton
-    },
     methods: {
         submit() {
             this.$emit('log_in', this.auth)
         }
-    },
-    props: {
-
     },
 };
 </script>

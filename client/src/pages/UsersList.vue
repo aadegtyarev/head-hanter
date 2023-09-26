@@ -17,10 +17,7 @@
             v-if="!isUsersLoading"
         />
         <div v-else>Идёт загрузка...</div>
-        <div
-            v-intersection="loadMoreUsers"
-            class="observer"
-        ></div>
+        <div class="observer"></div>
     </div>
 </template>
 
@@ -50,14 +47,13 @@ export default {
         };
     },
     setup(props) {
-        const { searchQuery, users, isUsersLoading, loadMoreUsers, fetchingUsers } = useUsers();
+        const { searchQuery, users, isUsersLoading, fetchingUsers } = useUsers();
 
         return {
             users,
             isUsersLoading,
             searchQuery,
-            fetchingUsers,
-            loadMoreUsers,
+            fetchingUsers
         }
     }
 };

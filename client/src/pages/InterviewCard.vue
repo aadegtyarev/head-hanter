@@ -18,21 +18,14 @@ export default {
     components: {
         InterviewCard
     },
-    data() {
-        return {
-        };
-    },
-    methods: {
-    },
     setup(props) {
         const route = useRoute()
         const interviewId = route.params.id
-        const { loadOneInterview, interview } = useGetInterview(interviewId);
+        const { interview } = useGetInterview(interviewId);
         const { users_list } = useUsers();
 
         return {
             interview,
-            loadOneInterview,
             users_list
         }
     }
