@@ -18,20 +18,10 @@ directives.forEach(directive => {
     app.directive(directive.name, directive)
 })
 
-const { checkCookie } = useAuth()
-
-let token = ""
-const cookie = $cookies.get("head-hunter")
-if (cookie) {
-    token = cookie.token
-}
-
 axios.defaults.baseURL = 'http://localhost:8081/api';
-axios.defaults.headers = {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
-}
 
+const { checkCookie } = useAuth()
+checkCookie()
 // store.state.auth.isAuth = $cookies.get("head-hunter")
 
 // if (store.state.auth.isAuth)

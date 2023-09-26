@@ -9,7 +9,6 @@ export default function useToken() {
                     user_id: user_id
                 }
             ).then(response => {
-                console.log(response)
                 resolve(response.data.value);
             }, error => {
                 reject(error);
@@ -48,7 +47,6 @@ export default function useToken() {
     };
 
     const deleteToken = async (user_id) => {
-        console.log("deleteToken", user_id)
         try {
             await axios.delete("/token", {
                 params: {

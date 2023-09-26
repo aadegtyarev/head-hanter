@@ -62,11 +62,18 @@ export default function useAuth() {
         })
     };
 
-    const checkCookie = async (cookie) => {
+    const checkCookie = async () => {
         try {
-            const [res] = await Promise.all([
-                checkToken(cookie.token)
-            ]);
+            const cookie = $cookies.get("head-hunter")
+            if (cookie) {
+                const [res] = await Promise.all([
+                    checkToken(cookie.token)
+                ]);
+                store.state.auth.isAuth = res
+                if (res) {
+                    router.push('/')
+                }
+            }
         } catch (error) {
             console.log(error);
         } finally {

@@ -91,17 +91,17 @@ const router = createRouter({
 });
 
 
-// router.beforeEach((to, from, next) => {
-//     const publicPages = ['/login'];
-//     const authRequired = !publicPages.includes(to.path);
+router.beforeEach((to, from, next) => {
+    const publicPages = ['/login'];
+    const authRequired = !publicPages.includes(to.path);
 
-//     const loggedIn = store.state.auth.isAuth
+    const loggedIn = store.state.auth.isAuth
 
-//     if (authRequired && !loggedIn && checkToken(store.state.auth.user_id)) {
-//         return next('/login');
-//     }
+    if (authRequired && !loggedIn) {
+        return next('/login');
+    }
 
-//     next();
-// })
+    next();
+})
 
 export default router;
