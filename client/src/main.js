@@ -5,7 +5,8 @@ import router from '@/router/router'
 import directives from '@/directives'
 import axios from "axios";
 import VueCookies from 'vue-cookies'
-import store from '@/store'
+import useAuth from './hooks/useAuth'
+import store from './store'
 
 const app = createApp(App)
 
@@ -17,12 +18,13 @@ directives.forEach(directive => {
     app.directive(directive.name, directive)
 })
 
-let token = ""
-if ($cookies.get("head-hunter")) {
-    token = $cookies.get("head-hunter")
-}
+const { checkCookie } = useAuth()
 
-console.log("token", token)
+let token = ""
+const cookie = $cookies.get("head-hunter")
+if (cookie) {
+    token = cookie.token
+}
 
 axios.defaults.baseURL = 'http://localhost:8081/api';
 axios.defaults.headers = {

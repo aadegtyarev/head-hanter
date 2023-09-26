@@ -17,7 +17,21 @@ export default function useToken() {
         })
     };
 
-    const checkToken = async (token) => {
+    const checkToken = (token) => {
+        return new Promise((resolve, reject) => {
+            axios.get("/token", {
+                params: {
+                    token: token
+                },
+            }).then(response => {
+                resolve(response.data.token_valid);
+            }, error => {
+                reject(error);
+            })
+        })
+    };
+
+    const checkToken2 = async (token) => {
         try {
 
             const response = await axios.get("/token", {

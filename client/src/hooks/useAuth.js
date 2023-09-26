@@ -21,6 +21,10 @@ export default function useAuth() {
             ]);
             // console.log(token)
 
+            const [res] = await Promise.all([
+                checkToken(token)
+            ]);
+
             $cookies.set("head-hunter", {
                 "id": response.user_id,
                 "token": token
@@ -58,9 +62,20 @@ export default function useAuth() {
         })
     };
 
+    const checkCookie = async (cookie) => {
+        try {
+            const [res] = await Promise.all([
+                checkToken(cookie.token)
+            ]);
+        } catch (error) {
+            console.log(error);
+        } finally {
+        }
+    };
+
     return {
         login,
         logout,
-        createToken
+        checkCookie
     };
 }
